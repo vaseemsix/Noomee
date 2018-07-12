@@ -9,6 +9,7 @@
 	<string name="hint_name">Name</string>
 	
 	<string name="title_registration">Child Info</string>
+	<string name="child_relation">Child Relation</string>
 	<string name="child_name">Child name</string>
 	<string name="child_age">Child age</string>
 	<string name="diagnose">Diagnose</string>

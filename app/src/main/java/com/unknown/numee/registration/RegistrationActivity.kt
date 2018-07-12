@@ -20,6 +20,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         }
     }
 
+    private lateinit var childRelation: SpinnerView
     private lateinit var childName: TextInputLayout
     private lateinit var childAge: TextInputLayout
     private lateinit var childDiagnose: SpinnerView
@@ -37,6 +38,10 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         presenter.onCreate()
     }
 
+    override fun setRelations(items: Array<String>) {
+        childRelation.setItems(items)
+    }
+
     override fun setDiagnoses(items: Array<String>) {
         childDiagnose.setItems(items)
     }
@@ -47,11 +52,17 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     }
 
     private fun initReferences() {
+        childRelation = findViewById(R.id.activity_registration__edit_child_relation)
         childName = findViewById(R.id.activity_registration__edit_child_name)
         childAge = findViewById(R.id.activity_registration__edit_child_age)
         childDiagnose = findViewById(R.id.activity_registration__edit_diagnose)
         saveBtn = findViewById(R.id.activity_registration__btn_save)
 
+        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onRelationSelected(position)
+            }
+        })
         childDiagnose.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
             override fun onItemClicked(position: Int) {
                 presenter.onDiagnoseSelected(position)

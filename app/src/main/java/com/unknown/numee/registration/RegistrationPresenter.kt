@@ -8,10 +8,15 @@ class RegistrationPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onCreate() {
+        view.setRelations(model.getRelationItems())
         view.setDiagnoses(model.getDiagnoseItems())
     }
 
     override fun onDiagnoseSelected(position: Int) {
+
+    }
+
+    override fun onRelationSelected(position: Int) {
 
     }
 

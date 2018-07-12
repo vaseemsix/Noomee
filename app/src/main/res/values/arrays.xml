@@ -7,4 +7,12 @@
 		<item>Diagnose 2</item>
 		<item>Other</item>
 	</array>
+	
+	<array name="relations">
+		<item>Father</item>
+		<item>Mother</item>
+		<item>Caretaker</item>
+		<item>Other</item>
+	</array>
+	
 </resources>

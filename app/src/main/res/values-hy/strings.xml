@@ -9,6 +9,7 @@
 	<string name="hint_name">Անուն</string>
 	
 	<string name="title_registration">Երեխայի մասին</string>
+	<string name="child_relation">Կապը երեխայի հետ</string>
 	<string name="child_name">Երեխայի անունը</string>
 	<string name="child_age">Երեխայի տարիքը</string>
 	<string name="diagnose">Ախտորոշումը</string>

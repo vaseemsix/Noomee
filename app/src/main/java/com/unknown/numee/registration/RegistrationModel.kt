@@ -9,6 +9,10 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
 
     lateinit var presenter: ModelContract.Listener
 
+    override fun getRelationItems(): Array<String> {
+        return context.resources.getStringArray(R.array.relations)
+    }
+
     override fun getDiagnoseItems(): Array<String> {
         return context.resources.getStringArray(R.array.diagnoses)
     }

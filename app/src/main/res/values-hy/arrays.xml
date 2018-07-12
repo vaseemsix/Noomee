@@ -8,4 +8,11 @@
 		<item>Այլ</item>
 	</array>
 	
+	<array name="relations">
+		<item>Հայրիկ</item>
+		<item>Մայրիկ</item>
+		<item>Խնամակալ</item>
+		<item>Այլ</item>
+	</array>
+	
 </resources>
