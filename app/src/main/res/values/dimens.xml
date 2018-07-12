@@ -19,7 +19,7 @@
 	<dimen name="font_tiny">12sp</dimen>
 	
 	<!-- typical spacing between two views - margins and padding -->
-	<dimen name="spacing_huge">40dp</dimen>
+	<dimen name="spacing_huge">48dp</dimen>
 	<dimen name="spacing_big">32dp</dimen>
 	<dimen name="spacing_large">24dp</dimen>
 	<dimen name="spacing_normal">16dp</dimen>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Numee</string>
+	<string name="app_name">Noomee</string>
 	<string name="app_description">Guide to independence for your KID</string>
 	<string name="sign_in_with_email">Sign in with Email</string>
+	<string name="sign_up_with_email">Sign up with Email</string>
+	<string name="hint_email">Email</string>
+	<string name="hint_password">Password</string>
+	<string name="hint_name">Name</string>
 	
 	<string name="title_registration">Child Info</string>
 	<string name="child_name">Child name</string>

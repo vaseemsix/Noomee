@@ -11,11 +11,24 @@ class LoginPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onCreate() {
+        if (view.hasUser()) {
+            view.showSignInView()
+        } else {
+            view.showSignUpView()
+        }
+    }
 
+    override fun onSignUpWithEmailClicked() {
+        view.startSignUpActivity(view.getEmail(), view.getPassword())
     }
 
     override fun onSignInWithEmailClicked() {
-        view.startSignInActivity()
+        view.startSignInActivity(view.getEmail(), view.getPassword())
+    }
+
+    override fun onSignUpSuccess(user: FirebaseUser) {
+        model.firebaseUser = user
+        model.getUser(user.uid)
     }
 
     override fun onSignInSuccess(user: FirebaseUser) {
@@ -39,7 +52,7 @@ class LoginPresenter(
             val currentUser = User(
                     model.firebaseUser?.uid.orEmpty(),
                     model.firebaseUser?.email.orEmpty(),
-                    model.firebaseUser?.displayName.orEmpty())
+                    view.getName())
             model.saveUserID(currentUser.id)
             model.saveUser(currentUser)
         }
