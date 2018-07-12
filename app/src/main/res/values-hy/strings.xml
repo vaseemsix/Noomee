@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Numee</string>
+	<string name="app_description">Guide to independence for your KID</string>
+	<string name="sign_in_with_email">Մուտք գործել</string>
+	<string name="sign_up_with_email">Գրանցվել</string>
+	
+	<string name="title_registration">Երեխայի մասին</string>
+	<string name="child_name">Երեխայի անունը</string>
+	<string name="child_age">Երեխայի տարիքը</string>
+	<string name="diagnose">Ախտորոշումը</string>
+	<string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
+	<string name="save">Պահպանել</string>
+</resources>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
+	
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/colorPrimary"
+		android:padding="@dimen/spacing_normal">
+		
+		<TextView
+			android:id="@+id/activity_registration__txt_title"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:text="@string/title_registration"
+			android:textSize="@dimen/font_large"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/activity_registration__edit_child_name"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__txt_title">
+			
+			<android.support.design.widget.TextInputEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/child_name"
+				android:inputType="text"
+				android:textSize="@dimen/font_normal" />
+		
+		</android.support.design.widget.TextInputLayout>
+		
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/activity_registration__edit_child_age"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_child_name">
+			
+			<android.support.design.widget.TextInputEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/child_age"
+				android:inputType="number"
+				android:textSize="@dimen/font_normal" />
+		
+		</android.support.design.widget.TextInputLayout>
+		
+		
+		<com.unknown.numee.util.widget.SpinnerView
+			android:id="@+id/activity_registration__edit_diagnose"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:title="@string/diagnose"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_child_age" />
+			
+		<android.support.design.widget.TextInputLayout
+			android:id="@+id/activity_registration__edit_iq_level"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_diagnose">
+			
+			<android.support.design.widget.TextInputEditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/iq_level"
+				android:inputType="number"
+				android:textSize="@dimen/font_normal" />
+		
+		</android.support.design.widget.TextInputLayout>
+		
+		<Button
+			android:id="@+id/activity_registration__btn_save"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/spacing_large"
+			android:layout_marginRight="@dimen/spacing_large"
+			android:layout_marginTop="8dp"
+			android:background="@color/colorAccent"
+			android:text="@string/save"
+			android:textColor="@android:color/white"
+			android:textSize="@dimen/font_large"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/activity_registration__edit_iq_level"
+			app:layout_constraintVertical_bias="1.0" />
+	
+	</android.support.constraint.ConstraintLayout>
+</ScrollView>

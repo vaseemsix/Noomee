@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<array name="diagnoses">
+		<item>Աուտիզմի Սպեկտրի Խանգարումներ</item>
+		<item>Հիպերկինետիկ Խանգարում (ADHD)</item>
+		<item>Ասպերգերի Սինդրոմ</item>
+		<item>Այլ</item>
+	</array>
+	
+</resources>

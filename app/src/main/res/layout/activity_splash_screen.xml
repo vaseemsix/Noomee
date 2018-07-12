@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/color_splash_screen_bg">
+	
+	<ImageView
+		android:id="@+id/splash_screen__icon"
+		android:layout_width="110dp"
+		android:layout_height="105dp"
+		android:contentDescription="@string/app_name"
+		android:src="@drawable/logo_1"
+		app:layout_constraintVertical_chainStyle="packed"
+		app:layout_constraintBottom_toTopOf="@id/splash_screen__title"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<TextView
+		android:id="@+id/splash_screen__title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_small"
+		android:text="@string/app_description"
+		android:textSize="@dimen/font_normal"
+		android:textColor="@color/colorAccent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/splash_screen__icon" />
+
+</android.support.constraint.ConstraintLayout>

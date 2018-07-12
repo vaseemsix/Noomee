@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<array name="diagnoses">
+		<item>Diagnose 1</item>
+		<item>Diagnose 2</item>
+		<item>Diagnose 2</item>
+		<item>Other</item>
+	</array>
+</resources>

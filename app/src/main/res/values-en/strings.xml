@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Numee</string>
+	<string name="app_description">Guide to independence for your KID</string>
+	<string name="sign_in_with_email">Sign in with Email</string>
+	
+	<string name="title_registration">Child Info</string>
+	<string name="child_name">Child name</string>
+	<string name="child_age">Child age</string>
+	<string name="diagnose">Diagnose</string>
+	<string name="iq_level">IQ Level</string>
+	<string name="save">Save</string>
+</resources>
