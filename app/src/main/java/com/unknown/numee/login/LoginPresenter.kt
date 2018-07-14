@@ -47,10 +47,12 @@ class LoginPresenter(
     }
 
     override fun onSignInError(message: String) {
+        view.setLoadingVisibility(false)
         view.showError(message)
     }
 
     override fun onError(e: Exception) {
+        view.setLoadingVisibility(false)
         view.showError(e.message.orEmpty())
     }
 
