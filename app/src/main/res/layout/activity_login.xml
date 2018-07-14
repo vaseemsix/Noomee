@@ -94,5 +94,21 @@
 		tools:ignore="RtlHardcoded" />
 	
 	
+	<TextView
+		android:id="@+id/activity_login__txt_switch"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="@string/sign_in_with_email"
+		android:textAlignment="center"
+		android:textColor="@color/colorAccent"
+		android:textSize="@dimen/font_large"
+		android:layout_marginTop="@dimen/spacing_normal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/activity_login__btn_sign_in_email"
+		app:layout_constraintVertical_bias="1.0"
+		tools:ignore="RtlHardcoded" />
+	
 
 </android.support.constraint.ConstraintLayout>

@@ -18,11 +18,21 @@ class LoginPresenter(
         }
     }
 
+    override fun onSwitchClicked() {
+        if (view.isSignInVisible()) {
+            view.showSignUpView()
+        } else {
+            view.showSignInView()
+        }
+    }
+
     override fun onSignUpWithEmailClicked() {
+        view.setLoadingVisibility(true)
         view.startSignUpActivity(view.getEmail(), view.getPassword())
     }
 
     override fun onSignInWithEmailClicked() {
+        view.setLoadingVisibility(true)
         view.startSignInActivity(view.getEmail(), view.getPassword())
     }
 
@@ -45,6 +55,7 @@ class LoginPresenter(
     }
 
     override fun onReceivedGetUserSuccess(user: User?) {
+        view.setLoadingVisibility(false)
         if (user != null) {
             model.saveUserID(user.id)
             view.startMainActivity()

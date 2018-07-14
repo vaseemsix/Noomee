@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.TextInputLayout
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.unknown.numee.MainActivity
@@ -26,12 +27,14 @@ class LoginActivity : BaseActivity(), ViewContract.View {
 
     private lateinit var signUpWithEmailBtn: Button
     private lateinit var signInWithEmailBtn: Button
+    private lateinit var signInSwitch: TextView
     private lateinit var emailTextInput: TextInputLayout
     private lateinit var nameTextInput: TextInputLayout
     private lateinit var passwordTextInput: TextInputLayout
 
     private lateinit var presenter: ViewContract.Listener
 
+    private var isSignInVisible = false
     private val authenticator = FirebaseAuth.getInstance();
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +51,12 @@ class LoginActivity : BaseActivity(), ViewContract.View {
         emailTextInput = findViewById(R.id.activity_login__edit_email)
         nameTextInput = findViewById(R.id.activity_login__edit_name)
         passwordTextInput = findViewById(R.id.activity_login__edit_password)
+        signInSwitch = findViewById(R.id.activity_login__txt_switch)
         signUpWithEmailBtn = findViewById(R.id.activity_login__btn_sign_up_email)
         signInWithEmailBtn = findViewById(R.id.activity_login__btn_sign_in_email)
         signUpWithEmailBtn.setOnClickListener { presenter.onSignUpWithEmailClicked() }
         signInWithEmailBtn.setOnClickListener { presenter.onSignInWithEmailClicked() }
+        signInSwitch.setOnClickListener { presenter.onSwitchClicked() }
     }
 
     private fun initPresenter() {
@@ -60,6 +65,10 @@ class LoginActivity : BaseActivity(), ViewContract.View {
         loginPresenter.setView(this)
         model.presenter = loginPresenter
         presenter = loginPresenter
+    }
+
+    override fun isSignInVisible(): Boolean {
+        return isSignInVisible
     }
 
     override fun hasUser(): Boolean {
@@ -84,6 +93,8 @@ class LoginActivity : BaseActivity(), ViewContract.View {
         passwordTextInput.visibility = View.VISIBLE
         signUpWithEmailBtn.visibility = View.GONE
         signInWithEmailBtn.visibility = View.VISIBLE
+        signInSwitch.setText(R.string.sign_up_with_email)
+        isSignInVisible = true
     }
 
     override fun showSignUpView() {
@@ -92,6 +103,14 @@ class LoginActivity : BaseActivity(), ViewContract.View {
         passwordTextInput.visibility = View.VISIBLE
         signUpWithEmailBtn.visibility = View.VISIBLE
         signInWithEmailBtn.visibility = View.GONE
+        signInSwitch.setText(R.string.sign_in_with_email)
+        isSignInVisible = false
+    }
+
+    override fun setLoadingVisibility(isVisible: Boolean) {
+        emailTextInput.editText?.isEnabled = !isVisible
+        nameTextInput.editText?.isEnabled = !isVisible
+        passwordTextInput.editText?.isEnabled = !isVisible
     }
 
     override fun startSignUpActivity(email: String, password: String) {
