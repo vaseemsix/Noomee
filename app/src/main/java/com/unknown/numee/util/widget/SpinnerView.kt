@@ -7,7 +7,11 @@ import android.widget.*
 import com.unknown.numee.R
 
 
-class SpinnerView : FrameLayout {
+class SpinnerView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val title: TextView
     private val content: Spinner
@@ -18,11 +22,7 @@ class SpinnerView : FrameLayout {
         fun onItemClicked(position: Int)
     }
 
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    init  {
         View.inflate(context, R.layout.view_spinner, this)
 
         title = findViewById(R.id.view_spinner__txt_title)

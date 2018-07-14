@@ -7,6 +7,8 @@ interface ModelContract {
     interface Model : GeneralModelContract.GeneralModel {
         fun getRelationItems(): Array<String>
         fun getDiagnoseItems(): Array<String>
+        fun getSpeakItems(): Array<String>
+        fun getIQLevelItems(): Array<String>
     }
 
     interface Listener : GeneralModelContract.GeneralListener {

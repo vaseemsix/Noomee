@@ -18,7 +18,8 @@ class SplashScreenActivity : AppCompatActivity() {
         Preferences.initialize(this)
 
         if (isUserLoggedIn()) {
-            startMainActivity()
+//            startMainActivity()
+            startRegistrationActivity()
         } else {
             startLoginActivity()
         }

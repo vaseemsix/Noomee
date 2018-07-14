@@ -24,6 +24,8 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     private lateinit var childName: TextInputLayout
     private lateinit var childAge: TextInputLayout
     private lateinit var childDiagnose: SpinnerView
+    private lateinit var childSpeak: SpinnerView
+    private lateinit var childIQLevel: SpinnerView
     private lateinit var saveBtn: Button
 
     private lateinit var presenter: ViewContract.Listener
@@ -39,11 +41,19 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     }
 
     override fun setRelations(items: Array<String>) {
-        childRelation.setItems(items)
+//        childRelation.setItems(items)
     }
 
     override fun setDiagnoses(items: Array<String>) {
         childDiagnose.setItems(items)
+    }
+
+    override fun setSpeak(items: Array<String>) {
+        childSpeak.setItems(items)
+    }
+
+    override fun setIQLevels(items: Array<String>) {
+        childIQLevel.setItems(items)
     }
 
     override fun startMainActivity() {
@@ -52,20 +62,32 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     }
 
     private fun initReferences() {
-        childRelation = findViewById(R.id.activity_registration__edit_child_relation)
+//        childRelation = findViewById(R.id.activity_registration__edit_child_relation)
         childName = findViewById(R.id.activity_registration__edit_child_name)
         childAge = findViewById(R.id.activity_registration__edit_child_age)
         childDiagnose = findViewById(R.id.activity_registration__edit_diagnose)
+        childSpeak = findViewById(R.id.activity_registration__edit_speak)
+        childIQLevel = findViewById(R.id.activity_registration__edit_iq_level)
         saveBtn = findViewById(R.id.activity_registration__btn_save)
 
-        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
-            override fun onItemClicked(position: Int) {
-                presenter.onRelationSelected(position)
-            }
-        })
+//        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+//            override fun onItemClicked(position: Int) {
+//                presenter.onRelationSelected(position)
+//            }
+//        })
         childDiagnose.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
             override fun onItemClicked(position: Int) {
                 presenter.onDiagnoseSelected(position)
+            }
+        })
+        childSpeak.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onSpeakSelected(position)
+            }
+        })
+        childIQLevel.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onIQLevelSelected(position)
             }
         })
         saveBtn.setOnClickListener { presenter.onSaveClicked() }

@@ -15,4 +15,18 @@
 		<item>Այլ</item>
 	</array>
 	
+	<array name="speak">
+		<item>Այո</item>
+		<item>Ոչ</item>
+		<item>Խոսք</item>
+		<item>Այլ</item>
+	</array>
+	
+	<array name="iq_levels">
+		<item>100 - 120</item>
+		<item>130 - 150</item>
+		<item>150 - 200</item>
+		<item>> 200</item>
+	</array>
+	
 </resources>

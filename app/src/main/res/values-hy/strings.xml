@@ -13,6 +13,8 @@
 	<string name="child_name">Երեխայի անունը</string>
 	<string name="child_age">Երեխայի տարիքը</string>
 	<string name="diagnose">Ախտորոշումը</string>
+	<string name="can_child_speak">Կարող է երեխան խոսել՞</string>
 	<string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
+	<string name="promise">Դուք խոստանում եք</string>
 	<string name="save">Պահպանել</string>
 </resources>

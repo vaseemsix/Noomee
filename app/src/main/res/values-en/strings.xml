@@ -13,6 +13,8 @@
 	<string name="child_name">Child name</string>
 	<string name="child_age">Child age</string>
 	<string name="diagnose">Diagnose</string>
+	<string name="can_child_speak">Can child speak?</string>
 	<string name="iq_level">IQ Level</string>
+	<string name="promise">You promise</string>
 	<string name="save">Save</string>
 </resources>

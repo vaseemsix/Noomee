@@ -16,4 +16,12 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
     override fun getDiagnoseItems(): Array<String> {
         return context.resources.getStringArray(R.array.diagnoses)
     }
+
+    override fun getSpeakItems(): Array<String> {
+        return context.resources.getStringArray(R.array.speak)
+    }
+
+    override fun getIQLevelItems(): Array<String> {
+        return context.resources.getStringArray(R.array.iq_levels)
+    }
 }
