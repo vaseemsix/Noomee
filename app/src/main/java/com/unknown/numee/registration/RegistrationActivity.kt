@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TextInputLayout
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import com.unknown.numee.MainActivity
 import com.unknown.numee.R
@@ -70,6 +72,34 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childIQLevel = findViewById(R.id.activity_registration__edit_iq_level)
         saveBtn = findViewById(R.id.activity_registration__btn_save)
 
+        childName.editText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                presenter.onNameChanged(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+        childAge.editText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                presenter.onAgeChanged(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
 //        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
 //            override fun onItemClicked(position: Int) {
 //                presenter.onRelationSelected(position)

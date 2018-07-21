@@ -12,6 +12,8 @@ interface ViewContract {
 
     interface Listener {
         fun onCreate()
+        fun onNameChanged(name: String)
+        fun onAgeChanged(age: String)
         fun onRelationSelected(position: Int)
         fun onDiagnoseSelected(position: Int)
         fun onSpeakSelected(position: Int)

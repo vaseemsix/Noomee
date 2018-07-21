@@ -7,9 +7,22 @@ enum class Diagnose {
     Other
 }
 
-data class Child(
-        val name: String,
-        val age: Int,
-        val diagnose: Diagnose
-) {
+enum class CanSpeak {
+    Yes,
+    No,
+    Somewhat,
+    Other
 }
+
+enum class IQLevel {
+    IQ_140,
+    IQ_120_140
+}
+
+data class Child(
+        var name: String = "",
+        var age: Int = 10,
+        var diagnose: String = "",
+        var canSpeak: String = "",
+        var IQLevel: String = ""
+)

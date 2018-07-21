@@ -115,14 +115,16 @@
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="@dimen/spacing_large"
 			android:layout_marginRight="@dimen/spacing_large"
-			android:layout_marginTop="8dp"
+			android:layout_marginTop="@dimen/spacing_large"
 			android:background="@color/colorAccent"
 			android:text="@string/save"
 			android:textColor="@android:color/white"
 			android:textSize="@dimen/font_large"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent" />
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/activity_registration__check_promise"
+			app:layout_constraintVertical_bias="1.0" />
 	
 	</android.support.constraint.ConstraintLayout>
 </ScrollView>
