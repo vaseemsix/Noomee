@@ -114,7 +114,7 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:text="@string/promise"
-			android:layout_marginTop="@dimen/spacing_normal"
+			android:layout_marginTop="@dimen/spacing_vast"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_independence_level"/>
@@ -125,7 +125,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="@dimen/spacing_large"
 			android:layout_marginRight="@dimen/spacing_large"
-			android:layout_marginTop="@dimen/spacing_large"
+			android:layout_marginTop="@dimen/spacing_normal"
 			android:background="@color/colorAccent"
 			android:text="@string/save"
 			android:textColor="@android:color/white"
