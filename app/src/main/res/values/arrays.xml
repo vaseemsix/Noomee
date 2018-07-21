@@ -18,15 +18,28 @@
 	<array name="speak">
 		<item>Yes</item>
 		<item>No</item>
-		<item>Non speech</item>
+		<item>Repeating speech</item>
 		<item>Other</item>
 	</array>
 	
 	<array name="iq_levels">
-		<item>100 - 120</item>
-		<item>130 - 150</item>
-		<item>150 - 200</item>
-		<item>> 200</item>
+		<item>140 and more</item>
+		<item>120-140</item>
+		<item>110-120</item>
+		<item>90-110</item>
+		<item>80-90</item>
+		<item>70-80</item>
+		<item>50-69</item>
+		<item>35-49</item>
+		<item>20-34</item>
+		<item>20 and less</item>
+	</array>
+	
+	<array name="independence_levels">
+		<item>Simple tasks</item>
+		<item>50/50</item>
+		<item>With help</item>
+		<item>Not able to do</item>
 	</array>
 	
 </resources>

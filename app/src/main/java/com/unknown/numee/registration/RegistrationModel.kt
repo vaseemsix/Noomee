@@ -37,6 +37,10 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
         return context.resources.getStringArray(R.array.iq_levels)
     }
 
+    override fun getIndependenceLevelItems(): Array<String> {
+        return context.resources.getStringArray(R.array.independence_levels)
+    }
+
     override fun getUser(ID: String) {
         businessCommandExecutor.execute(
                 GetUser(ID,

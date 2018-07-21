@@ -28,6 +28,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     private lateinit var childDiagnose: SpinnerView
     private lateinit var childSpeak: SpinnerView
     private lateinit var childIQLevel: SpinnerView
+    private lateinit var childIndependenceLevel: SpinnerView
     private lateinit var saveBtn: Button
 
     private lateinit var presenter: ViewContract.Listener
@@ -58,6 +59,10 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childIQLevel.setItems(items)
     }
 
+    override fun setIndependenceLevels(items: Array<String>) {
+        childIndependenceLevel.setItems(items)
+    }
+
     override fun startMainActivity() {
         finish()
         MainActivity.startActivity(this)
@@ -70,6 +75,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childDiagnose = findViewById(R.id.activity_registration__edit_diagnose)
         childSpeak = findViewById(R.id.activity_registration__edit_speak)
         childIQLevel = findViewById(R.id.activity_registration__edit_iq_level)
+        childIndependenceLevel = findViewById(R.id.activity_registration__edit_independence_level)
         saveBtn = findViewById(R.id.activity_registration__btn_save)
 
         childName.editText?.addTextChangedListener(object : TextWatcher {
@@ -118,6 +124,11 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childIQLevel.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
             override fun onItemClicked(position: Int) {
                 presenter.onIQLevelSelected(position)
+            }
+        })
+        childIndependenceLevel.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onIndependenceLevelSelected(position)
             }
         })
         saveBtn.setOnClickListener { presenter.onSaveClicked() }

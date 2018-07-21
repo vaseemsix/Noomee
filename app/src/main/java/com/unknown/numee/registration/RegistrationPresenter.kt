@@ -14,6 +14,7 @@ class RegistrationPresenter(
         view.setDiagnoses(model.getDiagnoseItems())
         view.setSpeak(model.getSpeakItems())
         view.setIQLevels(model.getIQLevelItems())
+        view.setIndependenceLevels(model.getIndependenceLevelItems())
 
         model.childInfo = Child()
         model.getUser(model.currentUserID)
@@ -46,6 +47,10 @@ class RegistrationPresenter(
 
     override fun onIQLevelSelected(position: Int) {
         model.childInfo?.IQLevel = model.getIQLevelItems()[position]
+    }
+
+    override fun onIndependenceLevelSelected(position: Int) {
+        model.childInfo?.independenceLevel = model.getIndependenceLevelItems()[position]
     }
 
     override fun onSaveClicked() {

@@ -99,6 +99,16 @@
 			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_speak"
 			app:title="@string/iq_level" />
 		
+		<com.unknown.numee.util.widget.SpinnerView
+			android:id="@+id/activity_registration__edit_independence_level"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_iq_level"
+			app:title="@string/independence_level" />
+		
 		<CheckBox
 			android:id="@+id/activity_registration__check_promise"
 			android:layout_width="0dp"
@@ -107,7 +117,7 @@
 			android:layout_marginTop="@dimen/spacing_normal"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_iq_level"/>
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_independence_level"/>
 		
 		<Button
 			android:id="@+id/activity_registration__btn_save"

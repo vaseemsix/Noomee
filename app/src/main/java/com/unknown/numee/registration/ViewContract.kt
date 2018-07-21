@@ -7,6 +7,7 @@ interface ViewContract {
         fun setDiagnoses(items: Array<String>)
         fun setSpeak(items: Array<String>)
         fun setIQLevels(items: Array<String>)
+        fun setIndependenceLevels(items: Array<String>)
         fun startMainActivity()
     }
 
@@ -18,6 +19,7 @@ interface ViewContract {
         fun onDiagnoseSelected(position: Int)
         fun onSpeakSelected(position: Int)
         fun onIQLevelSelected(position: Int)
+        fun onIndependenceLevelSelected(position: Int)
         fun onSaveClicked()
     }
 }

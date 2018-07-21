@@ -15,6 +15,7 @@ interface ModelContract {
         fun getDiagnoseItems(): Array<String>
         fun getSpeakItems(): Array<String>
         fun getIQLevelItems(): Array<String>
+        fun getIndependenceLevelItems(): Array<String>
 
         fun getUser(ID: String)
         fun saveUser(user: User)
