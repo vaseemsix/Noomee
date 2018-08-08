@@ -33,6 +33,10 @@ class TasksFragment : Fragment(), ViewContract.View {
         presenter.onViewCreated()
     }
 
+    override fun setItemList(itemList: List<ViewContract.Item>) {
+
+    }
+
     private fun initPresenter() {
         val model = TasksModel(context!!)
         val tasksPresenter = TasksPresenter(model)
