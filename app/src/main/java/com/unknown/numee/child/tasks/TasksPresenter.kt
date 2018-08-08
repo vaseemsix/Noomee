@@ -1,6 +1,7 @@
 package com.unknown.numee.child.tasks
 
 import com.unknown.numee.business.beans.Schedule
+import com.unknown.numee.business.beans.ScheduleItem
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
@@ -20,12 +21,33 @@ class TasksPresenter(
 
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
-            view.setItemList(createItemList(schedule[0]))
+            model.schedule = schedule[0]
+            model.requestTasks(model.currentUserID)
         }
     }
 
     override fun onReceivedTasksSuccess(tasks: List<Task>?) {
-
+        if (tasks != null) {
+            // change, so that it's done via database
+            val scheduleItems = mutableListOf<ScheduleItem>()
+            tasks.forEach {
+                scheduleItems.add(
+                        ScheduleItem(
+                                time = "18:00",
+                                taskID = it.id,
+                                task = it
+                        )
+                )
+            }
+            model.schedule = Schedule(
+                    model.schedule?.id.orEmpty(),
+                    model.schedule?.name.orEmpty(),
+                    scheduleItems
+            )
+            model.schedule?.let {
+                view.setItemList(createItemList(it))
+            }
+        }
     }
 
     private fun createItemList(schedule: Schedule): List<ViewContract.Item> {

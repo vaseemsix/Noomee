@@ -8,6 +8,7 @@ import java.lang.Exception
 interface ModelContract {
     interface Model {
         val currentUserID: String
+        var schedule: Schedule?
 
         fun requestSchedule(userID: String)
         fun requestTasks(userID: String)

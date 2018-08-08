@@ -17,6 +17,7 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
 
     override val currentUserID: String
         get() = Preferences.userID
+    override var schedule: Schedule? = null
 
     override fun requestSchedule(userID: String) {
         businessCommandExecutor.execute(
