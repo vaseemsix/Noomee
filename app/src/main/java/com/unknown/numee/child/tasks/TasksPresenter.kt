@@ -2,7 +2,6 @@ package com.unknown.numee.child.tasks
 
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
-import com.unknown.numee.business.beans.ScheduleItem
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.business.beans.User
 import com.unknown.numee.util.mvp.Presenter
@@ -37,22 +36,7 @@ class TasksPresenter(
 
     override fun onReceivedTasksSuccess(tasks: List<Task>?) {
         if (tasks != null) {
-            // change, so that it's done via database
-            val scheduleItems = mutableListOf<ScheduleItem>()
-            tasks.forEach {
-                scheduleItems.add(
-                        ScheduleItem(
-                                time = "18:00",
-                                taskID = it.id,
-                                task = it
-                        )
-                )
-            }
-            model.schedule = Schedule(
-                    model.schedule?.id.orEmpty(),
-                    model.schedule?.name.orEmpty(),
-                    scheduleItems
-            )
+            updateScheduleWithTasks(tasks) // change, so that it's done via database
             model.schedule?.let {
                 view.setItemList(createItemList(it))
             }
@@ -72,5 +56,12 @@ class TasksPresenter(
         }
 
         return itemList
+    }
+
+    private fun updateScheduleWithTasks(tasks: List<Task>) {
+        model.schedule?.items?.forEach {
+            val id = it.taskID
+            it.task = tasks.find { it.id == id }
+        }
     }
 }

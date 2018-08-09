@@ -3,7 +3,7 @@ package com.unknown.numee.business.beans
 data class ScheduleItem(
         val time: String = "",
         val taskID: String = "",
-        val task: Task? = null
+        var task: Task? = null
 )
 
 data class Schedule(
