@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.unknown.numee.R
 
 
@@ -24,6 +25,7 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     private lateinit var presenter: ViewContract.Listener
 
+    private lateinit var welcomeTxtView: TextView
     private lateinit var tasksListView: RecyclerView
     private lateinit var tasksListAdapter: TasksAdapter
 
@@ -34,6 +36,8 @@ class TasksFragment : Fragment(), ViewContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        welcomeTxtView = view.findViewById(R.id.fragment_tasks__txt_welcome)
+
         tasksListAdapter = TasksAdapter()
         tasksListView = view.findViewById(R.id.fragment_tasks__list_tasks)
         tasksListView.setHasFixedSize(true)
@@ -42,6 +46,10 @@ class TasksFragment : Fragment(), ViewContract.View {
 
         initPresenter()
         presenter.onViewCreated()
+    }
+
+    override fun setWelcomeText(text: String) {
+        welcomeTxtView.text = text
     }
 
     override fun setItemList(itemList: List<ViewContract.Item>) {

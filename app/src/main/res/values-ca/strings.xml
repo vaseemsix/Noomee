@@ -18,4 +18,6 @@
 	<string name="independence_level">Independence Level</string>
 	<string name="promise">You promise</string>
 	<string name="save">Save</string>
+	
+	<string name="welcome_child">Welcome, %s</string>
 </resources>

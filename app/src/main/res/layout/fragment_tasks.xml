@@ -5,6 +5,24 @@
 	android:layout_height="match_parent"
 	android:padding="@dimen/spacing_normal">
 	
+	<TextView
+		android:id="@+id/fragment_tasks__txt_welcome"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/spacing_normal"
+		android:text="@string/welcome_child"
+		android:textAlignment="center"
+		app:layout_constraintBottom_toTopOf="@id/fragment_tasks__guideline"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+	
+	<android.support.constraint.Guideline
+		android:id="@+id/fragment_tasks__guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.3" />
+	
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/fragment_tasks__list_tasks"
 		android:layout_width="0dp"
@@ -12,6 +30,6 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toTopOf="@id/fragment_tasks__guideline" />
 
 </android.support.constraint.ConstraintLayout>

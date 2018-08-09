@@ -1,8 +1,10 @@
 package com.unknown.numee.child.tasks
 
+import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.business.beans.ScheduleItem
 import com.unknown.numee.business.beans.Task
+import com.unknown.numee.business.beans.User
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
@@ -12,11 +14,18 @@ class TasksPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onViewCreated() {
+        model.getUser(model.currentUserID)
         model.requestSchedule(model.currentUserID)
     }
 
     override fun onError(e: Exception) {
 
+    }
+
+    override fun onReceivedGetUserSuccess(user: User?) {
+        user?.let {
+            view.setWelcomeText(String.format(model.getStringById(R.string.welcome_child), it.child?.name.orEmpty()))
+        }
     }
 
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
