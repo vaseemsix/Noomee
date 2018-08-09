@@ -54,12 +54,17 @@ class FirebaseDatabaseImpl : Database {
         })
     }
 
-    override fun <T> write(tableName: String, ID: String, value: T, callback: BusinessCommandCallback<T>) {
-        val reference = if (ID.isEmpty()) {
-            firebaseDatabase.child(tableName)
-        } else {
-            firebaseDatabase.child(tableName).child(ID)
-        }
+    override fun <T> update(tableName: String, ID: String, value: T, callback: BusinessCommandCallback<T>) {
+        val reference = firebaseDatabase.child(tableName).child(ID)
+
+        reference.setValue(value)
+                .addOnSuccessListener { callback.onSuccess(value) }
+                .addOnFailureListener { e -> callback.onError(e) }
+    }
+
+    override fun <T> add(tableName: String, value: T, callback: BusinessCommandCallback<T>) {
+        val id = firebaseDatabase.child(tableName).push().key.orEmpty()
+        val reference = firebaseDatabase.child(tableName).child(id)
 
         reference.setValue(value)
                 .addOnSuccessListener { callback.onSuccess(value) }

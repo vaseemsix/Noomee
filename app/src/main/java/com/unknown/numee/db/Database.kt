@@ -9,6 +9,8 @@ interface Database {
 
     fun <T> read(query: Query, callback: BusinessCommandCallback<List<T>>, clazz: Class<T>)
 
-    fun <T> write(tableName: String, ID: String, value: T, callback: BusinessCommandCallback<T>)
+    fun <T> update(tableName: String, ID: String, value: T, callback: BusinessCommandCallback<T>)
+
+    fun <T> add(tableName: String, value: T, callback: BusinessCommandCallback<T>)
 
 }
