@@ -26,4 +26,5 @@
 	<string name="save">Պահպանել</string>
 	
 	<string name="welcome_child">Բարի գալուստ, %s</string>
+	<string name="welcome">Բարի գալուստ</string>
 </resources>

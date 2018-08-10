@@ -25,6 +25,7 @@
 		<activity android:name=".login.LoginActivity" />
 		<activity android:name=".registration.RegistrationActivity" />
 		<activity android:name=".base.BaseActivity" />
+		<activity android:name=".child.subtasks.SubTasksActivity" />
 	</application>
 
 </manifest>

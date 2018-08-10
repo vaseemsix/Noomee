@@ -17,6 +17,10 @@ class TasksPresenter(
         model.requestSchedule(model.currentUserID)
     }
 
+    override fun onItemClicked(item: ViewContract.Item) {
+        view.startSubTasksActivity()
+    }
+
     override fun onError(e: Exception) {
 
     }
@@ -35,7 +39,7 @@ class TasksPresenter(
     }
 
     override fun onReceivedTasksSuccess(tasks: List<Task>?) {
-        if (tasks != null) {
+        tasks?.let {
             updateScheduleWithTasks(tasks) // change, so that it's done via database
             model.schedule?.let {
                 view.setItemList(createItemList(it))

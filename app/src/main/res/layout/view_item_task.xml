@@ -7,11 +7,15 @@
 		<variable
 			name="item"
 			type="com.unknown.numee.child.tasks.ViewContract.Item" />
+		<variable
+			name="onClickListener"
+			type="com.unknown.numee.child.tasks.TasksAdapter.OnItemClickListener" />
 	</data>
 	
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:onClick="@{() -> onClickListener.onItemClicked(item)}"
 		android:padding="@dimen/spacing_normal">
 		
 		<TextView

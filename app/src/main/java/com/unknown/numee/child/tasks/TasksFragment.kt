@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.unknown.numee.R
+import com.unknown.numee.child.subtasks.SubTasksActivity
 
 
 class TasksFragment : Fragment(), ViewContract.View {
@@ -38,7 +40,11 @@ class TasksFragment : Fragment(), ViewContract.View {
 
         welcomeTxtView = view.findViewById(R.id.fragment_tasks__txt_welcome)
 
-        tasksListAdapter = TasksAdapter()
+        tasksListAdapter = TasksAdapter(object : TasksAdapter.OnItemClickListener {
+            override fun onItemClicked(item: ViewContract.Item) {
+                presenter.onItemClicked(item)
+            }
+        })
         tasksListView = view.findViewById(R.id.fragment_tasks__list_tasks)
         tasksListView.setHasFixedSize(true)
         tasksListView.layoutManager = LinearLayoutManager(context)
@@ -54,6 +60,14 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     override fun setItemList(itemList: List<ViewContract.Item>) {
         tasksListAdapter.setItemList(itemList)
+    }
+
+    override fun showError(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun startSubTasksActivity() {
+        SubTasksActivity.startActivity(context!!)
     }
 
     private fun initPresenter() {

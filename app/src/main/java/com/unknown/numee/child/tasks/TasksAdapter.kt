@@ -10,7 +10,9 @@ import com.unknown.numee.BR
 import com.unknown.numee.R
 
 
-class TasksAdapter : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
+class TasksAdapter(
+        val onItemClickListener: OnItemClickListener
+) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     private var itemList: List<ViewContract.Item> = listOf()
 
@@ -29,13 +31,18 @@ class TasksAdapter : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         DataBindingUtil.bind<ViewDataBinding?>(holder.itemView)?.let {
-            holder.bind(it, itemList[position])
+            holder.bind(it, itemList[position], onItemClickListener)
         }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(viewDataBinding: ViewDataBinding, item: ViewContract.Item) {
+        fun bind(viewDataBinding: ViewDataBinding, item: ViewContract.Item, onItemClickListener: OnItemClickListener) {
             viewDataBinding.setVariable(BR.item, item)
+            viewDataBinding.setVariable(BR.onClickListener, onItemClickListener)
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClicked(item: ViewContract.Item)
     }
 }
