@@ -6,7 +6,7 @@ interface ViewContract {
         fun setWelcomeText(text: String)
         fun setItemList(itemList: List<Item>)
         fun showError(message: String)
-        fun startSubTasksActivity()
+        fun startSubTasksActivity(ID: String)
     }
 
     interface Listener {

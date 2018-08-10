@@ -18,7 +18,9 @@ class TasksPresenter(
     }
 
     override fun onItemClicked(item: ViewContract.Item) {
-        view.startSubTasksActivity()
+        if (item is TaskItem) {
+            view.startSubTasksActivity(item.taskID)
+        }
     }
 
     override fun onError(e: Exception) {
@@ -54,7 +56,8 @@ class TasksPresenter(
             itemList.add(
                     TaskItem(
                             it.time,
-                            it.task?.name.orEmpty()
+                            it.task?.name.orEmpty(),
+                            it.taskID
                     )
             )
         }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		<variable
+			name="item"
+			type="com.unknown.numee.child.subtasks.ViewContract.Item" />
+		
+	</data>
+	
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/size_large"
+		android:padding="@dimen/spacing_normal">
+		
+		<android.support.v7.widget.CardView
+			android:layout_width="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
+			android:layout_height="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
+			android:layout_margin="@dimen/spacing_small"
+			app:cardBackgroundColor="@android:color/white"
+			app:cardCornerRadius="@dimen/spacing_small"
+			app:cardElevation="@{item.status == 1 ? @dimen/elevation_normal : @dimen/elevation_none, default=@dimen/elevation_normal}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+			
+			<ImageView
+				android:id="@+id/view_item_subtask__img"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="@dimen/spacing_small"
+				android:scaleType="fitCenter"
+				android:src="@mipmap/ic_launcher"
+				tools:ignore="ContentDescription" />
+		
+		</android.support.v7.widget.CardView>
+		
+	</android.support.constraint.ConstraintLayout>
+	
+</layout>

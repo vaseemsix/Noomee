@@ -66,8 +66,8 @@ class TasksFragment : Fragment(), ViewContract.View {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
-    override fun startSubTasksActivity() {
-        SubTasksActivity.startActivity(context!!)
+    override fun startSubTasksActivity(ID: String) {
+        SubTasksActivity.startActivity(context!!, ID)
     }
 
     private fun initPresenter() {

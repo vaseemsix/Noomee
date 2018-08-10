@@ -27,4 +27,13 @@
 	<dimen name="spacing_small">8dp</dimen>
 	<dimen name="spacing_tiny">4dp</dimen>
 	
+	<dimen name="size_small">128dp</dimen>
+	<dimen name="size_normal">192dp</dimen>
+	<dimen name="size_large">256dp</dimen>
+	<dimen name="size_big">512dp</dimen>
+	
+	<dimen name="elevation_none">0dp</dimen>
+	<dimen name="elevation_small">4dp</dimen>
+	<dimen name="elevation_normal">8dp</dimen>
+	
 </resources>
