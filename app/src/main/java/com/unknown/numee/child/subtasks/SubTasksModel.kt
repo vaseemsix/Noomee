@@ -13,6 +13,7 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
     lateinit var presenter: ModelContract.Listener
 
     override var task: Task? = null
+    override var itemList: List<ViewContract.Item> = listOf()
 
     override fun requestTaskByID(ID: String) {
         businessCommandExecutor.execute(

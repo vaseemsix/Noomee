@@ -19,6 +19,7 @@
 			android:layout_width="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
 			android:layout_height="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
 			android:layout_margin="@dimen/spacing_small"
+			android:alpha="@{item.status == 1 ? 255 : 128, default=128}"
 			app:cardBackgroundColor="@android:color/white"
 			app:cardCornerRadius="@dimen/spacing_small"
 			app:cardElevation="@{item.status == 1 ? @dimen/elevation_normal : @dimen/elevation_none, default=@dimen/elevation_normal}"
@@ -32,6 +33,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="@dimen/spacing_small"
+				android:alpha="@{item.status == 1 ? 255 : 128, default=128}"
 				android:scaleType="fitCenter"
 				android:src="@mipmap/ic_launcher"
 				tools:ignore="ContentDescription" />

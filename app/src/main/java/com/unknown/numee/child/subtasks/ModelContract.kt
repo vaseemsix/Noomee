@@ -7,6 +7,7 @@ import java.lang.Exception
 interface ModelContract {
     interface Model {
         var task: Task?
+        var itemList: List<ViewContract.Item>
 
         fun requestTaskByID(ID: String)
     }

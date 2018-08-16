@@ -27,18 +27,59 @@ class SubTasksPresenter(
         val task = model.task ?: return
 
         view.setSubTitle(task.name)
-        view.setItemList(createItemList(task))
+        val itemList = createItemList(task)
+        val currentSubTask = itemList.find { it.status == 1 }
+        currentSubTask?.let {
+            view.setTitle(it.name)
+        }
+        model.itemList = itemList
+        view.setItemList(model.itemList)
     }
 
     private fun createItemList(task: Task): List<ViewContract.Item> {
         val itemList = mutableListOf<ViewContract.Item>()
+        val subTasks = task.subTasks
 
-        task.subTasks.forEach {
+        var currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT }
+//        if (currentSubTaskIndex == -1) {
+//            val lastDoneSubTaskIndex = subTasks.indexOfLast { it.status == Status.DONE }
+//            currentSubTaskIndex = lastDoneSubTaskIndex + 1
+//        }
+//        task.subTasks.forEach {
+//            itemList.add(
+//                    SubTaskItem(
+//                            it.name,
+//                            it.imageUrl,
+//                            it.status.ordinal
+//                    )
+//            )
+//        }
+
+        currentSubTaskIndex = if (currentSubTaskIndex != -1) currentSubTaskIndex else 0
+        itemList.add(
+                SubTaskItem(
+                        subTasks[currentSubTaskIndex].name,
+                        subTasks[currentSubTaskIndex].imageUrl,
+                        subTasks[currentSubTaskIndex].status.ordinal
+                )
+        )
+
+        if (currentSubTaskIndex - 1 >= 0) {
+            itemList.add(0,
+                    SubTaskItem(
+                            subTasks[currentSubTaskIndex - 1].name,
+                            subTasks[currentSubTaskIndex - 1].imageUrl,
+                            subTasks[currentSubTaskIndex - 1].status.ordinal
+                    )
+            )
+        }
+
+        if (currentSubTaskIndex + 1 < subTasks.size) {
             itemList.add(
                     SubTaskItem(
-                            it.name,
-                            it.imageUrl,
-                            it.status.ordinal
+                            subTasks[currentSubTaskIndex + 1].name,
+                            subTasks[currentSubTaskIndex + 1].imageUrl,
+                            subTasks[currentSubTaskIndex + 1].status.ordinal
                     )
             )
         }
