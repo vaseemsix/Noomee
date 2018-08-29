@@ -2,6 +2,7 @@ package com.unknown.numee.business.beans
 
 data class ScheduleItem(
         val time: String = "",
+        val noomeeCount: Int = 1,
         val taskID: String = "",
         var task: Task? = null
 )

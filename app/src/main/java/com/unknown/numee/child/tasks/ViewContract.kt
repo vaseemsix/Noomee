@@ -17,5 +17,6 @@ interface ViewContract {
     interface Item {
         val time: String
         val name: String
+        val noomeeCount: String
     }
 }

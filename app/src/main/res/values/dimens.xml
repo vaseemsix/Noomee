@@ -28,6 +28,7 @@
 	<dimen name="spacing_small">8dp</dimen>
 	<dimen name="spacing_tiny">4dp</dimen>
 	
+	<dimen name="size_tiny">64dp</dimen>
 	<dimen name="size_small">128dp</dimen>
 	<dimen name="size_normal">192dp</dimen>
 	<dimen name="size_large">256dp</dimen>

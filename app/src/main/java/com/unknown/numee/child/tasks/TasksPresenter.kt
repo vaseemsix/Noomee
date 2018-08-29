@@ -55,9 +55,10 @@ class TasksPresenter(
         schedule.items.forEach {
             itemList.add(
                     TaskItem(
-                            it.time,
-                            it.task?.name.orEmpty(),
-                            it.taskID
+                            time = it.time,
+                            name = it.task?.name.orEmpty(),
+                            noomeeCount = "${it.noomeeCount} x ",
+                            taskID = it.taskID
                     )
             )
         }
