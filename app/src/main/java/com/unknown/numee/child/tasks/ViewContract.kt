@@ -18,5 +18,6 @@ interface ViewContract {
         val time: String
         val name: String
         val noomeeCount: String
+        val isDone: Boolean
     }
 }

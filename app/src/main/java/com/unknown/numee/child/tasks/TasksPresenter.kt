@@ -2,6 +2,7 @@ package com.unknown.numee.child.tasks
 
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
+import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.business.beans.User
 import com.unknown.numee.util.mvp.Presenter
@@ -53,14 +54,17 @@ class TasksPresenter(
         val itemList = mutableListOf<TaskItem>()
 
         schedule.items.forEach {
-            itemList.add(
-                    TaskItem(
-                            time = it.time,
-                            name = it.task?.name.orEmpty(),
-                            noomeeCount = "${it.noomeeCount} x ",
-                            taskID = it.taskID
-                    )
-            )
+            if (it.task?.status != Status.TO_DO) {
+                itemList.add(
+                        TaskItem(
+                                time = it.time,
+                                name = it.task?.name.orEmpty(),
+                                noomeeCount = "${it.noomeeCount} x ",
+                                taskID = it.taskID,
+                                isDone = it.task?.status == Status.DONE
+                        )
+                )
+            }
         }
 
         return itemList
