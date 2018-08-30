@@ -36,41 +36,17 @@
 			tools:text="18:00"/>
 		
 		<android.support.v7.widget.CardView
-			android:id="@+id/view_item_task__card_bg"
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="@dimen/spacing_small"
-			android:layout_marginEnd="@dimen/spacing_tiny"
-			android:layout_marginTop="@dimen/spacing_tiny"
-			android:alpha="0.4"
-			app:cardBackgroundColor="@color/colorBlue"
-			app:cardCornerRadius="8dp"
-			app:contentPadding="@dimen/spacing_tiny"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="@id/view_item_task__card_fg"
-			app:layout_constraintStart_toEndOf="@id/view_item_task__txt_time"
-			app:layout_constraintTop_toTopOf="@id/view_item_task__card_fg">
-		
-		<android.support.v7.widget.CardView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_gravity="center"
-			app:cardCornerRadius="8dp" />
-		
-		</android.support.v7.widget.CardView>
-		
-		<android.support.v7.widget.CardView
 			android:id="@+id/view_item_task__card_fg"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/spacing_small"
-			android:layout_marginStart="@dimen/spacing_small"
+			android:layout_marginStart="@dimen/spacing_normal"
 			app:cardBackgroundColor="@color/colorBlue"
 			app:cardCornerRadius="8dp"
-			app:contentPadding="@dimen/spacing_tiny"
-			app:layout_constraintBottom_toBottomOf="@id/view_item_task__card_bg"
+			app:contentPadding="3dp"
+			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="@id/view_item_task__card_bg"
+			app:layout_constraintStart_toEndOf="@id/view_item_task__txt_time"
 			app:layout_constraintTop_toTopOf="parent">
 			
 			<android.support.v7.widget.CardView
