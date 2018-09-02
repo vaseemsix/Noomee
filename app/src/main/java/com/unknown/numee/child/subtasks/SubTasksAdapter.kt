@@ -43,7 +43,7 @@ class SubTasksAdapter : RecyclerView.Adapter<SubTasksAdapter.ViewHolder>() {
             GlideApp
                     .with(imageView.context)
                     .load(item.imageUrl)
-                    .into(imageView);
+                    .into(imageView)
         }
     }
 }

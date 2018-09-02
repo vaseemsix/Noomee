@@ -29,6 +29,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
 
     private lateinit var titleView: TextView
     private lateinit var subTitleView: TextView
+    private lateinit var timeView: TextView
     private lateinit var subTasksListView: RecyclerView
     private lateinit var subTasksListAdapter: SubTasksAdapter
 
@@ -65,10 +66,11 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     private fun initReferences() {
         titleView = findViewById(R.id.activity_subtasks__txt_title)
         subTitleView = findViewById(R.id.activity_subtasks__txt_sub_title)
+        timeView = findViewById(R.id.activity_subtasks__txt_time)
 
         subTasksListView = findViewById(R.id.activity_subtasks__list_subtasks)
         subTasksListAdapter = SubTasksAdapter()
-        subTasksListView.layoutManager = LinearLayoutManager(this)
+        subTasksListView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         subTasksListView.adapter = subTasksListAdapter
     }
 

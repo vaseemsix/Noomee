@@ -11,14 +11,14 @@
 	</data>
 	
 	<android.support.constraint.ConstraintLayout
-		android:layout_width="match_parent"
+		android:layout_width="@dimen/size_large"
 		android:layout_height="@dimen/size_large"
 		android:padding="@dimen/spacing_normal">
 		
 		<android.support.v7.widget.CardView
-			android:layout_width="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
-			android:layout_height="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_small}"
-			android:layout_margin="@dimen/spacing_small"
+			android:layout_width="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_normal}"
+			android:layout_height="@{item.status == 1 ? @dimen/size_normal : @dimen/size_small, default=@dimen/size_normal}"
+			android:layout_margin="@dimen/spacing_normal"
 			android:alpha="@{item.status == 1 ? 255 : 128, default=128}"
 			app:cardBackgroundColor="@android:color/white"
 			app:cardCornerRadius="@dimen/spacing_small"

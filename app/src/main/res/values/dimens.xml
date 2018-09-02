@@ -12,6 +12,7 @@
 
 	<!-- font sizes -->
 	<dimen name="font_huge">34sp</dimen>
+	<dimen name="font_great">26sp</dimen>
 	<dimen name="font_big">22sp</dimen>
 	<dimen name="font_large">18sp</dimen>
 	<dimen name="font_normal">16sp</dimen>

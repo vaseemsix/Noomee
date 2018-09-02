@@ -64,15 +64,15 @@ class SubTasksPresenter(
                 )
         )
 
-        if (currentSubTaskIndex - 1 >= 0) {
-            itemList.add(0,
-                    SubTaskItem(
-                            subTasks[currentSubTaskIndex - 1].name,
-                            subTasks[currentSubTaskIndex - 1].imageUrl,
-                            subTasks[currentSubTaskIndex - 1].status.ordinal
-                    )
-            )
-        }
+//        if (currentSubTaskIndex - 1 >= 0) {
+//            itemList.add(0,
+//                    SubTaskItem(
+//                            subTasks[currentSubTaskIndex - 1].name,
+//                            subTasks[currentSubTaskIndex - 1].imageUrl,
+//                            subTasks[currentSubTaskIndex - 1].status.ordinal
+//                    )
+//            )
+//        }
 
         if (currentSubTaskIndex + 1 < subTasks.size) {
             itemList.add(

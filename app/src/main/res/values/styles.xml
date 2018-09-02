@@ -20,6 +20,7 @@
 	
 	<style name="SubHeadingText" parent="HeadingText">
 		<item name="android:textSize">@dimen/font_large</item>
+		<item name="android:textColor">@color/colorSubTitle</item>
 	</style>
 
 </resources>
