@@ -31,8 +31,9 @@
 	
 	<dimen name="size_tiny">64dp</dimen>
 	<dimen name="size_small">128dp</dimen>
-	<dimen name="size_normal">192dp</dimen>
-	<dimen name="size_large">256dp</dimen>
+	<dimen name="size_normal">152dp</dimen>
+	<dimen name="size_medium">216dp</dimen>
+	<dimen name="size_large">232dp</dimen>
 	<dimen name="size_big">512dp</dimen>
 	
 	<dimen name="elevation_none">0dp</dimen>
