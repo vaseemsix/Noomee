@@ -11,6 +11,7 @@ interface ViewContract {
 
     interface Listener {
         fun onCreate()
+        fun onItemClicked()
     }
 
     interface Item {

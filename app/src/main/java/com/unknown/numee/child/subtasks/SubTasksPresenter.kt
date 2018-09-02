@@ -14,6 +14,11 @@ class SubTasksPresenter(
         model.requestTaskByID(view.getID())
     }
 
+    override fun onItemClicked() {
+        // update subtask to done
+        update()
+    }
+
     override fun onError(e: Exception) {
 
     }
@@ -41,47 +46,38 @@ class SubTasksPresenter(
         val subTasks = task.subTasks
 
         var currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT }
-//        if (currentSubTaskIndex == -1) {
-//            val lastDoneSubTaskIndex = subTasks.indexOfLast { it.status == Status.DONE }
-//            currentSubTaskIndex = lastDoneSubTaskIndex + 1
-//        }
-//        task.subTasks.forEach {
-//            itemList.add(
-//                    SubTaskItem(
-//                            it.name,
-//                            it.imageUrl,
-//                            it.status.ordinal
-//                    )
-//            )
-//        }
+        val lastDoneSubTaskIndex = subTasks.indexOfLast { it.status == Status.DONE }
 
-        currentSubTaskIndex = if (currentSubTaskIndex != -1) currentSubTaskIndex else 0
-        itemList.add(
-                SubTaskItem(
-                        subTasks[currentSubTaskIndex].name,
-                        subTasks[currentSubTaskIndex].imageUrl,
-                        subTasks[currentSubTaskIndex].status.ordinal
-                )
-        )
+        currentSubTaskIndex = if (currentSubTaskIndex != -1) {
+            currentSubTaskIndex
+        } else {
+            if (lastDoneSubTaskIndex < itemList.size) {
+                lastDoneSubTaskIndex + 1
+            } else {
+                -1
+            }
+        }
 
-//        if (currentSubTaskIndex - 1 >= 0) {
-//            itemList.add(0,
-//                    SubTaskItem(
-//                            subTasks[currentSubTaskIndex - 1].name,
-//                            subTasks[currentSubTaskIndex - 1].imageUrl,
-//                            subTasks[currentSubTaskIndex - 1].status.ordinal
-//                    )
-//            )
-//        }
+        if (currentSubTaskIndex == -1) {
 
-        if (currentSubTaskIndex + 1 < subTasks.size) {
+        } else {
             itemList.add(
                     SubTaskItem(
-                            subTasks[currentSubTaskIndex + 1].name,
-                            subTasks[currentSubTaskIndex + 1].imageUrl,
-                            subTasks[currentSubTaskIndex + 1].status.ordinal
+                            subTasks[currentSubTaskIndex].name,
+                            subTasks[currentSubTaskIndex].imageUrl,
+                            subTasks[currentSubTaskIndex].status.ordinal
                     )
             )
+
+            if (currentSubTaskIndex + 1 < subTasks.size) {
+                itemList.add(
+                        SubTaskItem(
+                                subTasks[currentSubTaskIndex + 1].name,
+                                subTasks[currentSubTaskIndex + 1].imageUrl,
+                                subTasks[currentSubTaskIndex + 1].status.ordinal
+                        )
+                )
+            }
         }
 
         return itemList
