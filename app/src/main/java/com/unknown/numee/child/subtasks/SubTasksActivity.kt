@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.WindowManager
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
@@ -30,12 +32,14 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     private lateinit var titleView: TextView
     private lateinit var subTitleView: TextView
     private lateinit var timeView: TextView
+    private lateinit var progressView: ProgressBar
     private lateinit var subTasksListView: RecyclerView
     private lateinit var subTasksListAdapter: SubTasksAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subtasks)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         initExtras(intent.extras)
         initReferences()
@@ -55,6 +59,10 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         subTitleView.text = subTitle
     }
 
+    override fun setSubTasksProgress(progress: Int) {
+        progressView.progress = progress
+    }
+
     override fun setItemList(itemList: List<ViewContract.Item>) {
         subTasksListAdapter.setItemList(itemList)
     }
@@ -67,6 +75,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         titleView = findViewById(R.id.activity_subtasks__txt_title)
         subTitleView = findViewById(R.id.activity_subtasks__txt_sub_title)
         timeView = findViewById(R.id.activity_subtasks__txt_time)
+        progressView = findViewById(R.id.activity_subtasks__progress)
 
         subTasksListView = findViewById(R.id.activity_subtasks__list_subtasks)
         subTasksListAdapter = SubTasksAdapter()

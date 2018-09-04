@@ -31,9 +31,8 @@
 				android:id="@+id/view_item_subtask__img"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_margin="@dimen/spacing_small"
 				android:alpha="@{item.status == 1 ? 255 : 128, default=128}"
-				android:scaleType="fitCenter"
+				android:scaleType="centerCrop"
 				android:src="@mipmap/ic_launcher"
 				tools:ignore="ContentDescription" />
 		

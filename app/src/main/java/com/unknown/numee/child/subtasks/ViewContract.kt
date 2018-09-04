@@ -6,6 +6,7 @@ interface ViewContract {
         fun getID(): String
         fun setTitle(title: String)
         fun setSubTitle(subTitle: String)
+        fun setSubTasksProgress(progress: Int)
         fun setItemList(itemList: List<Item>)
     }
 
