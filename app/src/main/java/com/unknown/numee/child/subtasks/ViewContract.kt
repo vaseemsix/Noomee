@@ -12,10 +12,11 @@ interface ViewContract {
 
     interface Listener {
         fun onCreate()
-        fun onItemClicked()
+        fun onItemClicked(item: Item)
     }
 
     interface Item {
+        val id: String
         val name: String
         val imageUrl: String
         val status: Int

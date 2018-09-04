@@ -14,18 +14,36 @@ class SubTasksPresenter(
         model.requestTaskByID(view.getID())
     }
 
-    override fun onItemClicked() {
-        // update subtask to done
-        update()
+    override fun onItemClicked(item: ViewContract.Item) {
+        model.task?.let { task ->
+            model.requestUpdateSubTaskStatus(
+                    task.id,
+                    item.id,
+                    Status.DONE
+            )
+
+            val toDo = task.subTasks.find { it.status == Status.TO_DO }
+            toDo?.let {
+                model.requestUpdateSubTaskStatus(
+                        task.id,
+                        it.id,
+                        Status.CURRENT
+                )
+            }
+        }
     }
 
-    override fun onError(e: Exception) {
+    override fun onError(e: Exception?) {
 
     }
 
     override fun onReceivedGetTaskByIDSuccess(task: Task?) {
         model.task = task
         update()
+    }
+
+    override fun onReceivedUpdateSubTaskStatusSuccess() {
+        model.requestTaskByID(view.getID())
     }
 
     private fun update() {
@@ -45,24 +63,12 @@ class SubTasksPresenter(
         val itemList = mutableListOf<ViewContract.Item>()
         val subTasks = task.subTasks
 
-        var currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT }
-        val lastDoneSubTaskIndex = subTasks.indexOfLast { it.status == Status.DONE }
+        val currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT }
 
-        currentSubTaskIndex = if (currentSubTaskIndex != -1) {
-            currentSubTaskIndex
-        } else {
-            if (lastDoneSubTaskIndex < itemList.size) {
-                lastDoneSubTaskIndex + 1
-            } else {
-                -1
-            }
-        }
-
-        if (currentSubTaskIndex == -1) {
-
-        } else {
+        if (currentSubTaskIndex != -1) {
             itemList.add(
                     SubTaskItem(
+                            subTasks[currentSubTaskIndex].id,
                             subTasks[currentSubTaskIndex].name,
                             subTasks[currentSubTaskIndex].imageUrl,
                             subTasks[currentSubTaskIndex].status.ordinal
@@ -72,6 +78,7 @@ class SubTasksPresenter(
             if (currentSubTaskIndex + 1 < subTasks.size) {
                 itemList.add(
                         SubTaskItem(
+                                subTasks[currentSubTaskIndex + 1].id,
                                 subTasks[currentSubTaskIndex + 1].name,
                                 subTasks[currentSubTaskIndex + 1].imageUrl,
                                 subTasks[currentSubTaskIndex + 1].status.ordinal

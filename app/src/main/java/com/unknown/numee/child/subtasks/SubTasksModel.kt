@@ -1,6 +1,7 @@
 package com.unknown.numee.child.subtasks
 
 import android.content.Context
+import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.business.command.GetTaskByID
 import com.unknown.numee.business.executor.BusinessCommandCallback
@@ -15,6 +16,8 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
     override var task: Task? = null
     override var itemList: List<ViewContract.Item> = listOf()
 
+    private val subTasksApi = SubTasksFirebaseApi()
+
     override fun requestTaskByID(ID: String) {
         businessCommandExecutor.execute(
                 GetTaskByID(ID, object : BusinessCommandCallback<Task> {
@@ -26,6 +29,16 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
                         presenter.onError(e)
                     }
                 })
+        )
+    }
+
+    override fun requestUpdateSubTaskStatus(taskID: String, subTaskID: String, newStatus: Status) {
+        subTasksApi.updateSubTaskStatus(
+                taskID,
+                subTaskID,
+                newStatus,
+                { presenter.onReceivedUpdateSubTaskStatusSuccess() },
+                { exception -> presenter.onError(exception) }
         )
     }
 }

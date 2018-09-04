@@ -12,7 +12,9 @@ import com.unknown.numee.R
 import com.unknown.numee.util.GlideApp
 
 
-class SubTasksAdapter : RecyclerView.Adapter<SubTasksAdapter.ViewHolder>() {
+class SubTasksAdapter(
+        val onClickListener: OnClickListener?
+) : RecyclerView.Adapter<SubTasksAdapter.ViewHolder>() {
 
     private var itemList: List<ViewContract.Item> = listOf()
 
@@ -35,8 +37,12 @@ class SubTasksAdapter : RecyclerView.Adapter<SubTasksAdapter.ViewHolder>() {
         }
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private var imageView: ImageView = view.findViewById(R.id.view_item_subtask__img)
+
+        init {
+            view.setOnClickListener { onClickListener?.onItemClicked(itemList[adapterPosition]) }
+        }
 
         fun bind(viewDataBinding: ViewDataBinding, item: ViewContract.Item) {
             viewDataBinding.setVariable(BR.item, item)
@@ -45,5 +51,9 @@ class SubTasksAdapter : RecyclerView.Adapter<SubTasksAdapter.ViewHolder>() {
                     .load(item.imageUrl)
                     .into(imageView)
         }
+    }
+
+    interface OnClickListener {
+        fun onItemClicked(item: ViewContract.Item)
     }
 }

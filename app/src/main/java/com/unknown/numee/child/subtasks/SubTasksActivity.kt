@@ -78,7 +78,12 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         progressView = findViewById(R.id.activity_subtasks__progress)
 
         subTasksListView = findViewById(R.id.activity_subtasks__list_subtasks)
-        subTasksListAdapter = SubTasksAdapter()
+        subTasksListAdapter = SubTasksAdapter(object : SubTasksAdapter.OnClickListener {
+            override fun onItemClicked(item: ViewContract.Item) {
+                presenter.onItemClicked(item)
+            }
+
+        })
         subTasksListView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         subTasksListView.adapter = subTasksListAdapter
     }
