@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/colorRewardBg"
+	tools:context=".child.reward.RewardActivity">
+	
+	<TextView
+		android:id="@+id/activity_reward__txt_num_count"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_huge"
+		android:textAlignment="center"
+		android:textColor="@color/colorPrimaryDark"
+		android:textSize="@dimen/font_enormous"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/activity_reward__img_num"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed"
+		tools:text="+1" />
+	
+	<android.support.v7.widget.CardView
+		android:id="@+id/activity_reward__img_num"
+		android:layout_width="@dimen/size_small"
+		android:layout_height="@dimen/size_small"
+		android:layout_margin="@dimen/spacing_tiny"
+		android:layout_marginTop="@dimen/spacing_small"
+		app:cardCornerRadius="64dp"
+		app:cardElevation="@dimen/spacing_tiny"
+		app:contentPadding="2dp"
+		app:layout_constraintBottom_toTopOf="@id/activity_reward__txt_num_label"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/activity_reward__txt_num_count">
+		
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:src="@drawable/ic_noomee"
+			tools:ignore="ContentDescription" />
+	
+	</android.support.v7.widget.CardView>
+	
+	<TextView
+		android:id="@+id/activity_reward__txt_num_label"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_small"
+		android:text="@string/nums"
+		android:textAlignment="center"
+		android:textColor="@color/colorPrimaryDark"
+		android:textSize="@dimen/font_huge"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/activity_reward__cont_total_num"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/activity_reward__img_num"
+		tools:text="Nums" />
+	
+	<LinearLayout
+		android:id="@+id/activity_reward__cont_total_num"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/spacing_vast"
+		android:layout_marginTop="@dimen/spacing_vast"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toTopOf="@id/activity_reward__btn_continue"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/activity_reward__txt_num_label">
+		
+		<ImageView
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:padding="@dimen/spacing_tiny"
+			android:src="@drawable/ic_noomee"
+			tools:ignore="ContentDescription" />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/spacing_tiny"
+			android:text="x"
+			android:textAlignment="center"
+			android:textColor="@color/colorPrimaryDark"
+			android:textSize="@dimen/font_normal"
+			android:textStyle="bold"
+			tools:text="x" />
+		
+		<TextView
+			android:id="@+id/activity_reward__txt_total_num_count"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/spacing_tiny"
+			android:textAlignment="center"
+			android:textColor="@color/colorAccent"
+			android:textSize="@dimen/font_enormous"
+			android:textStyle="bold"
+			tools:text="8" />
+	
+	</LinearLayout>
+	
+	<android.support.v7.widget.CardView
+		android:id="@+id/activity_reward__btn_continue"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/spacing_huge"
+		app:cardCornerRadius="4dp"
+		app:cardElevation="@dimen/spacing_tiny"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/activity_reward__cont_total_num">
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="@dimen/spacing_small"
+			android:layout_marginEnd="@dimen/spacing_big"
+			android:layout_marginStart="@dimen/spacing_big"
+			android:layout_marginTop="@dimen/spacing_small"
+			android:text="@string/cont"
+			android:textAlignment="center"
+			android:textColor="@color/colorAccent"
+			android:textSize="@dimen/font_big"
+			android:textStyle="bold" />
+	
+	</android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

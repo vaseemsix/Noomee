@@ -21,4 +21,7 @@
 	
 	<string name="welcome_child">Welcome, %s</string>
 	<string name="welcome">Welcome</string>
+	
+	<string name="nums">Nums</string>
+	<string name="cont">Continue</string>
 </resources>

@@ -26,6 +26,8 @@
 		<activity android:name=".registration.RegistrationActivity" />
 		<activity android:name=".base.BaseActivity" />
 		<activity android:name=".child.subtasks.SubTasksActivity" />
+		<activity android:name=".child.reward.RewardActivity"
+			android:theme="@style/RewardTheme"/>
 	</application>
 
 </manifest>

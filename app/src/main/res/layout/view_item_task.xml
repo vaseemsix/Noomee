@@ -100,7 +100,7 @@
 						android:layout_gravity="center_vertical"
 						android:drawableEnd="@drawable/ic_noomee_small"
 						android:gravity="end"
-						android:text="@{item.noomeeCount}"
+						android:text="@{item.numCount}"
 						android:textColor="@color/colorPrimaryDark"
 						android:textSize="@dimen/font_large"
 						android:textStyle="bold" />

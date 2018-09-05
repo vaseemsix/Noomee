@@ -19,7 +19,7 @@ class SubTasksFirebaseApi {
         val reference = firebaseDatabase.child("tasks").child(taskID).child("subTasks").child(subTaskID).child("status")
 
         reference.setValue(status)
-                .addOnSuccessListener { result -> onSuccess.invoke(status) }
+                .addOnSuccessListener { onSuccess.invoke(status) }
                 .addOnFailureListener { e -> onError.invoke(e) }
     }
 }

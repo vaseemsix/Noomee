@@ -1,6 +1,7 @@
 package com.unknown.numee.child.subtasks
 
 import com.unknown.numee.business.beans.Status
+import com.unknown.numee.business.beans.SubTask
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
@@ -23,12 +24,14 @@ class SubTasksPresenter(
             )
 
             val toDo = task.subTasks.find { it.status == Status.TO_DO }
-            toDo?.let {
+            if (toDo != null) {
                 model.requestUpdateSubTaskStatus(
                         task.id,
-                        it.id,
+                        toDo.id,
                         Status.CURRENT
                 )
+            } else {
+                view.showRewardActivity(task.numCount)
             }
         }
     }
@@ -55,6 +58,7 @@ class SubTasksPresenter(
         currentSubTask?.let {
             view.setTitle(it.name)
         }
+        view.setSubTasksProgress(getSubTaskProgress(task.subTasks))
         model.itemList = itemList
         view.setItemList(model.itemList)
     }
@@ -88,5 +92,10 @@ class SubTasksPresenter(
         }
 
         return itemList
+    }
+
+    private fun getSubTaskProgress(subTasks: List<SubTask>): Int {
+        val doneCount = subTasks.count { it.status == Status.DONE }
+        return ((doneCount.toFloat() / subTasks.size) * 100).toInt()
     }
 }

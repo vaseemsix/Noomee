@@ -11,6 +11,7 @@ data class Task(
         val name: String = "",
         val description: String = "",
         val status: Status = Status.TO_DO,
+        val numCount: Int = 1,
         val subTasks: List<SubTask> = listOf(),
         val userID: String = ""
 )

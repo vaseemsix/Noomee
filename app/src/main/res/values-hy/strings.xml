@@ -27,4 +27,7 @@
 	
 	<string name="welcome_child">Բարի գալուստ, %s</string>
 	<string name="welcome">Բարի գալուստ</string>
+	
+	<string name="nums">Նում</string>
+	<string name="cont">Շարունակել</string>
 </resources>

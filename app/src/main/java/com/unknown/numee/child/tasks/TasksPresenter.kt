@@ -59,7 +59,7 @@ class TasksPresenter(
                         TaskItem(
                                 time = it.time,
                                 name = it.task?.name.orEmpty(),
-                                noomeeCount = "${it.noomeeCount} x ",
+                                numCount = "${it.task?.numCount} x ",
                                 taskID = it.taskID,
                                 isDone = it.task?.status == Status.DONE
                         )

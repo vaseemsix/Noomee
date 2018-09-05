@@ -25,5 +25,6 @@ data class Child(
         var diagnose: String = "",
         var canSpeak: String = "",
         var IQLevel: String = "",
-        var independenceLevel: String = ""
+        var independenceLevel: String = "",
+        var totalNumCount: Int = 0
 )

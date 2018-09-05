@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.child.reward.RewardActivity
 
 
 class SubTasksActivity : BaseActivity(), ViewContract.View {
@@ -65,6 +66,11 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
 
     override fun setItemList(itemList: List<ViewContract.Item>) {
         subTasksListAdapter.setItemList(itemList)
+    }
+
+    override fun showRewardActivity(numCount: Int) {
+        RewardActivity.startActivity(this, numCount)
+        finish()
     }
 
     private fun initExtras(extras: Bundle) {
