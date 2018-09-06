@@ -5,6 +5,6 @@ data class TaskItem(
         override val time: String = "",
         override val name: String = "",
         override val numCount: String = "",
-        override val isDone: Boolean = false,
+        override val statusOrdinal: Int = 0,
         var taskID: String = ""
 ) : ViewContract.Item

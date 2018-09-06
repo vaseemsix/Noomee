@@ -45,21 +45,21 @@ class SplashScreenActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed({
             MainActivity.startActivity(this@SplashScreenActivity)
-        }, 6000)
+        }, 5000)
     }
 
     private fun startLoginActivity() {
         val handler = Handler()
         handler.postDelayed({
             LoginActivity.startActivity(this@SplashScreenActivity)
-        }, 6000)
+        }, 5000)
     }
 
     private fun startRegistrationActivity() {
         val handler = Handler()
         handler.postDelayed({
             RegistrationActivity.startActivity(this@SplashScreenActivity)
-        }, 6000)
+        }, 5000)
     }
 
     private fun isUserLoggedIn(): Boolean {

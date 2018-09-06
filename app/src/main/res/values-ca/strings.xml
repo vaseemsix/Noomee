@@ -16,7 +16,14 @@
 	<string name="can_child_speak">Can child speak?</string>
 	<string name="iq_level">IQ Level</string>
 	<string name="independence_level">Independence Level</string>
-	<string name="promise">You promise</string>
+	<string name="promise">*Note, that you are giving a promise to "noomee"
+		to give a small prize-encouragement to your child in the end of the day
+		after finishing daily tasks. What he/she likes the most and will work hard for it
+		to overcome difficult tasks. For example, if a child loves "Kinder", we use this as an encouragement.
+		Remember that you are obligated to restrict the "Kinder" on the other occasions,
+		so the child understands that it is a means of encouragement. The child must also
+		clearly understands that after each task he/she receives "nums",
+		which at the end of the day becomes a prize.</string>
 	<string name="save">Save</string>
 	
 	<string name="welcome_child">Welcome, %s</string>

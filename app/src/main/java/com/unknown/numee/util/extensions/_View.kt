@@ -1,6 +1,7 @@
 package com.unknown.numee.util.extensions
 
 import android.databinding.BindingAdapter
+import android.support.v7.widget.CardView
 import android.view.View
 
 
@@ -16,4 +17,9 @@ fun View.setLayoutWidth(width: Float) {
     val layoutParams = this.layoutParams
     layoutParams.width = width.toInt()
     this.layoutParams = layoutParams
+}
+
+@BindingAdapter("app:contentPadding")
+fun CardView.setContentPadding(padding: Float) {
+    this.setContentPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
 }

@@ -24,16 +24,32 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.3" />
+		app:layout_constraintGuide_percent="0.2" />
 	
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/fragment_tasks__list_tasks"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
+		android:layout_marginBottom="@dimen/spacing_large"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="@id/fragment_tasks__guideline"
 		tools:listitem="@layout/view_item_task"/>
+	
+	<ProgressBar
+		android:id="@+id/fragment_tasks__progress"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="0dp"
+		android:layout_height="8dp"
+		android:layout_marginBottom="@dimen/spacing_big"
+		android:layout_marginEnd="@dimen/spacing_big"
+		android:layout_marginStart="@dimen/spacing_big"
+		android:progressDrawable="@drawable/subtask_progress"
+		android:secondaryProgress="100"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		tools:progress="50" />
 
 </android.support.constraint.ConstraintLayout>

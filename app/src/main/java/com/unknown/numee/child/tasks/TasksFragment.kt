@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.unknown.numee.R
@@ -28,6 +29,7 @@ class TasksFragment : Fragment(), ViewContract.View {
     private lateinit var presenter: ViewContract.Listener
 
     private lateinit var welcomeTxtView: TextView
+    private lateinit var progressView: ProgressBar
     private lateinit var tasksListView: RecyclerView
     private lateinit var tasksListAdapter: TasksAdapter
 
@@ -39,6 +41,7 @@ class TasksFragment : Fragment(), ViewContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         welcomeTxtView = view.findViewById(R.id.fragment_tasks__txt_welcome)
+        progressView = view.findViewById(R.id.fragment_tasks__progress)
 
         tasksListAdapter = TasksAdapter(object : TasksAdapter.OnItemClickListener {
             override fun onItemClicked(item: ViewContract.Item) {
@@ -56,6 +59,10 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     override fun setWelcomeText(text: String) {
         welcomeTxtView.text = text
+    }
+
+    override fun setTasksProgress(progress: Int) {
+        progressView.progress = progress
     }
 
     override fun setItemList(itemList: List<ViewContract.Item>) {

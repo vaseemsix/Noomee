@@ -50,6 +50,7 @@ class SubTasksAdapter(
                     .with(imageView.context)
                     .load(item.imageUrl)
                     .into(imageView)
+            viewDataBinding.executePendingBindings()
         }
     }
 

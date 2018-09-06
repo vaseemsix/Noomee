@@ -42,4 +42,7 @@
 	<dimen name="elevation_small">4dp</dimen>
 	<dimen name="elevation_normal">8dp</dimen>
 	
+	<dimen name="content_padding_none">0dp</dimen>
+	<dimen name="content_padding_small">3dp</dimen>
+	
 </resources>
