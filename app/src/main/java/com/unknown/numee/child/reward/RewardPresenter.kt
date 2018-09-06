@@ -15,6 +15,7 @@ class RewardPresenter(
     }
 
     override fun onContinueClicked() {
+        model.requestUpdateTotalNumCount(model.currentUserID, model.totalNumCount)
         view.finish()
     }
 
@@ -24,7 +25,12 @@ class RewardPresenter(
 
     override fun onReceivedTotalNumCount(result: Int?) {
         result?.let {
-            view.setTotalNumCount(it)
+            model.totalNumCount = result + view.getNumCount()
+            view.setTotalNumCount(model.totalNumCount)
         }
+    }
+
+    override fun onReceivedUpdateTotalNumCount() {
+
     }
 }

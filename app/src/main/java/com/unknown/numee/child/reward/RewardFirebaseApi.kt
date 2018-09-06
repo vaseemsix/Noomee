@@ -30,4 +30,17 @@ class RewardFirebaseApi {
 
         })
     }
+
+    fun setTotalNumCount(
+            userID: String,
+            value: Int,
+            onSuccess: () -> Unit,
+            onError: (Exception?) -> Unit
+    ) {
+        val reference = firebaseDatabase.child("users").child(userID).child("child").child("totalNumCount")
+
+        reference.setValue(value)
+                .addOnSuccessListener { onSuccess.invoke() }
+                .addOnFailureListener { e -> onError.invoke(e) }
+    }
 }
