@@ -64,6 +64,10 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         progressView.progress = progress
     }
 
+    override fun setSubTasksTime(time: String) {
+        timeView.text = time
+    }
+
     override fun setItemList(itemList: List<ViewContract.Item>) {
         subTasksListAdapter.setItemList(itemList)
     }

@@ -1,5 +1,6 @@
 package com.unknown.numee.child.subtasks
 
+import android.os.CountDownTimer
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.SubTask
 import com.unknown.numee.business.beans.Task
@@ -32,6 +33,7 @@ class SubTasksPresenter(
                 )
             } else {
                 view.showRewardActivity(task.numCount)
+                model.timer?.cancel()
             }
         }
     }
@@ -59,6 +61,7 @@ class SubTasksPresenter(
             view.setTitle(it.name)
         }
         view.setSubTasksProgress(getSubTaskProgress(task.subTasks))
+        startSubTaskTime(task.time)
         model.itemList = itemList
         view.setItemList(model.itemList)
     }
@@ -97,5 +100,28 @@ class SubTasksPresenter(
     private fun getSubTaskProgress(subTasks: List<SubTask>): Int {
         val doneCount = subTasks.count { it.status == Status.DONE }
         return ((doneCount.toFloat() / subTasks.size) * 100).toInt()
+    }
+
+    private fun startSubTaskTime(time: Int) {
+        if (model.timer == null) {
+            model.timer = object : CountDownTimer((time * 1000).toLong(), 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val seconds = millisUntilFinished / 1000
+                    val timeValue = if (seconds < 60) {
+                        "00:$seconds"
+                    } else {
+                        val minutes = seconds % 60
+                        val remainingSeconds = seconds - (minutes * 60)
+                        "$minutes:$remainingSeconds"
+                    }
+                    view.setSubTasksTime(timeValue)
+                }
+
+                override fun onFinish() {
+
+                }
+            }
+            model.timer?.start()
+        }
     }
 }

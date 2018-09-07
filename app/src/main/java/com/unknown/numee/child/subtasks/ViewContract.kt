@@ -7,6 +7,7 @@ interface ViewContract {
         fun setTitle(title: String)
         fun setSubTitle(subTitle: String)
         fun setSubTasksProgress(progress: Int)
+        fun setSubTasksTime(time: String)
         fun setItemList(itemList: List<Item>)
         fun showRewardActivity(numCount: Int)
     }

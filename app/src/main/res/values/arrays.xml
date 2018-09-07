@@ -2,44 +2,44 @@
 <resources>
 	
 	<array name="diagnoses">
-		<item>Autism Spectrum Disorders</item>
-		<item>ADHD</item>
-		<item>Asperger Syndrome</item>
-		<item>Other</item>
+		<item>Աուտիզմի Սպեկտրի Խանգարումներ</item>
+		<item>Հիպերկինետիկ Խանգարում (ADHD)</item>
+		<item>Ասպերգերի Սինդրոմ</item>
+		<item>Այլ</item>
 	</array>
 	
 	<array name="relations">
-		<item>Father</item>
-		<item>Mother</item>
-		<item>Caretaker</item>
-		<item>Other</item>
+		<item>Հայրիկ</item>
+		<item>Մայրիկ</item>
+		<item>Խնամակալ</item>
+		<item>Այլ</item>
 	</array>
 	
 	<array name="speak">
-		<item>Yes</item>
-		<item>No</item>
-		<item>Repeating speech</item>
-		<item>Other</item>
+		<item>Այո</item>
+		<item>Ոչ</item>
+		<item>Կրկնվող խոսք</item>
+		<item>Այլ</item>
 	</array>
 	
 	<array name="iq_levels">
-		<item>140 and more</item>
-		<item>120-140</item>
-		<item>110-120</item>
-		<item>90-110</item>
-		<item>80-90</item>
-		<item>70-80</item>
-		<item>50-69</item>
-		<item>35-49</item>
-		<item>20-34</item>
-		<item>20 and less</item>
+		<item>140 և ավելի (Հանճար կամ մոտ հանճարի)</item>
+		<item>120-140 (Շատ լավ վերլուծական միտք)</item>
+		<item>110-120 (Բարձրակարգ ինտելեկտ)</item>
+		<item>90-110 (Նորմալ կամ միջին ինտելեկտ)</item>
+		<item>80-90 (Սակավամտություն)</item>
+		<item>70-80 (Սահմանային մտավոր հետամնացություն)</item>
+		<item>50-69 (Թեթև աստիճանի մտավոր հետամնացությամբ)</item>
+		<item>35-49 (Չափավոր աստիճանի մտավոր հետամնացությամբ)</item>
+		<item>20-34 (Ծանր աստիճանի մտավոր հետամնացությամբ)</item>
+		<item>20-ից ցածր (Մտավոր խորը հետամնացությամբ)</item>
 	</array>
 	
 	<array name="independence_levels">
-		<item>Simple tasks</item>
+		<item>Պարզ գործողություններ</item>
 		<item>50/50</item>
-		<item>With help</item>
-		<item>Not able to do</item>
+		<item>Հուշումով է կարողանում</item>
+		<item>Չի կարողանում անել ինքնուրույն</item>
 	</array>
-	
+
 </resources>
