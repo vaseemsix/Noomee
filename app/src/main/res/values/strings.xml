@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Noomee</string>
-	<string name="app_description">Guide to independence for your KID</string>
-	<string name="sign_in_with_email">Մուտք գործել</string>
-	<string name="sign_up_with_email">Գրանցվել</string>
-	<string name="hint_email">Էլ. հասցե</string>
-	<string name="hint_password">Գաղտնաբառ</string>
-	<string name="hint_name">Անուն</string>
-	
-	<string name="title_registration">Երեխայի մասին</string>
-	<string name="child_relation">Կապը երեխայի հետ</string>
-	<string name="child_name">Երեխայի անունը</string>
-	<string name="child_age">Երեխայի տարիքը</string>
-	<string name="diagnose">Ախտորոշումը</string>
-	<string name="can_child_speak">Կարող է երեխան խոսել՞</string>
-	<string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
-	<string name="independence_level">Ինքնուրույն լինելու աստիճանը</string>
-	<string name="promise">*Ուշադրություն դարձրեք, որ խոսք եք տալիս NOOMEE-ին,
+    <string name="app_name">Noomee</string>
+    <string name="app_description">Guide to independence for your KID</string>
+    <string name="sign_in_with_email">Մուտք գործել</string>
+    <string name="sign_up_with_email">Գրանցվել</string>
+    <string name="hint_email">Էլ. հասցե</string>
+    <string name="hint_password">Գաղտնաբառ</string>
+    <string name="hint_name">Անուն</string>
+
+    <string name="title_registration">Երեխայի մասին</string>
+    <string name="child_relation">Կապը երեխայի հետ</string>
+    <string name="child_name">Երեխայի անունը</string>
+    <string name="child_age">Երեխայի տարիքը</string>
+    <string name="diagnose">Ախտորոշումը</string>
+    <string name="can_child_speak">Կարող է երեխան խոսել՞</string>
+    <string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
+    <string name="independence_level">Ինքնուրույն լինելու աստիճանը</string>
+    <string name="promise">*Ուշադրություն դարձրեք, որ խոսք եք տալիս NOOMEE-ին,
 		յուրաքանչյուր օր առաջադրանքների ավարտից հետո երեխային տալ փոքրիկ նվեր-խրախուսանք:
 		Այն, ինչ նա սիրում է ամենից շատ և կաշխատի դրա համար հաղթահարելով դժվար առաջադրանքները:
 		Օրինակ, եթե երեխան սիրում է «Կինդեր», ապա սա օգտագործում ենք որպես խրախուսանքի միջոց։
 		Նշենք, որ Դուք պարտավորվում եք սահամանափակել «Կինդեր» ստանալը այլ առիթներով,
 		որպեսզի երեխան հստակ հասկանա որ դա խրախուսանքի միջոց է։ Երեխան պետք է նաև հստակ հասկանա,
 		որ յուրաքանչյուր խնդիրից հետո նա ստանում է «աստղիկներ», որոնք օրվա ավարտին դառնում են մրցանակ։</string>
-	<string name="save">Պահպանել</string>
-	
-	<string name="welcome_child">Բարի գալուստ, %s</string>
-	<string name="welcome">Բարի գալուստ</string>
-	
-	<string name="nums">Նում</string>
-	<string name="cont">Շարունակել</string>
+    <string name="save">Պահպանել</string>
+
+    <string name="welcome_child">Բարի գալուստ, %s</string>
+    <string name="welcome">Բարի գալուստ</string>
+
+    <string name="nums">Նում</string>
+    <string name="cont">Շարունակել</string>
+
+    <!-- Parent Activity Part -->
+    <string name="parent">Ծնող</string>
+    <string name="child">Երեխա</string>
+
+    <string name="use_device_for">Հեռախոսի օգտագործող</string>
+    <string name="schedule_name_sample">Schedule Name</string>
+    <string name="set_days">SET DAYS</string>
+    <string name="day_schedule">DAY SCHEDULE</string>
+    <string name="day_schedule_templates">Day Schedule Templates</string>
 </resources>
