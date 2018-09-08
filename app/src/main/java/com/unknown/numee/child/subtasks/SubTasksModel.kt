@@ -4,38 +4,34 @@ import android.content.Context
 import android.os.CountDownTimer
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
-import com.unknown.numee.business.command.GetTaskByID
-import com.unknown.numee.business.executor.BusinessCommandCallback
+import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.GeneralModel
-import java.lang.Exception
 
 
 class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Model {
 
     lateinit var presenter: ModelContract.Listener
 
+    override val currentUserID: String
+        get() = Preferences.userID
     override var task: Task? = null
     override var timer: CountDownTimer? = null
     override var itemList: List<ViewContract.Item> = listOf()
 
     private val subTasksApi = SubTasksFirebaseApi()
 
-    override fun requestTaskByID(ID: String) {
-        businessCommandExecutor.execute(
-                GetTaskByID(ID, object : BusinessCommandCallback<Task> {
-                    override fun onSuccess(result: Task?) {
-                        presenter.onReceivedGetTaskByIDSuccess(result)
-                    }
-
-                    override fun onError(e: Exception) {
-                        presenter.onError(e)
-                    }
-                })
+    override fun requestTaskByID(userID: String, taskID: String) {
+        subTasksApi.getTaskByID(
+                userID,
+                taskID,
+                { task -> presenter.onReceivedGetTaskByIDSuccess(task) },
+                { exception -> presenter.onError(exception) }
         )
     }
 
-    override fun requestUpdateSubTaskStatus(taskID: String, subTaskID: String, newStatus: Status) {
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status) {
         subTasksApi.updateSubTaskStatus(
+                userID,
                 taskID,
                 subTaskID,
                 newStatus,

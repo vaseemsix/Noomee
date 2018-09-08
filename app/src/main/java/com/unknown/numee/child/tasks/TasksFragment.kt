@@ -57,6 +57,11 @@ class TasksFragment : Fragment(), ViewContract.View {
         presenter.onViewCreated()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onViewDestroy()
+    }
+
     override fun setWelcomeText(text: String) {
         welcomeTxtView.text = text
     }
@@ -79,7 +84,7 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     private fun initPresenter() {
         val model = TasksModel(context!!)
-        val tasksPresenter = TasksPresenter(model)
+        val tasksPresenter = TasksPresenter(model, TaskItemListCreator(context!!))
         tasksPresenter.setView(this)
         model.presenter = tasksPresenter
         presenter = tasksPresenter

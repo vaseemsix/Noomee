@@ -2,26 +2,46 @@ package com.unknown.numee.child.tasks
 
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.*
+import com.unknown.numee.util.event.Event
+import com.unknown.numee.util.event.EventCallback
+import com.unknown.numee.util.event.EventManager
+import com.unknown.numee.util.event.events.TaskFinishedEvent
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
 
 class TasksPresenter(
-        val model: ModelContract.Model
+        val model: ModelContract.Model,
+        val taskItemListCreator: TaskItemListCreator
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
+
+    private val taskFinishedCallback = object : EventCallback {
+        override fun onReceived(event: Event) {
+            if (event is TaskFinishedEvent) {
+                finishTask(event.taskID)
+            }
+        }
+    }
 
     override fun onViewCreated() {
         model.getUser(model.currentUserID)
-        model.requestSchedule(model.currentUserID)
+        model.requestSchedules(model.currentUserID)
+        EventManager.register(TaskFinishedEvent::class.java, taskFinishedCallback)
+    }
+
+    override fun onViewDestroy() {
+        EventManager.unregister(TaskFinishedEvent::class.java, taskFinishedCallback)
     }
 
     override fun onItemClicked(item: ViewContract.Item) {
         if (item is TaskItem) {
-            view.startSubTasksActivity(item.taskID)
+            if (item.statusOrdinal == Status.CURRENT.ordinal) {
+                view.startSubTasksActivity(item.taskID)
+            }
         }
     }
 
-    override fun onError(e: Exception) {
+    override fun onError(e: Exception?) {
 
     }
 
@@ -33,61 +53,65 @@ class TasksPresenter(
 
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
-            model.schedule = schedule[0]
+            model.schedule = schedule[0] // find the right scedule for current day
             model.requestTasks(model.currentUserID)
         }
     }
 
     override fun onReceivedTasksSuccess(tasks: List<Task>?) {
         tasks?.let {
-            updateScheduleWithTasks(tasks) // change, so that it's done via database
+            model.tasks = it
             update()
         }
     }
 
+    override fun onReceivedUpdateTaskStatusSuccess() {
+
+    }
+
+    override fun onReceivedUpdateSubTaskStatusSuccess() {
+
+    }
+
     private fun update() {
         val schedule = model.schedule ?: return
+        val tasks = model.tasks ?: return
 
-        view.setItemList(createItemList(schedule))
-        view.setTasksProgress(getTaskProgress(schedule.items))
+        val itemList = taskItemListCreator.createItemList(schedule, tasks)
+        view.setItemList(itemList)
+        view.setTasksProgress(getTasksProgress(tasks))
     }
 
-    private fun createItemList(schedule: Schedule): List<ViewContract.Item> {
-        val itemList = mutableListOf<TaskItem>()
-
-        val lastDoneTask = schedule.items.findLast { it.task?.status == Status.DONE }
-        lastDoneTask?.let {
-            itemList.add(createTaskItem(it))
-        }
-        schedule.items.forEach {
-            if (it.task?.status != Status.DONE) {
-                itemList.add(createTaskItem(it))
-            }
-        }
-
-        return itemList
-    }
-
-    private fun createTaskItem(item: ScheduleItem): TaskItem {
-        return TaskItem(
-                time = item.time,
-                name = item.task?.name.orEmpty(),
-                numCount = "${item.task?.numCount} x ",
-                taskID = item.taskID,
-                statusOrdinal = item.task?.status?.ordinal ?: Status.DONE.ordinal
-        )
-    }
-
-
-    private fun updateScheduleWithTasks(tasks: List<Task>) {
-        model.schedule?.items?.forEach {
-            val id = it.taskID
-            it.task = tasks.find { it.id == id }
-        }
-    }
-
-    private fun getTaskProgress(item: List<ScheduleItem>): Int {
-        val doneCount = item.count { it.task?.status == Status.DONE }
+    private fun getTasksProgress(item: List<Task>): Int {
+        val doneCount = item.count { it.status == Status.DONE }
         return ((doneCount.toFloat() / item.size) * 100).toInt()
+    }
+
+    private fun finishTask(taskID: String) {
+        val tasks = model.tasks ?: return
+
+        model.requestUpdateTaskStatus(
+                model.currentUserID,
+                taskID,
+                Status.DONE
+        )
+
+        val index = tasks.indexOfFirst { it.id == taskID }
+        if (index != -1 && index + 1 < tasks.size) {
+            model.requestUpdateTaskStatus(
+                    model.currentUserID,
+                    tasks[index + 1].id,
+                    Status.CURRENT
+            )
+
+            model.requestUpdateSubTaskStatus(
+                    model.currentUserID,
+                    tasks[index + 1].id,
+                    tasks[index + 1].subTasks[0].id,
+                    Status.CURRENT
+            )
+        }
+
+        model.requestTasks(model.currentUserID)
     }
 }

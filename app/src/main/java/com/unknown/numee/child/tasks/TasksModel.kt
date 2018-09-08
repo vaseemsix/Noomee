@@ -2,10 +2,9 @@ package com.unknown.numee.child.tasks
 
 import android.content.Context
 import com.unknown.numee.business.beans.Schedule
+import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.business.beans.User
-import com.unknown.numee.business.command.GetSchedule
-import com.unknown.numee.business.command.GetTasks
 import com.unknown.numee.business.command.GetUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
 import com.unknown.numee.util.Preferences
@@ -20,10 +19,13 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
     override val currentUserID: String
         get() = Preferences.userID
     override var schedule: Schedule? = null
+    override var tasks: List<Task>? = listOf()
 
     override fun getStringById(resId: Int): String {
         return context.getString(resId)
     }
+
+    private val tasksApiFirebase = TasksFirebaseApi()
 
     override fun getUser(ID: String) {
         businessCommandExecutor.execute(
@@ -41,31 +43,40 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
-    override fun requestSchedule(userID: String) {
-        businessCommandExecutor.execute(
-                GetSchedule(userID, object : BusinessCommandCallback<List<Schedule>> {
-                    override fun onSuccess(result: List<Schedule>?) {
-                        presenter.onReceivedScheduleSuccess(result)
-                    }
-
-                    override fun onError(e: Exception) {
-                        presenter.onError(e)
-                    }
-                })
+    override fun requestSchedules(userID: String) {
+        tasksApiFirebase.getSchedules(
+                userID,
+                { result -> presenter.onReceivedScheduleSuccess(result) },
+                { e -> presenter.onError(e) }
         )
     }
 
     override fun requestTasks(userID: String) {
-        businessCommandExecutor.execute(
-                GetTasks(userID, object : BusinessCommandCallback<List<Task>> {
-                    override fun onSuccess(result: List<Task>?) {
-                        presenter.onReceivedTasksSuccess(result)
-                    }
+        tasksApiFirebase.getTasks(
+                userID,
+                { result -> presenter.onReceivedTasksSuccess(result) },
+                { e -> presenter.onError(e) }
+        )
+    }
 
-                    override fun onError(e: Exception) {
-                        presenter.onError(e)
-                    }
-                })
+    override fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status) {
+        tasksApiFirebase.updateTaskStatus(
+                userID,
+                taskID,
+                newStatus,
+                { presenter.onReceivedUpdateTaskStatusSuccess() },
+                { exception -> presenter.onError(exception) }
+        )
+    }
+
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status) {
+        tasksApiFirebase.updateSubTaskStatus(
+                userID,
+                taskID,
+                subTaskID,
+                newStatus,
+                { presenter.onReceivedUpdateSubTaskStatusSuccess() },
+                { exception -> presenter.onError(exception) }
         )
     }
 }

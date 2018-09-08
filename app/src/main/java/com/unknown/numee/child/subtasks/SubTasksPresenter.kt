@@ -4,6 +4,8 @@ import android.os.CountDownTimer
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.SubTask
 import com.unknown.numee.business.beans.Task
+import com.unknown.numee.util.event.EventManager
+import com.unknown.numee.util.event.events.TaskFinishedEvent
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
@@ -13,12 +15,13 @@ class SubTasksPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onCreate() {
-        model.requestTaskByID(view.getID())
+        model.requestTaskByID(model.currentUserID, view.getID())
     }
 
     override fun onItemClicked(item: ViewContract.Item) {
         model.task?.let { task ->
             model.requestUpdateSubTaskStatus(
+                    model.currentUserID,
                     task.id,
                     item.id,
                     Status.DONE
@@ -27,13 +30,13 @@ class SubTasksPresenter(
             val toDo = task.subTasks.find { it.status == Status.TO_DO }
             if (toDo != null) {
                 model.requestUpdateSubTaskStatus(
+                        model.currentUserID,
                         task.id,
                         toDo.id,
                         Status.CURRENT
                 )
             } else {
-                view.showRewardActivity(task.numCount)
-                model.timer?.cancel()
+                finishTask()
             }
         }
     }
@@ -48,7 +51,7 @@ class SubTasksPresenter(
     }
 
     override fun onReceivedUpdateSubTaskStatusSuccess() {
-        model.requestTaskByID(view.getID())
+        model.requestTaskByID(model.currentUserID, view.getID())
     }
 
     private fun update() {
@@ -61,7 +64,7 @@ class SubTasksPresenter(
             view.setTitle(it.name)
         }
         view.setSubTasksProgress(getSubTaskProgress(task.subTasks))
-        startSubTaskTime(task.time)
+        startSubTaskTime(task.duration)
         model.itemList = itemList
         view.setItemList(model.itemList)
     }
@@ -122,6 +125,14 @@ class SubTasksPresenter(
                 }
             }
             model.timer?.start()
+        }
+    }
+
+    private fun finishTask() {
+        model.task?.let {
+            model.timer?.cancel()
+            EventManager.send(TaskFinishedEvent(it.id))
+            view.showRewardActivity(it.numCount)
         }
     }
 }

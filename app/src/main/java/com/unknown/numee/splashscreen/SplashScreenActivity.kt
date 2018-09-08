@@ -16,6 +16,7 @@ import com.unknown.numee.registration.RegistrationActivity
 import com.unknown.numee.switcher.SwitcherActivity
 import com.unknown.numee.util.GlideApp
 import com.unknown.numee.util.Preferences
+import com.unknown.numee.util.event.EventManager
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Preferences.initialize(this)
+        EventManager.initialize(this)
 
         if (isUserLoggedIn()) {
             Log.d("VLAD", Preferences.userType)

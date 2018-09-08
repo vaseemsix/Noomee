@@ -12,7 +12,7 @@ data class Task(
         val description: String = "",
         val status: Status = Status.TO_DO,
         val numCount: Int = 1,
-        val time: Int = 1, // in seconds
-        val subTasks: List<SubTask> = listOf(),
-        val userID: String = ""
+        val time: String = "",
+        val duration: Int = 1, // in seconds
+        val subTasks: List<SubTask> = listOf()
 )

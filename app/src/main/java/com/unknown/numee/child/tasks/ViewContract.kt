@@ -12,6 +12,7 @@ interface ViewContract {
 
     interface Listener {
         fun onViewCreated()
+        fun onViewDestroy()
         fun onItemClicked(item: Item)
     }
 

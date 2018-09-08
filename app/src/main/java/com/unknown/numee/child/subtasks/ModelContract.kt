@@ -8,12 +8,13 @@ import java.lang.Exception
 
 interface ModelContract {
     interface Model {
+        val currentUserID: String
         var task: Task?
         var timer: CountDownTimer?
         var itemList: List<ViewContract.Item>
 
-        fun requestTaskByID(ID: String)
-        fun requestUpdateSubTaskStatus(taskID: String, subTaskID: String, newStatus: Status)
+        fun requestTaskByID(userID: String, taskID: String)
+        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status)
     }
 
     interface Listener {
