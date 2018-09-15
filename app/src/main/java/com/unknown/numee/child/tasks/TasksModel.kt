@@ -20,6 +20,7 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         get() = Preferences.userID
     override var schedule: Schedule? = null
     override var tasks: List<Task>? = listOf()
+    override var totalNumCount: Int = 0
 
     override fun getStringById(resId: Int): String {
         return context.getString(resId)

@@ -35,7 +35,68 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="@id/fragment_tasks__guideline"
-		tools:listitem="@layout/view_item_task"/>
+		tools:listitem="@layout/view_item_task"
+		tools:visibility="visible"/>
+	
+	<android.support.constraint.Group
+		android:id="@+id/fragment_tasks__cont_finish"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:constraint_referenced_ids="fragment_tasks__txt_collected_nums,fragment_tasks__btn_good_night" />
+	
+	<TextView
+		android:id="@+id/fragment_tasks__txt_collected_nums"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/spacing_small"
+		android:text="@string/you_have_x_num"
+		android:textAlignment="center"
+		android:textColor="@color/colorPrimaryDark"
+		android:textSize="@dimen/font_big"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/fragment_tasks__guideline"
+		app:layout_constraintBottom_toTopOf="@id/fragment_tasks__btn_good_night"/>
+	
+	<android.support.v7.widget.CardView
+		android:id="@+id/fragment_tasks__btn_good_night"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/spacing_huge"
+		app:cardBackgroundColor="@color/colorBlue"
+		app:cardCornerRadius="4dp"
+		app:cardElevation="@dimen/spacing_tiny"
+		app:contentPadding="4dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/fragment_tasks__txt_collected_nums">
+		
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_gravity="center"
+			app:cardCornerRadius="2dp"
+			app:contentPadding="@dimen/spacing_small">
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginBottom="@dimen/spacing_small"
+				android:layout_marginEnd="@dimen/spacing_big"
+				android:layout_marginStart="@dimen/spacing_big"
+				android:layout_marginTop="@dimen/spacing_small"
+				android:text="@string/good_night"
+				android:textAlignment="center"
+				android:textColor="@color/colorAccent"
+				android:textSize="@dimen/font_big"
+				android:textStyle="bold" />
+		
+		</android.support.v7.widget.CardView>
+	
+	</android.support.v7.widget.CardView>
 	
 	<ProgressBar
 		android:id="@+id/fragment_tasks__progress"

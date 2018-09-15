@@ -13,6 +13,7 @@ interface ModelContract {
         val currentUserID: String
         var schedule: Schedule?
         var tasks: List<Task>?
+        var totalNumCount: Int
         fun getStringById(@StringRes resId: Int): String
 
         fun getUser(ID: String)

@@ -27,6 +27,8 @@
 	
 	<string name="welcome_child">Բարի գալուստ, %s</string>
 	<string name="welcome">Բարի գալուստ</string>
+	<string name="good_night">Բարի Գիշեր</string>
+	<string name="you_have_x_num">Դուք հավաքել եք \n\n %d \n\n նումեր!</string>
 	
 	<string name="nums">Նում</string>
 	<string name="cont">Շարունակել</string>

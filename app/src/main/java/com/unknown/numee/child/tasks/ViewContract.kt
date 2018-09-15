@@ -5,15 +5,19 @@ interface ViewContract {
     interface View {
         fun setWelcomeText(text: String)
         fun setTasksProgress(progress: Int)
+        fun setCollectedNums(numCount: Int)
         fun setItemList(itemList: List<Item>)
+        fun setContentVisibility(isVisible: Boolean)
         fun showError(message: String)
         fun startSubTasksActivity(ID: String)
+        fun finish()
     }
 
     interface Listener {
         fun onViewCreated()
         fun onViewDestroy()
         fun onItemClicked(item: Item)
+        fun onGoodNightClicked()
     }
 
     interface Item {

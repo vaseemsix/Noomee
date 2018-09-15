@@ -1,7 +1,9 @@
 package com.unknown.numee.child.tasks
 
 import android.os.Bundle
+import android.support.constraint.Group
 import android.support.v4.app.Fragment
+import android.support.v7.widget.CardView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -30,6 +32,9 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     private lateinit var welcomeTxtView: TextView
     private lateinit var progressView: ProgressBar
+    private lateinit var finishView: Group
+    private lateinit var goodNightView: CardView
+    private lateinit var collectedNumsView: TextView
     private lateinit var tasksListView: RecyclerView
     private lateinit var tasksListAdapter: TasksAdapter
 
@@ -42,6 +47,11 @@ class TasksFragment : Fragment(), ViewContract.View {
 
         welcomeTxtView = view.findViewById(R.id.fragment_tasks__txt_welcome)
         progressView = view.findViewById(R.id.fragment_tasks__progress)
+        finishView = view.findViewById(R.id.fragment_tasks__cont_finish)
+        goodNightView = view.findViewById(R.id.fragment_tasks__btn_good_night)
+        collectedNumsView = view.findViewById(R.id.fragment_tasks__txt_collected_nums)
+
+        goodNightView.setOnClickListener { presenter.onGoodNightClicked() }
 
         tasksListAdapter = TasksAdapter(object : TasksAdapter.OnItemClickListener {
             override fun onItemClicked(item: ViewContract.Item) {
@@ -70,8 +80,18 @@ class TasksFragment : Fragment(), ViewContract.View {
         progressView.progress = progress
     }
 
+    override fun setCollectedNums(numCount: Int) {
+        collectedNumsView.text = String.format(getString(R.string.you_have_x_num), numCount)
+    }
+
     override fun setItemList(itemList: List<ViewContract.Item>) {
         tasksListAdapter.setItemList(itemList)
+    }
+
+    override fun setContentVisibility(isVisible: Boolean) {
+        tasksListView.visibility = if (isVisible) View.VISIBLE else View.GONE
+        progressView.visibility = if (isVisible) View.VISIBLE else View.GONE
+        finishView.visibility = if (isVisible) View.GONE else View.VISIBLE
     }
 
     override fun showError(message: String) {
@@ -80,6 +100,10 @@ class TasksFragment : Fragment(), ViewContract.View {
 
     override fun startSubTasksActivity(ID: String) {
         SubTasksActivity.startActivity(context!!, ID)
+    }
+
+    override fun finish() {
+        activity?.finish()
     }
 
     private fun initPresenter() {

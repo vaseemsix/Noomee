@@ -17,6 +17,10 @@ class TaskItemListCreator(val context: Context) {
         val lastDoneTaskIndex = tasksInSchedule.indexOfLast { it.status == Status.DONE }
         val currentTaskIndex = tasksInSchedule.indexOfFirst { it.status == Status.CURRENT }
 
+        if (lastDoneTaskIndex == tasksInSchedule.size - 1 && currentTaskIndex == -1) {
+            return itemList
+        }
+
         if (lastDoneTaskIndex != -1) {
             itemList.add(createTaskItem(tasksInSchedule[lastDoneTaskIndex]))
         }

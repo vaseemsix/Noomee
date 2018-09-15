@@ -41,12 +41,17 @@ class TasksPresenter(
         }
     }
 
+    override fun onGoodNightClicked() {
+        view.finish()
+    }
+
     override fun onError(e: Exception?) {
 
     }
 
     override fun onReceivedGetUserSuccess(user: User?) {
         user?.let {
+            model.totalNumCount = it.child?.totalNumCount ?: 0
             view.setWelcomeText(String.format(model.getStringById(R.string.welcome_child), it.child?.name.orEmpty()))
         }
     }
@@ -78,7 +83,13 @@ class TasksPresenter(
         val tasks = model.tasks ?: return
 
         val itemList = taskItemListCreator.createItemList(schedule, tasks)
-        view.setItemList(itemList)
+        if (itemList.isEmpty()) {
+            view.setContentVisibility(false)
+            view.setCollectedNums(model.totalNumCount)
+        } else {
+            view.setContentVisibility(true)
+            view.setItemList(itemList)
+        }
         view.setTasksProgress(getTasksProgress(tasks))
     }
 

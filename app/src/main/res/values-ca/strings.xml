@@ -28,6 +28,8 @@
 	
 	<string name="welcome_child">Welcome, %s</string>
 	<string name="welcome">Welcome</string>
+	<string name="good_night">Good Night</string>
+	<string name="you_have_x_num">You have collected \n\n %d \n\n nums!</string>
 	
 	<string name="nums">Nums</string>
 	<string name="cont">Continue</string>
