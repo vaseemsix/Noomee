@@ -58,7 +58,7 @@ class TasksPresenter(
 
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
-            model.schedule = schedule[0] // find the right scedule for current day
+            model.schedule = schedule[0] // find the right schedule for current day
             model.requestTasks(model.currentUserID)
         }
     }

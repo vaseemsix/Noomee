@@ -19,7 +19,7 @@ class TasksFirebaseApi {
             onSuccess: (List<Schedule>?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("templates").child(userID)
+        val reference = firebaseDatabase.child("schedules").child(userID)
 
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -97,5 +97,13 @@ class TasksFirebaseApi {
         reference.setValue(status)
                 .addOnSuccessListener { onSuccess.invoke(status) }
                 .addOnFailureListener { e -> onError.invoke(e) }
+    }
+
+    fun resetTasks(
+            userID: String,
+            onSuccess: () -> Unit,
+            onError: (Exception?) -> Unit
+    ) {
+
     }
 }
