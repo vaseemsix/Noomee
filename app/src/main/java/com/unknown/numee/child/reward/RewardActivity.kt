@@ -3,10 +3,10 @@ package com.unknown.numee.child.reward
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.CardView
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.util.widget.ButtonView
 
 class RewardActivity : BaseActivity(), ViewContract.View {
 
@@ -24,7 +24,7 @@ class RewardActivity : BaseActivity(), ViewContract.View {
 
     private lateinit var numCountView: TextView
     private lateinit var totalNumCountView: TextView
-    private lateinit var continueBtnView: CardView
+    private lateinit var continueBtnView: ButtonView
 
     private var currentNumCount: Int = 1
 

@@ -3,7 +3,6 @@ package com.unknown.numee.child.tasks
 import android.os.Bundle
 import android.support.constraint.Group
 import android.support.v4.app.Fragment
-import android.support.v7.widget.CardView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.child.subtasks.SubTasksActivity
+import com.unknown.numee.util.widget.ButtonView
 
 
 class TasksFragment : Fragment(), ViewContract.View {
@@ -33,7 +33,7 @@ class TasksFragment : Fragment(), ViewContract.View {
     private lateinit var welcomeTxtView: TextView
     private lateinit var progressView: ProgressBar
     private lateinit var finishView: Group
-    private lateinit var goodNightView: CardView
+    private lateinit var goodNightView: ButtonView
     private lateinit var collectedNumsView: TextView
     private lateinit var tasksListView: RecyclerView
     private lateinit var tasksListAdapter: TasksAdapter

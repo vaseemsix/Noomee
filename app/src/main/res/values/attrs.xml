@@ -12,5 +12,9 @@
 	<declare-styleable name="SpinnerView">
 		<attr name="title" />
 	</declare-styleable>
+	
+	<declare-styleable name="ButtonView">
+		<attr name="text" />
+	</declare-styleable>
 
 </resources>
