@@ -7,5 +7,5 @@ data class Schedule(
         val id: String = "",
         val name: String = "",
         val tasks: String = "",
-        val date: Date = Date()
+        val date: Long = Date().time
 )
