@@ -3,14 +3,13 @@ package com.unknown.numee.child.subtasks
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.reward.RewardActivity
+import com.unknown.numee.util.widget.SubTasksView
 
 
 class SubTasksActivity : BaseActivity(), ViewContract.View {
@@ -34,8 +33,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     private lateinit var subTitleView: TextView
     private lateinit var timeView: TextView
     private lateinit var progressView: ProgressBar
-    private lateinit var subTasksListView: RecyclerView
-    private lateinit var subTasksListAdapter: SubTasksAdapter
+    private lateinit var subTasksView: SubTasksView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +67,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     }
 
     override fun setItemList(itemList: List<ViewContract.Item>) {
-        subTasksListAdapter.setItemList(itemList)
+        subTasksView.setItemList(itemList)
     }
 
     override fun showRewardActivity(numCount: Int) {
@@ -87,15 +85,8 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         timeView = findViewById(R.id.activity_subtasks__txt_time)
         progressView = findViewById(R.id.activity_subtasks__progress)
 
-        subTasksListView = findViewById(R.id.activity_subtasks__list_subtasks)
-        subTasksListAdapter = SubTasksAdapter(object : SubTasksAdapter.OnClickListener {
-            override fun onItemClicked(item: ViewContract.Item) {
-                presenter.onItemClicked(item)
-            }
-
-        })
-        subTasksListView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        subTasksListView.adapter = subTasksListAdapter
+        subTasksView = findViewById(R.id.activity_subtasks__list_subtasks)
+        subTasksView.setOnClickListener { item -> presenter.onItemClicked(item) }
     }
 
     private fun initPresenter() {

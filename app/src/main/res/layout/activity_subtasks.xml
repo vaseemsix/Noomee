@@ -48,20 +48,16 @@
 		app:layout_constraintTop_toBottomOf="@id/activity_subtasks__txt_title"
 		tools:text="00:30" />
 	
-	<android.support.v7.widget.RecyclerView
+	<com.unknown.numee.util.widget.SubTasksView
 		android:id="@+id/activity_subtasks__list_subtasks"
 		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:layout_gravity="center"
-		android:layout_marginTop="@dimen/spacing_huge"
-		android:layout_marginStart="@dimen/spacing_vast"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_big"
 		android:layout_marginBottom="@dimen/spacing_big"
 		app:layout_constraintBottom_toTopOf="@id/activity_subtasks__progress"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/activity_subtasks__txt_time"
-		tools:listitem="@layout/view_item_subtask"
-		tools:layout_height="@dimen/size_large"/>
+		app:layout_constraintTop_toBottomOf="@id/activity_subtasks__txt_time"/>
 	
 	<ProgressBar
 		android:id="@+id/activity_subtasks__progress"

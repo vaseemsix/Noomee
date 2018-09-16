@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.unknown.numee.BR
 import com.unknown.numee.R
 import com.unknown.numee.util.GlideApp
@@ -49,6 +50,7 @@ class SubTasksAdapter(
             GlideApp
                     .with(imageView.context)
                     .load(item.imageUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageView)
             viewDataBinding.executePendingBindings()
         }
