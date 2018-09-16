@@ -8,6 +8,7 @@ import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import java.lang.Exception
+import java.util.*
 
 
 class TasksFirebaseApi {
@@ -101,9 +102,38 @@ class TasksFirebaseApi {
 
     fun resetTasks(
             userID: String,
+            taskIDs: String,
+            scheduleID: String,
             onSuccess: () -> Unit,
             onError: (Exception?) -> Unit
     ) {
+        val reference = firebaseDatabase.child("tasks").child(userID)
 
+        val tasks = taskIDs.split(",")
+        if (tasks.isNotEmpty()) {
+            reference.child(tasks[0]).updateChildren(mapOf(Pair("status", "CURRENT")))
+
+            for (i in 1 until tasks.size) {
+                reference.child(tasks[i]).updateChildren(mapOf(Pair("status", "TO_DO")))
+            }
+
+            // reset collected nums
+            firebaseDatabase
+                    .child("users")
+                    .child(userID)
+                    .child("child")
+                    .updateChildren(mapOf(Pair("totalNumCount", 0)))
+
+            // update schedule date
+            firebaseDatabase
+                    .child("schedules")
+                    .child(userID)
+                    .child(scheduleID)
+                    .updateChildren(mapOf(Pair("date", Date().time)))
+
+            onSuccess.invoke()
+        } else {
+            onError.invoke(Exception())
+        }
     }
 }

@@ -19,6 +19,7 @@ interface ModelContract {
         fun getUser(ID: String)
         fun requestSchedules(userID: String)
         fun requestTasks(userID: String)
+        fun requestResetTasks(userID: String, taskIDs: String, scheduleID: String)
         fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status)
         fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status)
     }
@@ -28,6 +29,7 @@ interface ModelContract {
         fun onReceivedGetUserSuccess(user: User?)
         fun onReceivedScheduleSuccess(schedule: List<Schedule>?)
         fun onReceivedTasksSuccess(tasks: List<Task>?)
+        fun onReceivedResetTasksSuccess()
         fun onReceivedUpdateTaskStatusSuccess()
         fun onReceivedUpdateSubTaskStatusSuccess()
     }

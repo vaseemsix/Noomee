@@ -8,6 +8,7 @@ import com.unknown.numee.util.event.EventManager
 import com.unknown.numee.util.event.events.TaskFinishedEvent
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
+import java.util.*
 
 
 class TasksPresenter(
@@ -19,6 +20,7 @@ class TasksPresenter(
         override fun onReceived(event: Event) {
             if (event is TaskFinishedEvent) {
                 finishTask(event.taskID)
+                model.totalNumCount++
             }
         }
     }
@@ -59,7 +61,14 @@ class TasksPresenter(
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
             model.schedule = schedule[0] // find the right schedule for current day
-            model.requestTasks(model.currentUserID)
+
+            if (hasDayPassed(model.schedule?.date ?: 0)) {
+                val taskIDs = model.schedule?.tasks ?: ""
+                val scheduleID = model.schedule?.id ?: ""
+                model.requestResetTasks(model.currentUserID, taskIDs, scheduleID)
+            } else {
+                model.requestTasks(model.currentUserID)
+            }
         }
     }
 
@@ -68,6 +77,10 @@ class TasksPresenter(
             model.tasks = it
             update()
         }
+    }
+
+    override fun onReceivedResetTasksSuccess() {
+        model.requestTasks(model.currentUserID)
     }
 
     override fun onReceivedUpdateTaskStatusSuccess() {
@@ -98,6 +111,13 @@ class TasksPresenter(
         return ((doneCount.toFloat() / item.size) * 100).toInt()
     }
 
+    private fun hasDayPassed(fromDate: Long): Boolean {
+        val scheduleDate = fromDate / 1000
+        val today = Date().time / 1000
+
+        return scheduleDate - today > 24 * 60 * 60
+    }
+
     private fun finishTask(taskID: String) {
         val tasks = model.tasks ?: return
 
@@ -108,6 +128,25 @@ class TasksPresenter(
         )
 
         val index = tasks.indexOfFirst { it.id == taskID }
+        // update subtasks of newly finished task to TO_DO for future
+        if (tasks[index].subTasks.isNotEmpty())  {
+            model.requestUpdateSubTaskStatus(
+                    model.currentUserID,
+                    taskID,
+                    tasks[index].subTasks[0].id,
+                    Status.CURRENT
+            )
+
+            for (i in 1 until tasks[index].subTasks.size) {
+                model.requestUpdateSubTaskStatus(
+                        model.currentUserID,
+                        taskID,
+                        tasks[index].subTasks[i].id,
+                        Status.TO_DO
+                )
+            }
+        }
+
         if (index != -1 && index + 1 < tasks.size) {
             model.requestUpdateTaskStatus(
                     model.currentUserID,

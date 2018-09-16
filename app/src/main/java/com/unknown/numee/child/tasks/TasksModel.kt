@@ -60,6 +60,16 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
+    override fun requestResetTasks(userID: String, taskIDs: String, scheduleID: String) {
+        tasksApiFirebase.resetTasks(
+                userID,
+                taskIDs,
+                scheduleID,
+                { presenter.onReceivedResetTasksSuccess() },
+                { e -> presenter.onError(e) }
+        )
+    }
+
     override fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status) {
         tasksApiFirebase.updateTaskStatus(
                 userID,
