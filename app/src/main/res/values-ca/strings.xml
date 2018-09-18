@@ -31,6 +31,9 @@
 	<string name="good_night">Good Night</string>
 	<string name="you_have_x_num">You have collected \n\n %d \n\n nums!</string>
 	
+	<string name="submit">Submit</string>
+	<string name="wrong_password">Wrong Password</string>
+	
 	<string name="nums">Nums</string>
 	<string name="cont">Continue</string>
 </resources>

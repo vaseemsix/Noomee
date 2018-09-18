@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.unknown.numee.MainActivity
+import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.login.LoginActivity
 import com.unknown.numee.parent.template.ParentActivity

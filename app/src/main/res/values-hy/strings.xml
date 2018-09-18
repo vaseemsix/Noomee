@@ -30,6 +30,9 @@
 	<string name="good_night">Բարի Գիշեր</string>
 	<string name="you_have_x_num">Դուք հավաքել եք \n\n %d \n\n նումեր!</string>
 	
+	<string name="submit">Մուտք</string>
+	<string name="wrong_password">Սխալ գաղտնաբառ</string>
+	
 	<string name="nums">Նում</string>
 	<string name="cont">Շարունակել</string>
 </resources>

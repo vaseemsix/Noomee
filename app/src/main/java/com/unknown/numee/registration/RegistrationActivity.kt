@@ -7,7 +7,7 @@ import android.support.design.widget.TextInputLayout
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
-import com.unknown.numee.MainActivity
+import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.util.widget.SpinnerView

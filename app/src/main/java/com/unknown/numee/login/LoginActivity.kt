@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.unknown.numee.MainActivity
+import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.registration.RegistrationActivity
