@@ -115,7 +115,7 @@ class TasksPresenter(
         val scheduleDate = fromDate / 1000
         val today = Date().time / 1000
 
-        return scheduleDate - today > 24 * 60 * 60
+        return today - scheduleDate > 24 * 60 * 60
     }
 
     private fun finishTask(taskID: String) {

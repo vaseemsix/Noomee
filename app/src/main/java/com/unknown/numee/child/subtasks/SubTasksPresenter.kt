@@ -113,7 +113,7 @@ class SubTasksPresenter(
                     val timeValue = if (seconds < 60) {
                         "00:$seconds"
                     } else {
-                        val minutes = seconds % 60
+                        val minutes = seconds / 60
                         val remainingSeconds = seconds - (minutes * 60)
                         "$minutes:$remainingSeconds"
                     }
