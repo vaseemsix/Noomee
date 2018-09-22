@@ -51,9 +51,9 @@ class LoginPresenter(
         view.showError(message)
     }
 
-    override fun onError(e: Exception) {
+    override fun onError(e: Exception?) {
         view.setLoadingVisibility(false)
-        view.showError(e.message.orEmpty())
+        view.showError(e?.message.orEmpty())
     }
 
     override fun onReceivedGetUserSuccess(user: User?) {

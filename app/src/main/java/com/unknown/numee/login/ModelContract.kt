@@ -15,7 +15,7 @@ interface ModelContract {
     }
 
     interface Listener : GeneralModelContract.GeneralListener {
-        fun onError(e: Exception)
+        fun onError(e: Exception?)
         fun onReceivedGetUserSuccess(user: User?)
         fun onReceivedSaveUserSuccess()
     }

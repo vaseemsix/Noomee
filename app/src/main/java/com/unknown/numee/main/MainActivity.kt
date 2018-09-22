@@ -7,6 +7,7 @@ import android.widget.ImageView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.tasks.TasksFragment
+import com.unknown.numee.main.password.PasswordFragment
 
 class MainActivity : BaseActivity() {
 
