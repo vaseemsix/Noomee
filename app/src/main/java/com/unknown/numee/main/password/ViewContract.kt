@@ -6,6 +6,7 @@ interface ViewContract {
         fun authenticate(email: String, password: String)
         fun finish()
         fun showMessage()
+        fun setPasswordEditEnabled(isEnabled: Boolean)
         fun startSwitcherActivity()
     }
 

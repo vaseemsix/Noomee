@@ -51,13 +51,13 @@ class PasswordFragment : Fragment(), ViewContract.View {
     override fun authenticate(email: String, password: String) {
         activity?.let {
             authenticator.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(it, { task ->
+                    .addOnCompleteListener(it) { task ->
                         if (task.isSuccessful) {
                             presenter.onAuthenticateSuccess()
                         } else {
                             presenter.onAuthenticateError()
                         }
-                    })
+                    }
         }
     }
 
@@ -67,6 +67,10 @@ class PasswordFragment : Fragment(), ViewContract.View {
 
     override fun showMessage() {
         Toast.makeText(activity, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun setPasswordEditEnabled(isEnabled: Boolean) {
+        passwordEditView.isEnabled = isEnabled
     }
 
     override fun startSwitcherActivity() {

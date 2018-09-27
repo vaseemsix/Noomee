@@ -16,6 +16,7 @@ class PasswordPresenter(
     }
 
     override fun onSubmitClicked(password: String) {
+        view.setPasswordEditEnabled(false)
         if (password.isEmpty()) {
             view.showMessage()
         } else {
@@ -29,10 +30,12 @@ class PasswordPresenter(
     }
 
     override fun onAuthenticateError() {
+        view.setPasswordEditEnabled(true)
         view.showMessage()
     }
 
     override fun onError(e: Exception?) {
+        view.setPasswordEditEnabled(true)
         view.showMessage()
     }
 
