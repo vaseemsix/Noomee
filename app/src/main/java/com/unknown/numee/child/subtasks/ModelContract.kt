@@ -14,7 +14,7 @@ interface ModelContract {
         var itemList: List<ViewContract.Item>
 
         fun requestTaskByID(userID: String, taskID: String)
-        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status)
+        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status)
     }
 
     interface Listener {

@@ -29,11 +29,12 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
         )
     }
 
-    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status) {
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status) {
         subTasksApi.updateSubTaskStatus(
                 userID,
                 taskID,
                 subTaskID,
+                subTaskIndex,
                 newStatus,
                 { presenter.onReceivedUpdateSubTaskStatusSuccess() },
                 { exception -> presenter.onError(exception) }

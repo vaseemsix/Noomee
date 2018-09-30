@@ -21,7 +21,7 @@ interface ModelContract {
         fun requestTasks(userID: String)
         fun requestResetTasks(userID: String, taskIDs: String, scheduleID: String)
         fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status)
-        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status)
+        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status)
     }
 
     interface Listener {

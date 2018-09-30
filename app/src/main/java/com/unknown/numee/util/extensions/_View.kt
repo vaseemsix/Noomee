@@ -3,6 +3,7 @@ package com.unknown.numee.util.extensions
 import android.databinding.BindingAdapter
 import android.support.v7.widget.CardView
 import android.view.View
+import android.view.ViewGroup
 
 
 @BindingAdapter("android:layout_height")
@@ -22,4 +23,11 @@ fun View.setLayoutWidth(width: Float) {
 @BindingAdapter("app:contentPadding")
 fun CardView.setContentPadding(padding: Float) {
     this.setContentPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
+}
+
+@BindingAdapter("android:layout_marginStart")
+fun CardView.setMarginStart(margin: Float) {
+    val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+    layoutParams.marginStart = margin.toInt()
+    this.layoutParams = layoutParams
 }

@@ -129,21 +129,24 @@ class TasksPresenter(
 
         val index = tasks.indexOfFirst { it.id == taskID }
         // update subtasks of newly finished task to TO_DO for future
-        if (tasks[index].subTasks.isNotEmpty())  {
+        var subTasks = tasks[index].subTasks
+        subTasks = subTasks.sortedBy { it.order }
+
+        if (subTasks.isNotEmpty())  {
             model.requestUpdateSubTaskStatus(
                     model.currentUserID,
                     taskID,
                     tasks[index].subTasks[0].id,
-                    Status.CURRENT
-            )
+                    "0",
+                    Status.CURRENT)
 
-            for (i in 1 until tasks[index].subTasks.size) {
+            for (i in 1 until subTasks.size) {
                 model.requestUpdateSubTaskStatus(
                         model.currentUserID,
                         taskID,
-                        tasks[index].subTasks[i].id,
-                        Status.TO_DO
-                )
+                        subTasks[i].id,
+                        i.toString(),
+                        Status.TO_DO)
             }
         }
 
@@ -158,8 +161,8 @@ class TasksPresenter(
                     model.currentUserID,
                     tasks[index + 1].id,
                     tasks[index + 1].subTasks[0].id,
-                    Status.CURRENT
-            )
+                    "0",
+                    Status.CURRENT)
         }
 
         model.requestTasks(model.currentUserID)

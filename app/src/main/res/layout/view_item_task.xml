@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
-	
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
 	<data>
-		<import type="android.view.View"/>
-		
+
+		<import type="android.view.View" />
+
 		<variable
 			name="item"
 			type="com.unknown.numee.child.tasks.ViewContract.Item" />
+
 		<variable
 			name="onClickListener"
 			type="com.unknown.numee.child.tasks.TasksAdapter.OnItemClickListener" />
 	</data>
-	
+
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:onClick="@{() -> onClickListener.onItemClicked(item)}"
 		android:alpha="@{item.getStatusOrdinal == 2 ? 0.7f : 1f}"
+		android:onClick="@{() -> onClickListener.onItemClicked(item)}"
 		android:paddingStart="@dimen/spacing_normal"
-		android:paddingEnd="@dimen/spacing_normal"
-		android:paddingTop="@dimen/spacing_small"
-		android:paddingBottom="@dimen/spacing_small">
-		
+		android:paddingEnd="@dimen/spacing_normal">
+
 		<TextView
 			android:id="@+id/view_item_task__txt_time"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@{item.time}"
-			android:textSize="@dimen/font_normal"
-			android:textColor="@color/colorPrimaryDark"
-			android:textStyle="bold"
 			android:drawableTop="@drawable/ic_clock"
-			app:layout_constraintTop_toTopOf="parent"
+			android:text="@{item.time}"
+			android:textColor="@color/colorPrimaryDark"
+			android:textSize="@dimen/font_normal"
+			android:textStyle="bold"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			tools:text="18:00"/>
-		
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="18:00" />
+
 		<TextView
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/spacing_normal"
 			android:background="@android:color/white"
-			android:padding="@dimen/spacing_normal"
+			android:padding="@dimen/spacing_small"
 			android:text="@{item.name}"
 			android:textSize="@dimen/font_large"
 			android:textStyle="bold"
@@ -51,13 +51,15 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toEndOf="@id/view_item_task__txt_time"
-			app:layout_constraintTop_toTopOf="parent"/>
-		
+			app:layout_constraintTop_toTopOf="parent" />
+
 		<android.support.v7.widget.CardView
 			android:id="@+id/view_item_task__card_fg"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginStart="@dimen/spacing_normal"
+			android:layout_marginStart="@{item.getStatusOrdinal == 1 ? @dimen/spacing_small : @dimen/spacing_normal}"
+			android:layout_marginTop="@dimen/spacing_small"
+			android:layout_marginBottom="@dimen/spacing_small"
 			android:visibility="@{item.getStatusOrdinal == 2 ? View.GONE : View.VISIBLE }"
 			app:cardBackgroundColor="@color/colorBlue"
 			app:cardCornerRadius="8dp"
@@ -65,52 +67,53 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toEndOf="@id/view_item_task__txt_time"
-			app:layout_constraintTop_toTopOf="parent">
-			
+			app:layout_constraintTop_toTopOf="parent"
+			tools:visibility="visible">
+
 			<android.support.v7.widget.CardView
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="center"
 				app:cardCornerRadius="6dp"
-				app:contentPadding="@dimen/spacing_small">
-				
+				app:contentPadding="@{item.getStatusOrdinal == 1 ? @dimen/spacing_small : @dimen/spacing_tiny}">
+
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:orientation="horizontal"
 					android:padding="@dimen/spacing_tiny">
-					
+
 					<TextView
 						android:id="@+id/view_item_task__txt_name"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
-						android:layout_weight="3"
 						android:layout_gravity="center_vertical"
+						android:layout_weight="3"
 						android:ellipsize="end"
 						android:maxLines="1"
 						android:text="@{item.name}"
 						android:textSize="@dimen/font_large"
 						android:textStyle="bold"
 						tools:text="@string/app_name" />
-					
+
 					<TextView
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
-						android:layout_weight="1"
 						android:layout_gravity="center_vertical"
+						android:layout_weight="1"
 						android:drawableEnd="@drawable/ic_noomee_small"
 						android:gravity="end"
 						android:text="@{item.numCount}"
 						android:textColor="@color/colorPrimaryDark"
 						android:textSize="@dimen/font_large"
 						android:textStyle="bold" />
-					
+
 				</LinearLayout>
-			
+
 			</android.support.v7.widget.CardView>
-		
+
 		</android.support.v7.widget.CardView>
-	
+
 	</android.support.constraint.ConstraintLayout>
-	
+
 </layout>

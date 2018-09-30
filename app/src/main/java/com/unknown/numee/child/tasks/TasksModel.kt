@@ -80,11 +80,12 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
-    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, newStatus: Status) {
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status) {
         tasksApiFirebase.updateSubTaskStatus(
                 userID,
                 taskID,
                 subTaskID,
+                subTaskIndex,
                 newStatus,
                 { presenter.onReceivedUpdateSubTaskStatusSuccess() },
                 { exception -> presenter.onError(exception) }

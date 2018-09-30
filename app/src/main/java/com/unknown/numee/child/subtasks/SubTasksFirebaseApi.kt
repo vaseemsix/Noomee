@@ -38,11 +38,12 @@ class SubTasksFirebaseApi {
             userID: String,
             taskID: String,
             subTaskID: String,
+            subTaskIndex: String,
             status: Status,
             onSuccess: (Status?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID).child("subTasks").child(subTaskID).child("status")
+        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID).child("subTasks").child(subTaskIndex).child("status")
 
         reference.setValue(status)
                 .addOnSuccessListener { onSuccess.invoke(status) }

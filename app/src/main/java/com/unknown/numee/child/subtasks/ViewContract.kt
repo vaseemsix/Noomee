@@ -22,5 +22,6 @@ interface ViewContract {
         val name: String
         val imageUrl: String
         val status: Int
+        val index: String
     }
 }
