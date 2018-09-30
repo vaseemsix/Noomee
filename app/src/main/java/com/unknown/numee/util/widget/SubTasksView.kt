@@ -10,6 +10,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.unknown.numee.R
 import com.unknown.numee.child.subtasks.ViewContract
 import com.unknown.numee.util.GlideApp
+import android.animation.ObjectAnimator
+import android.view.animation.Animation
+import android.view.animation.BounceInterpolator
+import android.view.animation.Interpolator
 
 
 class SubTasksView @JvmOverloads constructor(
@@ -71,6 +75,8 @@ class SubTasksView @JvmOverloads constructor(
             loadImage(currentImgView, itemList[0].imageUrl)
             loadImage(toDoImgView, itemList[1].imageUrl)
         }
+
+        doBounceAnimation(currentView)
     }
 
     private fun loadImage(view: ImageView, url: String) {
@@ -79,5 +85,14 @@ class SubTasksView @JvmOverloads constructor(
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(view)
+    }
+
+    private fun doBounceAnimation(targetView: View) {
+        val animator = ObjectAnimator.ofFloat(targetView, "translationZ", 0f, 30f, 0f)
+        animator.interpolator = BounceInterpolator()
+        animator.startDelay = 500
+        animator.duration = 1500
+        animator.repeatCount = Animation.INFINITE
+        animator.start()
     }
 }
