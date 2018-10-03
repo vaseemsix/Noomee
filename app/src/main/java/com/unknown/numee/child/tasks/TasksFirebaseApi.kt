@@ -115,7 +115,9 @@ class TasksFirebaseApi {
             reference.child(tasks[0]).updateChildren(mapOf(Pair("status", "CURRENT")))
 
             for (i in 1 until tasks.size) {
-                reference.child(tasks[i]).updateChildren(mapOf(Pair("status", "TO_DO")))
+                if (tasks[i].isNotEmpty()) {
+                    reference.child(tasks[i]).updateChildren(mapOf(Pair("status", "TO_DO")))
+                }
             }
 
             // reset collected nums
