@@ -45,7 +45,7 @@
 		app:contentPadding="@dimen/spacing_tiny"
 		app:cardBackgroundColor="@android:color/white"
 		app:cardCornerRadius="@dimen/spacing_small"
-		app:cardElevation="@dimen/elevation_normal"
+		app:cardElevation="@dimen/elevation_small"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"

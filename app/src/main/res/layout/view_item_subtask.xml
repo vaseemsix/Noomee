@@ -21,7 +21,7 @@
 			android:alpha="@{item.status == 1 ? 255 : 128, default=128}"
 			app:cardBackgroundColor="@android:color/white"
 			app:cardCornerRadius="@dimen/spacing_small"
-			app:cardElevation="@{item.status == 1 ? @dimen/elevation_normal : @dimen/elevation_none, default=@dimen/elevation_normal}"
+			app:cardElevation="@{item.status == 1 ? @dimen/elevation_small : @dimen/elevation_none, default=@dimen/elevation_small}"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"

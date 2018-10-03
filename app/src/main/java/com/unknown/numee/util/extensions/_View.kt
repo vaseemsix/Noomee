@@ -26,8 +26,15 @@ fun CardView.setContentPadding(padding: Float) {
 }
 
 @BindingAdapter("android:layout_marginStart")
-fun CardView.setMarginStart(margin: Float) {
+fun View.setMarginStart(margin: Float) {
     val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
     layoutParams.marginStart = margin.toInt()
+    this.layoutParams = layoutParams
+}
+
+@BindingAdapter("android:layout_marginEnd")
+fun View.setMarginEnd(margin: Float) {
+    val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+    layoutParams.marginEnd = margin.toInt()
     this.layoutParams = layoutParams
 }
