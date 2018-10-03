@@ -8,8 +8,8 @@
 	android:background="@color/colorPrimary">
 
 	<View
-		android:layout_width="48dp"
-		android:layout_height="24dp"
+		android:layout_width="24dp"
+		android:layout_height="48dp"
 		android:padding="@dimen/spacing_tiny"
 		android:background="@android:color/white"
 		app:layout_constraintTop_toTopOf="parent"
@@ -19,8 +19,8 @@
 	
 	<View
 		android:id="@+id/activity_main__view_switch"
-		android:layout_width="48dp"
-		android:layout_height="24dp"
+		android:layout_width="24dp"
+		android:layout_height="48dp"
 		android:padding="@dimen/spacing_tiny"
 		android:background="@android:color/white"
 		app:layout_constraintTop_toTopOf="parent"
