@@ -55,6 +55,15 @@ class MainActivity : BaseActivity() {
         EventManager.unregister(WrongPasswordEvent::class.java, wrongPasswordCallback)
     }
 
+    override fun onBackPressed() {
+        if (isPasswordOpened) {
+            isPasswordOpened = false
+            closePasswordScreen()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     private fun initReferences() {
         switchView = findViewById(R.id.activity_main__view_switch)
 
