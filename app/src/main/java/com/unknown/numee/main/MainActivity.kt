@@ -3,11 +3,15 @@ package com.unknown.numee.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.View
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.tasks.TasksFragment
 import com.unknown.numee.main.password.PasswordFragment
+import com.unknown.numee.util.event.Event
+import com.unknown.numee.util.event.EventCallback
+import com.unknown.numee.util.event.EventManager
+import com.unknown.numee.util.event.events.WrongPasswordEvent
 
 class MainActivity : BaseActivity() {
 
@@ -19,12 +23,19 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private lateinit var switchImgView: ImageView
+    private lateinit var switchView: View
 
     private val tasksFragment = TasksFragment.newInstance()
     private val passwordFragment = PasswordFragment.newInstance()
 
     private var isPasswordOpened = false
+    private val wrongPasswordCallback = object : EventCallback {
+        override fun onReceived(event: Event) {
+            if (event is WrongPasswordEvent) {
+                closePasswordScreen()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,29 +46,43 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.activity_main__content, tasksFragment)
                 .commit()
+
+        EventManager.register(WrongPasswordEvent::class.java, wrongPasswordCallback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventManager.unregister(WrongPasswordEvent::class.java, wrongPasswordCallback)
     }
 
     private fun initReferences() {
-        switchImgView = findViewById(R.id.activity_main__img_switch)
+        switchView = findViewById(R.id.activity_main__view_switch)
 
-        switchImgView.setOnClickListener {
+        switchView.setOnLongClickListener {
             if (isPasswordOpened) {
                 isPasswordOpened = false
-                switchImgView.rotation = 0f
-                supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_down_out)
-                        .remove(passwordFragment)
-                        .commit()
+                closePasswordScreen()
             } else {
                 isPasswordOpened = true
-                switchImgView.rotation = 180f
-                supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_down_out)
-                        .add(R.id.activity_main__content, passwordFragment)
-                        .commit()
+                openPasswordScreen()
             }
+            true
         }
+    }
+
+    private fun openPasswordScreen() {
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_down_out)
+                .add(R.id.activity_main__content, passwordFragment)
+                .commit()
+    }
+
+    private fun closePasswordScreen() {
+        supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_down_out)
+                .remove(passwordFragment)
+                .commit()
     }
 }
