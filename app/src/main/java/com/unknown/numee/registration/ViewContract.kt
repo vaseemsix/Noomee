@@ -9,6 +9,7 @@ interface ViewContract {
         fun setIQLevels(items: Array<String>)
         fun setIndependenceLevels(items: Array<String>)
         fun startMainActivity()
+        fun startSwitcherActivity()
     }
 
     interface Listener {

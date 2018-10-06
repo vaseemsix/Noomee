@@ -1,7 +1,9 @@
 package com.unknown.numee.login
 
 import com.google.firebase.auth.FirebaseUser
+import com.unknown.numee.R
 import com.unknown.numee.business.beans.User
+import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
@@ -27,8 +29,12 @@ class LoginPresenter(
     }
 
     override fun onSignUpWithEmailClicked() {
-        view.setLoadingVisibility(true)
-        view.startSignUpActivity(view.getEmail(), view.getPassword())
+        if (model.validatePassword(view.getPassword())) {
+            view.setLoadingVisibility(true)
+            view.startSignUpActivity(view.getEmail(), view.getPassword())
+        } else {
+            view.showError(view.getResource().getString(R.string.password_validation_message))
+        }
     }
 
     override fun onSignInWithEmailClicked() {
@@ -36,8 +42,21 @@ class LoginPresenter(
         view.startSignInActivity(view.getEmail(), view.getPassword())
     }
 
+    override fun onEmailSentSuccess() {
+        view.showError(view.getResource().getString(R.string.email_sent_message))
+    }
+
+    override fun onEmailSentFail(exception: Exception?) {
+        if (exception != null) {
+            if (exception.message != null) {
+                view.showError(exception.message.toString())
+            }
+        }
+    }
+
     override fun onSignUpSuccess(user: FirebaseUser) {
         model.firebaseUser = user
+        view.sendEmailVerification()
         model.getUser(user.uid)
     }
 
@@ -59,8 +78,20 @@ class LoginPresenter(
     override fun onReceivedGetUserSuccess(user: User?) {
         view.setLoadingVisibility(false)
         if (user != null) {
-            model.saveUserID(user.id)
-            view.startMainActivity()
+            if (model.firebaseUser!!.isEmailVerified) {
+                model.saveUserID(user.id)
+                if (isChildInfoExist()) {
+                    if (isUserTypeExist()) {
+                        view.startUserSwitcherActivity()
+                    } else {
+                        view.startMainActivity()
+                    }
+                } else {
+                    view.startRegistrationActivity()
+                }
+            } else {
+                onEmailSentSuccess()
+            }
         } else {
             val currentUser = User(
                     model.firebaseUser?.uid.orEmpty(),
@@ -71,7 +102,17 @@ class LoginPresenter(
         }
     }
 
+    private fun isUserTypeExist(): Boolean {
+        return Preferences.userType.isNotEmpty()
+    }
+
+    private fun isChildInfoExist(): Boolean {
+        return Preferences.childInfo
+    }
+
     override fun onReceivedSaveUserSuccess() {
-        view.startRegistrationActivity()
+        if (model.firebaseUser!!.isEmailVerified) {
+            view.startRegistrationActivity()
+        }
     }
 }

@@ -52,4 +52,7 @@ class LoginModel(context: Context) : GeneralModel(context), ModelContract.Model 
                      }))
     }
 
+    override fun validatePassword(password: String): Boolean {
+        return password.matches(Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%!\\-_?&])(?=\\S+\$).{8,}"))
+    }
 }

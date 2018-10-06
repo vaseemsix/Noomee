@@ -10,6 +10,7 @@ import android.widget.Button
 import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.switcher.SwitcherActivity
 import com.unknown.numee.util.widget.SpinnerView
 
 class RegistrationActivity : BaseActivity(), ViewContract.View {
@@ -44,7 +45,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     }
 
     override fun setRelations(items: Array<String>) {
-//        childRelation.setItems(items)
+        childRelation.setItems(items)
     }
 
     override fun setDiagnoses(items: Array<String>) {
@@ -68,8 +69,13 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         MainActivity.startActivity(this)
     }
 
+    override fun startSwitcherActivity() {
+        finish()
+        SwitcherActivity.startActivity(this)
+    }
+
     private fun initReferences() {
-//        childRelation = findViewById(R.id.activity_registration__edit_child_relation)
+        childRelation = findViewById(R.id.activity_registration__edit_child_relation)
         childName = findViewById(R.id.activity_registration__edit_child_name)
         childAge = findViewById(R.id.activity_registration__edit_child_age)
         childDiagnose = findViewById(R.id.activity_registration__edit_diagnose)
@@ -106,11 +112,11 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
             }
 
         })
-//        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
-//            override fun onItemClicked(position: Int) {
-//                presenter.onRelationSelected(position)
-//            }
-//        })
+        childRelation.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onRelationSelected(position)
+            }
+        })
         childDiagnose.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
             override fun onItemClicked(position: Int) {
                 presenter.onDiagnoseSelected(position)

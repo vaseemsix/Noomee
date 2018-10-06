@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".main.MainActivity" />
         <activity
             android:name=".splashscreen.SplashScreenActivity"
@@ -31,6 +31,7 @@
             android:theme="@style/RewardTheme" />
         <activity android:name=".parent.template.ParentActivity"/>
         <activity android:name=".switcher.SwitcherActivity"/>
+        <activity android:name=".language.LanguageSelectionActivity" />
     </application>
 
 </manifest>

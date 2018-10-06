@@ -12,6 +12,7 @@ interface ModelContract {
         fun saveUserID(ID: String)
         fun getUser(ID: String)
         fun saveUser(user: User)
+        fun validatePassword(password: String): Boolean
     }
 
     interface Listener : GeneralModelContract.GeneralListener {

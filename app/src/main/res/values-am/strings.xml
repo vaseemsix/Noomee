@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Noomee</string>
-	<string name="app_description">Guide to independence for your KID</string>
+	<string name="app_description">Ձեր երեխայի համար անկախության ուղեցույց</string>
 	<string name="sign_in_with_email">Մուտք գործել</string>
 	<string name="sign_up_with_email">Գրանցվել</string>
 	<string name="hint_email">Էլ. հասցե</string>
@@ -35,4 +35,19 @@
 	
 	<string name="nums">Նում</string>
 	<string name="cont">Շարունակել</string>
+    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
+    <string name="email_sent_message">Please check your email for verification link</string>
+
+	<!-- Language Selection Activity -->
+	<string name="select_language">ԸՆՏՐԵԼ ԼԵԶՈՒՆ</string>
+	<string name="language">ԼԵԶՈՒ</string>
+
+	<!-- Parent Activity Part -->
+	<string name="parent">Ծնող</string>
+	<string name="child">Մուտք գործել երեխաի հատված</string>
+
+	<string name="schedule_name_sample">Գրաֆիկի անունը</string>
+	<string name="set_days">Սահմանել օրեր</string>
+	<string name="day_schedule">Օրակարգ</string>
+	<string name="day_schedule_templates">Օրակարգի օրինակը</string>
 </resources>

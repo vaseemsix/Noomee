@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<array name="diagnoses">
+		<item>Trouble autistique</item>
+		<item>TDAH</item>
+		<item>Le syndrome d\'asperger</item>
+		<item>Trouble envahissant du développement</item>
+		<item>Autre</item>
+	</array>
+
+	<array name="genders">
+		<item>Masculin</item>
+		<item>Feminin</item>
+	</array>
+	
+	<array name="relations">
+		<item>Mère</item>
+		<item>Père</item>
+		<item>Thérapeute</item>
+		<item>Soignant</item>
+		<item>Autre</item>
+	</array>
+	
+	<array name="speak">
+		<item>Oui</item>
+		<item>Non</item>
+		<item>Discours répétitif</item>
+		<item>Autre</item>
+	</array>
+	
+	<array name="iq_levels">
+		<item>140 ans et plus Génie ou proche génie</item>
+		<item>120-140 intelligence très supérieure</item>
+		<item>110-120 Intelligence supérieure</item>
+		<item>90-110 Intelligence normale ou moyenne</item>
+		<item>80-90 Matité</item>
+		<item>Déficit limite 70-80</item>
+		<item>Au-dessous de 70</item>
+	</array>
+	
+	<array name="independence_levels">
+		<item>Tâches simples</item>
+		<item>50/50</item>
+		<item>Avec invite</item>
+		<item>Impossible de faire des tâches seul</item>
+	</array>
+
+
+	<!-- ************************ -->
+	<!-- Language Choose Activity -->
+	<!-- ************************ -->
+
+	<!-- Languages List That Is Visible For User During Language Selection Process -->
+	<string-array name="languages">
+		<item>Anglais</item>
+		<item>Arménien</item>
+		<item>Français</item>
+		<!--<item>Russian</item>-->
+	</string-array>
+
+	<!-- Languages List That Are Used For Setting Up Language In The Resource File -->
+	<string-array name="languages_resources">
+		<item>en</item>
+		<item>am</item>
+		<item>fr</item>
+		<!--<item>ru</item>-->
+	</string-array>
+	
+</resources>

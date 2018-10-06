@@ -22,15 +22,15 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 		
-		<!--<com.unknown.numee.util.widget.SpinnerView-->
-		<!--android:id="@+id/activity_registration__edit_child_relation"-->
-		<!--android:layout_width="0dp"-->
-		<!--android:layout_height="wrap_content"-->
-		<!--android:layout_marginTop="@dimen/spacing_normal"-->
-		<!--app:title="@string/child_relation"-->
-		<!--app:layout_constraintEnd_toEndOf="parent"-->
-		<!--app:layout_constraintStart_toStartOf="parent"-->
-		<!--app:layout_constraintTop_toBottomOf="@id/activity_registration__txt_title" />-->
+		<com.unknown.numee.util.widget.SpinnerView
+			android:id="@+id/activity_registration__edit_child_relation"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:title="@string/child_relation"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__txt_title" />
 		
 		<android.support.design.widget.TextInputLayout
 			android:id="@+id/activity_registration__edit_child_name"
@@ -39,7 +39,7 @@
 			android:layout_marginTop="@dimen/spacing_normal"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/activity_registration__txt_title">
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_child_relation">
 			
 			<android.support.design.widget.TextInputEditText
 				android:layout_width="match_parent"

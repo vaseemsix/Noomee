@@ -2,6 +2,7 @@ package com.unknown.numee.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.support.design.widget.TextInputLayout
 import android.view.View
@@ -13,6 +14,7 @@ import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.registration.RegistrationActivity
+import com.unknown.numee.switcher.SwitcherActivity
 
 
 class LoginActivity : BaseActivity(), ViewContract.View {
@@ -35,7 +37,7 @@ class LoginActivity : BaseActivity(), ViewContract.View {
     private lateinit var presenter: ViewContract.Listener
 
     private var isSignInVisible = false
-    private val authenticator = FirebaseAuth.getInstance();
+    private val authenticator = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +87,10 @@ class LoginActivity : BaseActivity(), ViewContract.View {
 
     override fun getPassword(): String {
         return passwordTextInput.editText?.text.toString()
+    }
+
+    override fun getResource(): Resources {
+        return resources
     }
 
     override fun showSignInView() {
@@ -141,9 +147,25 @@ class LoginActivity : BaseActivity(), ViewContract.View {
                 })
     }
 
+    override fun sendEmailVerification() {
+        authenticator.currentUser!!.sendEmailVerification()
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        presenter.onEmailSentSuccess()
+                    } else {
+                        presenter.onEmailSentFail(task.exception)
+                    }
+                }
+    }
+
     override fun startRegistrationActivity() {
         finish()
         RegistrationActivity.startActivity(this)
+    }
+
+    override fun startUserSwitcherActivity() {
+        finish()
+        SwitcherActivity.startActivity(this)
     }
 
     override fun startMainActivity() {

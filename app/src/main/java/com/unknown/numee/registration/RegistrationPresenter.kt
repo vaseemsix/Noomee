@@ -1,6 +1,7 @@
 package com.unknown.numee.registration
 
 import com.unknown.numee.business.beans.*
+import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
@@ -34,7 +35,7 @@ class RegistrationPresenter(
     }
 
     override fun onRelationSelected(position: Int) {
-
+        model.childInfo?.relation = model.getRelationItems()[position]
     }
 
     override fun onDiagnoseSelected(position: Int) {
@@ -69,6 +70,15 @@ class RegistrationPresenter(
     }
 
     override fun onReceivedSaveUserSuccess() {
-        view.startMainActivity()
+        Preferences.childInfo = true
+        if (isUserTypeExist()) {
+            view.startMainActivity()
+        } else {
+            view.startSwitcherActivity()
+        }
+    }
+
+    private fun isUserTypeExist(): Boolean {
+        return Preferences.userType.isNotEmpty()
     }
 }

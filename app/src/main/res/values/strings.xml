@@ -2,45 +2,44 @@
 <resources>
     <string name="app_name">Noomee</string>
     <string name="app_description">Guide to independence for your KID</string>
-    <string name="sign_in_with_email">Մուտք գործել</string>
-    <string name="sign_up_with_email">Գրանցվել</string>
-    <string name="hint_email">Էլ. հասցե</string>
-    <string name="hint_password">Գաղտնաբառ</string>
-    <string name="hint_name">Անուն</string>
+    <string name="sign_in_with_email">Sign In</string>
+    <string name="sign_up_with_email">Registration</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Name</string>
 
-    <string name="title_registration">Երեխայի մասին</string>
-    <string name="child_relation">Կապը երեխայի հետ</string>
-    <string name="child_name">Երեխայի անունը</string>
-    <string name="child_age">Երեխայի տարիքը</string>
-    <string name="diagnose">Ախտորոշումը</string>
-    <string name="can_child_speak">Կարող է երեխան խոսել՞</string>
-    <string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
-    <string name="independence_level">Ինքնուրույն լինելու աստիճանը</string>
-    <string name="promise">*Ուշադրություն դարձրեք, որ խոսք եք տալիս NOOMEE-ին,
-		յուրաքանչյուր օր առաջադրանքների ավարտից հետո երեխային տալ փոքրիկ նվեր-խրախուսանք:
-		Այն, ինչ նա սիրում է ամենից շատ և կաշխատի դրա համար հաղթահարելով դժվար առաջադրանքները:
-		Օրինակ, եթե երեխան սիրում է «Կինդեր», ապա սա օգտագործում ենք որպես խրախուսանքի միջոց։
-		Նշենք, որ Դուք պարտավորվում եք սահամանափակել «Կինդեր» ստանալը այլ առիթներով,
-		որպեսզի երեխան հստակ հասկանա որ դա խրախուսանքի միջոց է։ Երեխան պետք է նաև հստակ հասկանա,
-		որ յուրաքանչյուր խնդիրից հետո նա ստանում է «աստղիկներ», որոնք օրվա ավարտին դառնում են մրցանակ։</string>
-    <string name="save">Պահպանել</string>
+    <string name="title_registration">General information of a child</string>
+    <string name="child_relation">Relation to the child</string>
+    <string name="child_name">Child\’s name</string>
+    <string name="child_age">Age</string>
+    <string name="diagnose">Diagnosis</string>
+    <string name="can_child_speak">Can child speak?</string>
+    <string name="iq_level">IQ level / if there is any/</string>
+    <string name="independence_level">Level of independence</string>
+    <string name="promise">*Note, that you are giving a promise to noomee to give a small prize-encouragement to your child in the end of the day after finishing daily tasks. What he/she likes the most and will work hard for it to overcome difficult tasks. For example, if a child loves "Kinder", we use this as an encouragement. Remember that you are obligated to restrict the "Kinder" on the other occasions, so the child understands that it is a means of encouragement. The child must also clearly understands that after each task he/she receives "nums", which at the end of the day becomes a prize.</string>
+    <string name="save">Save</string>
 
-    <string name="welcome_child">Բարի գալուստ, %s</string>
-    <string name="welcome">Բարի գալուստ</string>
+    <string name="welcome_child">Welcome, %s</string>
+    <string name="welcome">Welcome</string>
 
-    <string name="nums">Նում</string>
-    <string name="cont">Շարունակել</string>
-    <string name="good_night">Բարի Գիշեր</string>
-    <string name="you_have_x_num">Դուք հավաքել եք \n\n %d \n\n նումեր!</string>
+    <string name="nums">Noom</string>
+    <string name="cont">Continue</string>
+    <string name="good_night">Good Night</string>
+    <string name="you_have_x_num">You have \n\n %d \n\n nooms!</string>
 	
-	<string name="submit">Մուտք</string>
-	<string name="wrong_password">Սխալ գաղտնաբառ</string>
+	<string name="submit">Sign In</string>
+	<string name="wrong_password">Wrong Password</string>
+    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
+    <string name="email_sent_message">Please check your email for verification link</string>
+
+    <!-- Language Selection Activity -->
+    <string name="select_language">SELECT LANGUAGE</string>
+    <string name="language">LANGUAGE</string>
 	
     <!-- Parent Activity Part -->
-    <string name="parent">Ծնող</string>
-    <string name="child">Երեխա</string>
+    <string name="parent">PARENT CONTROL</string>
+    <string name="child">ENTER TO CHILD PART</string>
 
-    <string name="use_device_for">Հեռախոսի օգտագործող</string>
     <string name="schedule_name_sample">Schedule Name</string>
     <string name="set_days">SET DAYS</string>
     <string name="day_schedule">DAY SCHEDULE</string>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Noomee</string>
+	<string name="app_description">Guide to independence for your KID</string>
+	<string name="sign_in_with_email">Մուտք գործել</string>
+	<string name="sign_up_with_email">Գրանցվել</string>
+	<string name="hint_email">Էլ. հասցե</string>
+	<string name="hint_password">Գաղտնաբառ</string>
+	<string name="hint_name">Անուն</string>
+	
+	<string name="title_registration">Երեխայի մասին</string>
+	<string name="child_relation">Կապը երեխայի հետ</string>
+	<string name="child_name">Երեխայի անունը</string>
+	<string name="child_age">Երեխայի տարիքը</string>
+	<string name="diagnose">Diagnostic</string>
+	<string name="can_child_speak">Կարող է երեխան խոսել՞</string>
+	<string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
+	<string name="independence_level">Ինքնուրույն լինելու աստիճանը</string>
+	<string name="promise">*Notez que vous faites la promesse à noomee de donner un petit encouragement à votre enfant à la fin de la journée après avoir terminé les tâches quotidiennes. Ce qu’il / elle aime le plus et travaillera dur pour surmonter les tâches difficiles. Par exemple, si un enfant aime "Kinder", nous l\’utilisons comme un encouragement. N\'oubliez pas que vous êtes obligé de restreindre le "Kinder" les autres fois, afin que l\'enfant comprenne qu\'il s\'agit d\'un moyen d\'encouragement. L\'enfant doit également comprendre clairement qu\'après chaque tâche, il / elle reçoit un "num", ce qui en fin de compte devient un prix.</string>
+	<string name="save">Պահպանել</string>
+	
+	<string name="welcome_child">Բարի գալուստ, %s</string>
+	<string name="welcome">Բարի գալուստ</string>
+	<string name="good_night">Բարի Գիշեր</string>
+	<string name="you_have_x_num">Դուք հավաքել եք \n\n %d \n\n նումեր!</string>
+	
+	<string name="submit">Մուտք</string>
+	<string name="wrong_password">Սխալ գաղտնաբառ</string>
+	
+	<string name="nums">Նում</string>
+	<string name="cont">Շարունակել</string>
+    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
+    <string name="email_sent_message">Please check your email for verification link</string>
+
+	<!-- Language Selection Activity -->
+	<string name="select_language">SELECT LANGUAGE</string>
+	<string name="language">LANGUAGE</string>
+
+	<!-- Parent Activity Part -->
+	<string name="parent">PARENT CONTROL</string>
+	<string name="child">ENTER TO CHILD PART</string>
+
+	<string name="schedule_name_sample">Schedule Name</string>
+	<string name="set_days">SET DAYS</string>
+	<string name="day_schedule">DAY SCHEDULE</string>
+	<string name="day_schedule_templates">Day Schedule Templates</string>
+</resources>
