@@ -10,6 +10,7 @@ object Preferences {
 
     private const val USER_ID = "user_id"
     private const val USER_TYPE = "user_type"
+    private const val USER_TOKEN = "user_token"
     private const val LANGUAGE = "language"
     private const val CHILD_INFO = "childInfo"
 
@@ -28,6 +29,10 @@ object Preferences {
     var userType: String
         get() = sharedPreferences.getString(USER_TYPE, "")
         set(value) = editor.putString(USER_TYPE, value).apply()
+
+    var userToken: String
+        get() = sharedPreferences.getString(USER_TOKEN, "")
+        set(value) = editor.putString(USER_TOKEN, value).apply()
 
     var language: String
         get() = sharedPreferences.getString(LANGUAGE, "")

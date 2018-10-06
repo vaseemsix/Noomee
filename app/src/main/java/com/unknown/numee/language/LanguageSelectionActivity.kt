@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.login.LoginActivity
-import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.widget.SpinnerView
 
 class LanguageSelectionActivity : BaseActivity(), ViewContract.View {
@@ -28,8 +27,6 @@ class LanguageSelectionActivity : BaseActivity(), ViewContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language_selection)
-
-        Preferences.initialize(this)
 
         initLayout()
         initPresenter()
