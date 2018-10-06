@@ -29,9 +29,9 @@
         <activity
             android:name=".child.reward.RewardActivity"
             android:theme="@style/RewardTheme" />
-        <activity android:name=".parent.template.ParentActivity"/>
         <activity android:name=".switcher.SwitcherActivity"/>
         <activity android:name=".language.LanguageSelectionActivity" />
+        <activity android:name=".parent.template.TemplateActivity" />
     </application>
 
 </manifest>

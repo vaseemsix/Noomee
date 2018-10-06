@@ -8,6 +8,8 @@ import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.tasks.TasksFragment
 import com.unknown.numee.main.password.PasswordFragment
+import com.unknown.numee.parent.schedules.SchedulesFragment
+import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.Event
 import com.unknown.numee.util.event.EventCallback
 import com.unknown.numee.util.event.EventManager
@@ -27,6 +29,7 @@ class MainActivity : BaseActivity() {
 
     private val tasksFragment = TasksFragment.newInstance()
     private val passwordFragment = PasswordFragment.newInstance()
+    private val schedulesFragment = SchedulesFragment.newInstance()
 
     private var isPasswordOpened = false
     private val wrongPasswordCallback = object : EventCallback {
@@ -41,13 +44,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initReferences()
-
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_main__content, tasksFragment)
-                .commit()
-
-        EventManager.register(WrongPasswordEvent::class.java, wrongPasswordCallback)
+        if (isChildUserType()) {
+            useChildView()
+        } else {
+            useParentView()
+        }
     }
 
     override fun onDestroy() {
@@ -62,6 +63,10 @@ class MainActivity : BaseActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun isChildUserType(): Boolean {
+        return Preferences.userType == "CHILD"
     }
 
     private fun initReferences() {
@@ -93,5 +98,21 @@ class MainActivity : BaseActivity() {
                 .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_down_out)
                 .remove(passwordFragment)
                 .commit()
+    }
+
+    private fun useParentView() {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.activity_main__content, schedulesFragment)
+                .commit()
+    }
+
+    private fun useChildView() {
+        initReferences()
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.activity_main__content, tasksFragment)
+                .commit()
+
+        EventManager.register(WrongPasswordEvent::class.java, wrongPasswordCallback)
     }
 }

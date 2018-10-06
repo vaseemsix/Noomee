@@ -50,4 +50,6 @@
 	<string name="set_days">Սահմանել օրեր</string>
 	<string name="day_schedule">Օրակարգ</string>
 	<string name="day_schedule_templates">Օրակարգի օրինակը</string>
+
+	<string name="new_template">Նոր շաբլոն +</string>
 </resources>
