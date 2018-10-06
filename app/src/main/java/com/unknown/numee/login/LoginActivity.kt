@@ -10,9 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.main.MainActivity
 import com.unknown.numee.registration.RegistrationActivity
 import com.unknown.numee.switcher.SwitcherActivity
 
@@ -121,7 +121,7 @@ class LoginActivity : BaseActivity(), ViewContract.View {
 
     override fun startSignUpActivity(email: String, password: String) {
         authenticator.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, { task ->
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = authenticator.currentUser
                         user?.let {
@@ -130,12 +130,12 @@ class LoginActivity : BaseActivity(), ViewContract.View {
                     } else {
                         presenter.onSignInError(task.exception?.message.orEmpty())
                     }
-                })
+                }
     }
 
     override fun startSignInActivity(email: String, password: String) {
         authenticator.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, { task ->
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = authenticator.currentUser
                         user?.let {
@@ -144,7 +144,7 @@ class LoginActivity : BaseActivity(), ViewContract.View {
                     } else {
                         presenter.onSignInError(task.exception?.message.orEmpty())
                     }
-                })
+                }
     }
 
     override fun sendEmailVerification() {
@@ -173,7 +173,7 @@ class LoginActivity : BaseActivity(), ViewContract.View {
         MainActivity.startActivity(this)
     }
 
-    override fun showError(message: String) {
+    override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }

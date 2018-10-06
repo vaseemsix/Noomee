@@ -8,7 +8,6 @@ import com.unknown.numee.business.command.SaveUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.GeneralModel
-import java.lang.Exception
 
 
 class LoginModel(context: Context) : GeneralModel(context), ModelContract.Model {
@@ -50,6 +49,10 @@ class LoginModel(context: Context) : GeneralModel(context), ModelContract.Model 
                          }
 
                      }))
+    }
+
+    override fun getStringById(resId: Int): String {
+        return context.resources.getString(resId)
     }
 
     override fun validatePassword(password: String): Boolean {

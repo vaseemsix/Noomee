@@ -2,7 +2,6 @@ package com.unknown.numee.login
 
 import android.content.res.Resources
 import com.google.firebase.auth.FirebaseUser
-import java.lang.Exception
 
 
 interface ViewContract {
@@ -22,7 +21,7 @@ interface ViewContract {
         fun sendEmailVerification()
         fun startRegistrationActivity()
         fun startMainActivity()
-        fun showError(message: String)
+        fun showMessage(message: String)
     }
 
     interface Listener {
