@@ -33,12 +33,12 @@
     <string name="email_sent_message">Please check your email for verification link</string>
 
 	<!-- Language Selection Activity -->
-	<string name="select_language">SELECT LANGUAGE</string>
+	<string name="select_language">select language</string>
 	<string name="language">LANGUAGE</string>
 
 	<!-- Parent Activity Part -->
-	<string name="parent">PARENT CONTROL</string>
-	<string name="child">ENTER TO CHILD PART</string>
+	<string name="parent">Parent Control</string>
+	<string name="child">Enter to child part</string>
 
 	<string name="schedule_name_sample">Schedule Name</string>
 	<string name="set_days">SET DAYS</string>

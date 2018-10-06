@@ -35,11 +35,11 @@
 	
 	<string name="nums">Նում</string>
 	<string name="cont">Շարունակել</string>
-    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
-    <string name="email_sent_message">Please check your email for verification link</string>
+    <string name="password_validation_message">Գաղտնաբառը պետք է պարունակի տառեր, թվեր և սիմվոլներ, և պետք է ունենա առնվազն 8 սիմվոլ</string>
+    <string name="email_sent_message">Խնդրում ենք, ստուգել ձեր էլ. հասցեն` վավերականացման հղման համար</string>
 
 	<!-- Language Selection Activity -->
-	<string name="select_language">ԸՆՏՐԵԼ ԼԵԶՈՒՆ</string>
+	<string name="select_language">ընտրել լեզուն</string>
 	<string name="language">ԼԵԶՈՒ</string>
 
 	<!-- Parent Activity Part -->
