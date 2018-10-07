@@ -9,6 +9,7 @@ import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.tasks.TasksFragment
 import com.unknown.numee.main.password.PasswordFragment
 import com.unknown.numee.parent.schedules.SchedulesFragment
+import com.unknown.numee.switcher.SwitcherActivity
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.Event
 import com.unknown.numee.util.event.EventCallback
@@ -50,6 +51,8 @@ class MainActivity : BaseActivity() {
         } else {
             useParentView()
         }
+
+        EventManager.register(WrongPasswordEvent::class.java, wrongPasswordCallback)
     }
 
     override fun onDestroy() {
@@ -78,8 +81,12 @@ class MainActivity : BaseActivity() {
                 isPasswordOpened = false
                 closePasswordScreen()
             } else {
-                isPasswordOpened = true
-                openPasswordScreen()
+                if (isChildUserType()) {
+                    isPasswordOpened = true
+                    openPasswordScreen()
+                } else {
+                    startSwitcherActivity()
+                }
             }
             true
         }
@@ -111,7 +118,9 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.activity_main__content, tasksFragment)
                 .commit()
+    }
 
-        EventManager.register(WrongPasswordEvent::class.java, wrongPasswordCallback)
+    private fun startSwitcherActivity() {
+        SwitcherActivity.startActivity(applicationContext)
     }
 }
