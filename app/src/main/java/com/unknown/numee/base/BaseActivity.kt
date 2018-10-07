@@ -17,7 +17,7 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         super.setContentView(R.layout.activity_base)
 
-        Preferences.initialize(this)
+//        Preferences.initialize(this)
 
         containerView = findViewById(R.id.activity_base__container)
         contentView = findViewById(R.id.activity_base__content)
