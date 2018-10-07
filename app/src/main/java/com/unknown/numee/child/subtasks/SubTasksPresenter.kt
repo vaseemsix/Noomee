@@ -91,7 +91,8 @@ class SubTasksPresenter(
                             name = subTasks[currentSubTaskIndex].name,
                             imageUrl = subTasks[currentSubTaskIndex].imageUrl,
                             status = subTasks[currentSubTaskIndex].status.ordinal,
-                            index = currentSubTaskIndex.toString()
+                            index = currentSubTaskIndex.toString(),
+                            doAnimation = !checkIsToiledOrWashing(task.name)
                     )
             )
 
@@ -102,7 +103,8 @@ class SubTasksPresenter(
                                 name = subTasks[currentSubTaskIndex + 1].name,
                                 imageUrl = subTasks[currentSubTaskIndex + 1].imageUrl,
                                 status = subTasks[currentSubTaskIndex + 1].status.ordinal,
-                                index = (currentSubTaskIndex + 1).toString()
+                                index = (currentSubTaskIndex + 1).toString(),
+                                doAnimation = !checkIsToiledOrWashing(task.name)
                         )
                 )
             }
@@ -145,5 +147,15 @@ class SubTasksPresenter(
             EventManager.send(TaskFinishedEvent(it.id))
             view.showRewardActivity(it.numCount)
         }
+    }
+
+    // this is temporarily solution for testing purposes
+    private fun checkIsToiledOrWashing(name: String): Boolean {
+        return name.startsWith("toilet", true)
+                || name.startsWith("զուգ", true)
+                || name.startsWith("Aller", true)
+                || name.startsWith("wash", true)
+                || name.startsWith("լվացվել", true)
+                || name.startsWith("se laver", true)
     }
 }

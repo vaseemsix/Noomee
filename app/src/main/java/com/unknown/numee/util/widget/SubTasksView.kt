@@ -78,7 +78,9 @@ class SubTasksView @JvmOverloads constructor(
             loadImage(toDoImgView, itemList[1].imageUrl)
         }
 
-        doBounceAnimation(currentView)
+        if (itemList[0].doAnimation) {
+            doBounceAnimation(currentView)
+        }
     }
 
     private fun loadImage(view: ImageView, url: String) {

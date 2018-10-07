@@ -24,5 +24,6 @@ interface ViewContract {
         val imageUrl: String
         val status: Int
         val index: String
+        val doAnimation: Boolean
     }
 }
