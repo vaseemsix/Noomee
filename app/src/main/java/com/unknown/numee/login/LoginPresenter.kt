@@ -78,6 +78,7 @@ class LoginPresenter(
             showEmailSentMessage()
             return
         }
+        var userID = ""
         if (user != null) {
             model.saveUserID(user.id)
             if (isChildInfoExist()) {
@@ -89,6 +90,7 @@ class LoginPresenter(
             } else {
                 view.startRegistrationActivity()
             }
+            userID = user.id
         } else {
             val currentUser = User(
                     model.firebaseUser?.uid.orEmpty(),
@@ -96,7 +98,10 @@ class LoginPresenter(
                     view.getName())
             model.saveUserID(currentUser.id)
             model.saveUser(currentUser)
+            userID = currentUser.id
         }
+
+        model.saveUserToken(userID, model.userToken)
     }
 
     override fun onReceivedSaveUserSuccess() {

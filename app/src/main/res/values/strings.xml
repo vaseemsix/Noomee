@@ -29,16 +29,16 @@
 	
 	<string name="submit">Sign In</string>
 	<string name="wrong_password">Wrong Password</string>
-    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
+    <string name="password_validation_message">Password should contain letters, numbers and symbols, not less than 8 characters</string>
     <string name="email_sent_message">Please check your email for verification link</string>
 
     <!-- Language Selection Activity -->
-    <string name="select_language">SELECT LANGUAGE</string>
+    <string name="select_language">select language</string>
     <string name="language">LANGUAGE</string>
 	
     <!-- Parent Activity Part -->
-    <string name="parent">PARENT CONTROL</string>
-    <string name="child">ENTER TO CHILD PART</string>
+    <string name="parent">Parent Control</string>
+    <string name="child">Enter to child part</string>
 
     <string name="schedule_name_sample">Schedule Name</string>
     <string name="set_days">SET DAYS</string>

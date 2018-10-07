@@ -6,6 +6,7 @@ import com.unknown.numee.business.beans.User
 import com.unknown.numee.business.command.GetUser
 import com.unknown.numee.business.command.SaveUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
+import com.unknown.numee.child.push.ChildPushNotificationFirebaseApi
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.GeneralModel
 
@@ -14,7 +15,11 @@ class LoginModel(context: Context) : GeneralModel(context), ModelContract.Model 
 
     lateinit var presenter: ModelContract.Listener
 
+    private val childPushNotificationFirebaseApi = ChildPushNotificationFirebaseApi()
+
     override var firebaseUser: FirebaseUser? = null
+    override val userToken: String
+        get() = Preferences.userToken
 
     override fun saveUserID(ID: String) {
         Preferences.userID = ID
@@ -49,6 +54,13 @@ class LoginModel(context: Context) : GeneralModel(context), ModelContract.Model 
                          }
 
                      }))
+    }
+
+    override fun saveUserToken(ID: String, token: String) {
+        childPushNotificationFirebaseApi.setUserToken(
+                ID,
+                token
+        )
     }
 
     override fun getStringById(resId: Int): String {

@@ -9,11 +9,15 @@ import com.unknown.numee.util.mvp.GeneralModelContract
 interface ModelContract {
     interface Model : GeneralModelContract.GeneralModel {
         var firebaseUser: FirebaseUser?
+        val userToken: String
         fun saveUserID(ID: String)
-        fun getUser(ID: String)
-        fun saveUser(user: User)
         fun getStringById(@StringRes resId: Int): String
         fun validatePassword(password: String): Boolean
+
+        // async
+        fun getUser(ID: String)
+        fun saveUser(user: User)
+        fun saveUserToken(ID: String, token: String)
     }
 
     interface Listener : GeneralModelContract.GeneralListener {
