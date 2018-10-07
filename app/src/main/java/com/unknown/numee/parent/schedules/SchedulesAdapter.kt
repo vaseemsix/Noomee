@@ -1,12 +1,10 @@
 package com.unknown.numee.parent.schedules
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.unknown.numee.BR
+import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
 
@@ -31,16 +29,11 @@ class SchedulesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        DataBindingUtil.bind<ViewDataBinding?>(holder.itemView)?.let {
-            holder.bind(it, itemList[position], onItemClickListener)
-        }
+        holder.textView.text = this.itemList[position].name
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(viewDataBinding: ViewDataBinding, item: Schedule, onItemClickListener: OnItemClickListener) {
-            viewDataBinding.setVariable(BR.item, item)
-            viewDataBinding.setVariable(BR.onClickListener, onItemClickListener)
-        }
+        val textView: TextView = view.findViewById(R.id.template_schedule_item_text_view)
     }
 
     interface OnItemClickListener {

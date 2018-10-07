@@ -37,10 +37,9 @@
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:id="@+id/template_item_text_view"
+        android:id="@+id/template_schedule_item_text_view"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textAlignment="center"
-        android:text="Template"
         android:textColor="@android:color/black"/>
 </LinearLayout>
