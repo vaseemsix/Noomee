@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.unknown.numee.main.MainActivity
 import com.unknown.numee.R
+import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.login.LoginActivity
 import com.unknown.numee.registration.RegistrationActivity
 import com.unknown.numee.language.LanguageSelectionActivity
@@ -17,13 +18,12 @@ import com.unknown.numee.util.GlideApp
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.EventManager
 
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Preferences.initialize(this)
         EventManager.initialize(this)
 
         if (isUserLoggedIn()) {

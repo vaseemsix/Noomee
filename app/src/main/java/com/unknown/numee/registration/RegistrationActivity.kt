@@ -27,6 +27,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
     private lateinit var childName: TextInputLayout
     private lateinit var childAge: TextInputLayout
     private lateinit var childDiagnose: SpinnerView
+    private lateinit var childGender: SpinnerView
     private lateinit var childSpeak: SpinnerView
     private lateinit var childIQLevel: SpinnerView
     private lateinit var childIndependenceLevel: SpinnerView
@@ -50,6 +51,10 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
 
     override fun setDiagnoses(items: Array<String>) {
         childDiagnose.setItems(items)
+    }
+
+    override fun setGenders(items: Array<String>) {
+        childGender.setItems(items)
     }
 
     override fun setSpeak(items: Array<String>) {
@@ -79,6 +84,7 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childName = findViewById(R.id.activity_registration__edit_child_name)
         childAge = findViewById(R.id.activity_registration__edit_child_age)
         childDiagnose = findViewById(R.id.activity_registration__edit_diagnose)
+        childGender = findViewById(R.id.activity_registration__edit_gender)
         childSpeak = findViewById(R.id.activity_registration__edit_speak)
         childIQLevel = findViewById(R.id.activity_registration__edit_iq_level)
         childIndependenceLevel = findViewById(R.id.activity_registration__edit_independence_level)
@@ -120,6 +126,11 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         childDiagnose.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
             override fun onItemClicked(position: Int) {
                 presenter.onDiagnoseSelected(position)
+            }
+        })
+        childGender.setOnItemClickListener(object : SpinnerView.OnItemClickListener {
+            override fun onItemClicked(position: Int) {
+                presenter.onGenderSelected(position)
             }
         })
         childSpeak.setOnItemClickListener(object : SpinnerView.OnItemClickListener {

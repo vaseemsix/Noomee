@@ -7,7 +7,7 @@ enum class Status {
 }
 
 data class Task(
-        val id: String = "",
+        var id: String = "",
         val name: String = "",
         val description: String = "",
         val status: Status = Status.TO_DO,

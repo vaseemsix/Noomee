@@ -46,4 +46,5 @@
     <string name="day_schedule_templates">Day Schedule Templates</string>
 
     <string name="new_template">New\nTemplate\n+</string>
+    <string name="gender">Gender</string>
 </resources>

@@ -67,6 +67,16 @@
 				android:textSize="@dimen/font_normal" />
 		
 		</android.support.design.widget.TextInputLayout>
+
+		<com.unknown.numee.util.widget.SpinnerView
+			android:id="@+id/activity_registration__edit_gender"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_normal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_child_age"
+			app:title="@string/gender" />
 		
 		
 		<com.unknown.numee.util.widget.SpinnerView
@@ -76,7 +86,7 @@
 			android:layout_marginTop="@dimen/spacing_normal"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_child_age"
+			app:layout_constraintTop_toBottomOf="@id/activity_registration__edit_gender"
 			app:title="@string/diagnose" />
 		
 		<com.unknown.numee.util.widget.SpinnerView

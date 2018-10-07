@@ -13,6 +13,7 @@ class RegistrationPresenter(
     override fun onCreate() {
         view.setRelations(model.getRelationItems())
         view.setDiagnoses(model.getDiagnoseItems())
+        view.setGenders(model.getGenderDisplayItems())
         view.setSpeak(model.getSpeakItems())
         view.setIQLevels(model.getIQLevelItems())
         view.setIndependenceLevels(model.getIndependenceLevelItems())
@@ -42,6 +43,10 @@ class RegistrationPresenter(
         model.childInfo?.diagnose = model.getDiagnoseItems()[position]
     }
 
+    override fun onGenderSelected(position: Int) {
+        model.childInfo?.gender = model.getGenderItems()[position]
+    }
+
     override fun onSpeakSelected(position: Int) {
         model.childInfo?.canSpeak = model.getSpeakItems()[position]
     }
@@ -57,6 +62,7 @@ class RegistrationPresenter(
     override fun onSaveClicked() {
         model.user?.let {
             it.child = model.childInfo
+            Preferences.gender = model.childInfo!!.gender
             model.saveUser(it)
         }
     }

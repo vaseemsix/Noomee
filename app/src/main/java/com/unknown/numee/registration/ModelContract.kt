@@ -13,6 +13,8 @@ interface ModelContract {
         val currentUserID: String
         fun getRelationItems(): Array<String>
         fun getDiagnoseItems(): Array<String>
+        fun getGenderItems(): Array<String>
+        fun getGenderDisplayItems(): Array<String>
         fun getSpeakItems(): Array<String>
         fun getIQLevelItems(): Array<String>
         fun getIndependenceLevelItems(): Array<String>

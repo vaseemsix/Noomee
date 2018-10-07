@@ -4,8 +4,8 @@ import java.util.*
 
 
 data class ScheduleTemplates(
-        val id: String = "",
-        val name: String = "",
-        val tasks: String = "",
-        val date: Long = Date().time
+        var id: String = "",
+        var name: String = "",
+        var tasks: String = "",
+        var date: Long = Date().time
 )

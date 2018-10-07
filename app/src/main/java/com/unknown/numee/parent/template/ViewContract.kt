@@ -6,6 +6,7 @@ interface ViewContract {
         fun initViews()
         fun showMessage(message: String)
         fun updateTemplatesList(templateNamesList: List<String>)
+        fun startMainActivity()
     }
 
     interface Listener {

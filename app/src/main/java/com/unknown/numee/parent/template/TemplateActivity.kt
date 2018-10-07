@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.main.MainActivity
 
 
 class TemplateActivity : BaseActivity(), ViewContract.View {
@@ -32,7 +33,7 @@ class TemplateActivity : BaseActivity(), ViewContract.View {
     private lateinit var templateAdapter: TemplateAdapter
 
     override fun initViews() {
-        templatesRecyclerView = findViewById(R.id.templatesListView)
+        templatesRecyclerView = findViewById(R.id.templatesRecyclerView)
         templatesRecyclerView.layoutManager = LinearLayoutManager(this)
 
         templateAdapter = TemplateAdapter(object : TemplateAdapter.OnClickListener {
@@ -59,5 +60,11 @@ class TemplateActivity : BaseActivity(), ViewContract.View {
 
     override fun updateTemplatesList(templateNamesList: List<String>) {
         templateAdapter.setItemList(templateNamesList)
+        templateAdapter.notifyDataSetChanged()
+    }
+
+    override fun startMainActivity() {
+        finish()
+        MainActivity.startActivity(this)
     }
 }

@@ -11,6 +11,7 @@ object Preferences {
     private const val USER_ID = "user_id"
     private const val USER_TYPE = "user_type"
     private const val USER_TOKEN = "user_token"
+    private const val GENDER = "gender"
     private const val LANGUAGE = "language"
     private const val CHILD_INFO = "childInfo"
 
@@ -37,6 +38,10 @@ object Preferences {
     var language: String
         get() = sharedPreferences.getString(LANGUAGE, "")
         set(value) = editor.putString(LANGUAGE, value).apply()
+
+    var gender: String
+        get() = sharedPreferences.getString(GENDER, "boy")
+        set(value) = editor.putString(GENDER, value).apply()
 
     var childInfo: Boolean
         get() = sharedPreferences.getBoolean(CHILD_INFO, false)

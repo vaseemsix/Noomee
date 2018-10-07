@@ -1,14 +1,10 @@
 package com.unknown.numee.parent.template
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.unknown.numee.BR
 import com.unknown.numee.R
 
 
@@ -20,7 +16,6 @@ class TemplateAdapter(
 
     fun setItemList(itemList: List<String>) {
         this.itemList = itemList
-        Log.d("Vlad", this.itemList.toString())
         notifyDataSetChanged()
     }
 
@@ -33,24 +28,14 @@ class TemplateAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        DataBindingUtil.bind<ViewDataBinding?>(holder.itemView)?.let {
-            holder.bind(it, itemList[position])
-        }
+        holder.textView.text = this.itemList[position].split("_'_")[1]
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private var textView: TextView = view.findViewById(R.id.templateNameTextView)
+        val textView: TextView = view.findViewById(R.id.templateNameTextView)
 
         init {
             view.setOnClickListener { onClickListener?.onItemClicked(itemList[adapterPosition]) }
-        }
-
-        fun bind(viewDataBinding: ViewDataBinding, item: String) {
-            viewDataBinding.setVariable(BR.item, item)
-
-            Log.d("Vlad", "Setting Text  View " + BR.item)
-            textView.setText(BR.item)
-            viewDataBinding.executePendingBindings()
         }
     }
 

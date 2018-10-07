@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout
 import android.view.View
 import android.widget.FrameLayout
 import com.unknown.numee.R
+import com.unknown.numee.util.Preferences
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -15,6 +16,8 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         super.setContentView(R.layout.activity_base)
+
+        Preferences.initialize(this)
 
         containerView = findViewById(R.id.activity_base__container)
         contentView = findViewById(R.id.activity_base__content)

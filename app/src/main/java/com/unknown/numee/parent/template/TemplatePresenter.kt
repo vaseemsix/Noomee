@@ -1,5 +1,6 @@
 package com.unknown.numee.parent.template
 
+import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.Presenter
 import java.lang.Exception
 
@@ -26,6 +27,16 @@ class TemplatePresenter(
     }
 
     override fun onTemplateItemClicked(templateName: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        model.requestTemplate(templateName.split("_'_")[0])
+    }
+
+    override fun onReceivedTemplateSuccess(template: List<Task>?) {
+        if (template != null) {
+            model.saveSchedule(model.getTemplateName(), template)
+        }
+    }
+
+    override fun onSaveScheduleSuccess() {
+        view.startMainActivity()
     }
 }

@@ -23,6 +23,7 @@ data class Child(
         var name: String = "",
         var age: Int = 10,
         var diagnose: String = "",
+        var gender: String = "",
         var relation: String = "",
         var canSpeak: String = "",
         var IQLevel: String = "",

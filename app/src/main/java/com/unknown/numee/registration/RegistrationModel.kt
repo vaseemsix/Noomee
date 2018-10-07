@@ -29,6 +29,14 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
         return context.resources.getStringArray(R.array.diagnoses)
     }
 
+    override fun getGenderItems(): Array<String> {
+        return context.resources.getStringArray(R.array.genders)
+    }
+
+    override fun getGenderDisplayItems(): Array<String> {
+        return context.resources.getStringArray(R.array.genders_display)
+    }
+
     override fun getSpeakItems(): Array<String> {
         return context.resources.getStringArray(R.array.speak)
     }
