@@ -8,7 +8,7 @@ import com.unknown.numee.util.mvp.GeneralModel
 class SchedulesModel(context: Context) : GeneralModel(context), ModelContract.Model {
 
     lateinit var presenter: ModelContract.Listener
-    private val schedulesApiFirebase = TasksFirebaseApi()
+    private val schedulesApiFirebase = SchedulesFirebaseApi()
 
     override fun requestSchedules(userID: String) {
         schedulesApiFirebase.getSchedules(

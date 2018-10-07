@@ -42,7 +42,7 @@ class SchedulesFragment : Fragment(), ViewContract.View {
     }
 
     private fun initPresenter() {
-        val schedulesModel = TasksModel(context!!)
+        val schedulesModel = SchedulesModel(context!!)
         val schedulesPresenter = SchedulesPresenter(schedulesModel)
         schedulesPresenter.setView(this)
         schedulesModel.presenter = schedulesPresenter
