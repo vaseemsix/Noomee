@@ -10,11 +10,6 @@
 	</array>
 
 	<array name="genders">
-		<item>boy</item>
-		<item>girl</item>
-	</array>
-
-	<array name="genders_display">
 		<item>Boy</item>
 		<item>Girl</item>
 	</array>

@@ -14,7 +14,9 @@ class SubTasksPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onCreate() {
-        model.requestTaskByID(model.currentUserID, view.getScheduleID(), view.getTaskID())
+        model.taskID = view.getTaskID()
+        model.scheduleID = view.getScheduleID()
+        model.requestTaskByID(model.currentUserID, model.scheduleID, model.taskID)
     }
 
     override fun onItemClicked(item: ViewContract.Item) {
@@ -22,7 +24,7 @@ class SubTasksPresenter(
             model.requestUpdateSubTaskStatus(
                     model.currentUserID,
                     task.id,
-                    item.id,
+                    model.scheduleID,
                     item.index,
                     Status.DONE)
 
@@ -31,7 +33,7 @@ class SubTasksPresenter(
                 model.requestUpdateSubTaskStatus(
                         model.currentUserID,
                         task.id,
-                        "",
+                        model.scheduleID,
                         toDoIndex.toString(),
                         Status.CURRENT)
             } else {
@@ -56,7 +58,7 @@ class SubTasksPresenter(
     }
 
     override fun onReceivedUpdateSubTaskStatusSuccess() {
-        model.requestTaskByID(model.currentUserID, view.getScheduleID(), view.getTaskID())
+        model.requestTaskByID(model.currentUserID, model.scheduleID, model.taskID)
     }
 
     private fun update() {

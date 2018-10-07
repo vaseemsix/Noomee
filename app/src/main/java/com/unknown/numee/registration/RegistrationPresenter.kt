@@ -1,9 +1,9 @@
 package com.unknown.numee.registration
 
-import com.unknown.numee.business.beans.*
+import com.unknown.numee.business.beans.Child
+import com.unknown.numee.business.beans.User
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.Presenter
-import java.lang.Exception
 
 
 class RegistrationPresenter(
@@ -13,7 +13,7 @@ class RegistrationPresenter(
     override fun onCreate() {
         view.setRelations(model.getRelationItems())
         view.setDiagnoses(model.getDiagnoseItems())
-        view.setGenders(model.getGenderDisplayItems())
+        view.setGenders(model.getGenderItems())
         view.setSpeak(model.getSpeakItems())
         view.setIQLevels(model.getIQLevelItems())
         view.setIndependenceLevels(model.getIndependenceLevelItems())
@@ -45,6 +45,7 @@ class RegistrationPresenter(
 
     override fun onGenderSelected(position: Int) {
         model.childInfo?.gender = model.getGenderItems()[position]
+        model.setGender(position)
     }
 
     override fun onSpeakSelected(position: Int) {
@@ -62,7 +63,6 @@ class RegistrationPresenter(
     override fun onSaveClicked() {
         model.user?.let {
             it.child = model.childInfo
-            Preferences.gender = model.childInfo!!.gender
             model.saveUser(it)
         }
     }
