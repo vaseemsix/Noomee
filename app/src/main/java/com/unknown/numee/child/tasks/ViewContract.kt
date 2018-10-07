@@ -8,8 +8,8 @@ interface ViewContract {
         fun setCollectedNums(numCount: Int)
         fun setItemList(itemList: List<Item>)
         fun setContentVisibility(isVisible: Boolean)
-        fun showError(message: String)
-        fun startSubTasksActivity(ID: String)
+        fun showMessage(message: String)
+        fun startSubTasksActivity(taskID: String, scheduleID: String)
         fun finish()
     }
 

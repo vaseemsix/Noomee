@@ -94,12 +94,12 @@ class TasksFragment : Fragment(), ViewContract.View {
         finishView.visibility = if (isVisible) View.GONE else View.VISIBLE
     }
 
-    override fun showError(message: String) {
+    override fun showMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
-    override fun startSubTasksActivity(ID: String) {
-        SubTasksActivity.startActivity(context!!, ID)
+    override fun startSubTasksActivity(taskID: String, scheduleID: String) {
+        SubTasksActivity.startActivity(context!!, taskID, scheduleID)
     }
 
     override fun finish() {

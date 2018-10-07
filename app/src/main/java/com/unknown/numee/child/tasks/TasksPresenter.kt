@@ -1,13 +1,15 @@
 package com.unknown.numee.child.tasks
 
 import com.unknown.numee.R
-import com.unknown.numee.business.beans.*
+import com.unknown.numee.business.beans.Schedule
+import com.unknown.numee.business.beans.Status
+import com.unknown.numee.business.beans.Task
+import com.unknown.numee.business.beans.User
 import com.unknown.numee.util.event.Event
 import com.unknown.numee.util.event.EventCallback
 import com.unknown.numee.util.event.EventManager
 import com.unknown.numee.util.event.events.TaskFinishedEvent
 import com.unknown.numee.util.mvp.Presenter
-import java.lang.Exception
 import java.util.*
 
 
@@ -38,7 +40,7 @@ class TasksPresenter(
     override fun onItemClicked(item: ViewContract.Item) {
         if (item is TaskItem) {
             if (item.statusOrdinal == Status.CURRENT.ordinal) {
-                view.startSubTasksActivity(item.taskID)
+                view.startSubTasksActivity(item.taskID, item.scheduleID)
             }
         }
     }
@@ -48,7 +50,7 @@ class TasksPresenter(
     }
 
     override fun onError(e: Exception?) {
-
+        view.showMessage(e?.message.orEmpty())
     }
 
     override fun onReceivedGetUserSuccess(user: User?) {
@@ -61,13 +63,13 @@ class TasksPresenter(
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
             model.schedule = schedule[0] // find the right schedule for current day
+            val scheduleID = model.schedule?.id ?: ""
 
             if (hasDayPassed(model.schedule?.date ?: 0)) {
                 val taskIDs = model.schedule?.tasks ?: ""
-                val scheduleID = model.schedule?.id ?: ""
                 model.requestResetTasks(model.currentUserID, taskIDs, scheduleID)
             } else {
-                model.requestTasks(model.currentUserID)
+                model.requestTasks(model.currentUserID, scheduleID)
             }
         }
     }
@@ -80,7 +82,8 @@ class TasksPresenter(
     }
 
     override fun onReceivedResetTasksSuccess() {
-        model.requestTasks(model.currentUserID)
+        val scheduleID = model.schedule?.id ?: ""
+        model.requestTasks(model.currentUserID, scheduleID)
     }
 
     override fun onReceivedUpdateTaskStatusSuccess() {
@@ -120,10 +123,12 @@ class TasksPresenter(
 
     private fun finishTask(taskID: String) {
         val tasks = model.tasks ?: return
+        val scheduleID = model.schedule?.id ?: ""
 
         model.requestUpdateTaskStatus(
                 model.currentUserID,
                 taskID,
+                scheduleID,
                 Status.DONE
         )
 
@@ -136,7 +141,7 @@ class TasksPresenter(
             model.requestUpdateSubTaskStatus(
                     model.currentUserID,
                     taskID,
-                    tasks[index].subTasks[0].id,
+                    scheduleID,
                     "0",
                     Status.CURRENT)
 
@@ -144,7 +149,7 @@ class TasksPresenter(
                 model.requestUpdateSubTaskStatus(
                         model.currentUserID,
                         taskID,
-                        subTasks[i].id,
+                        scheduleID,
                         i.toString(),
                         Status.TO_DO)
             }
@@ -154,17 +159,18 @@ class TasksPresenter(
             model.requestUpdateTaskStatus(
                     model.currentUserID,
                     tasks[index + 1].id,
+                    scheduleID,
                     Status.CURRENT
             )
 
             model.requestUpdateSubTaskStatus(
                     model.currentUserID,
                     tasks[index + 1].id,
-                    tasks[index + 1].subTasks[0].id,
+                    scheduleID,
                     "0",
                     Status.CURRENT)
         }
 
-        model.requestTasks(model.currentUserID)
+        model.requestTasks(model.currentUserID, scheduleID)
     }
 }

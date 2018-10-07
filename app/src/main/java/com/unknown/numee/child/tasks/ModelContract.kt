@@ -5,7 +5,6 @@ import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.business.beans.User
-import java.lang.Exception
 
 
 interface ModelContract {
@@ -18,10 +17,10 @@ interface ModelContract {
 
         fun getUser(ID: String)
         fun requestSchedules(userID: String)
-        fun requestTasks(userID: String)
+        fun requestTasks(userID: String, scheduleID: String)
         fun requestResetTasks(userID: String, taskIDs: String, scheduleID: String)
-        fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status)
-        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status)
+        fun requestUpdateTaskStatus(userID: String, taskID: String, scheduleID: String, newStatus: Status)
+        fun requestUpdateSubTaskStatus(userID: String, taskID: String, scheduleID: String, subTaskIndex: String, newStatus: Status)
     }
 
     interface Listener {

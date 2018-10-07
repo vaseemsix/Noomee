@@ -7,7 +7,6 @@ import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.event.EventManager
 import com.unknown.numee.util.event.events.TaskFinishedEvent
 import com.unknown.numee.util.mvp.Presenter
-import java.lang.Exception
 
 
 class SubTasksPresenter(
@@ -15,7 +14,7 @@ class SubTasksPresenter(
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     override fun onCreate() {
-        model.requestTaskByID(model.currentUserID, view.getID())
+        model.requestTaskByID(model.currentUserID, view.getScheduleID(), view.getTaskID())
     }
 
     override fun onItemClicked(item: ViewContract.Item) {
@@ -57,7 +56,7 @@ class SubTasksPresenter(
     }
 
     override fun onReceivedUpdateSubTaskStatusSuccess() {
-        model.requestTaskByID(model.currentUserID, view.getID())
+        model.requestTaskByID(model.currentUserID, view.getScheduleID(), view.getTaskID())
     }
 
     private fun update() {

@@ -16,18 +16,21 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
 
     companion object {
 
-        const val ID = "ID"
+        const val TASK_ID = "TASK_ID"
+        const val SCHEDULE_ID = "SCHEDULE_ID"
 
-        fun startActivity(context: Context, id: String) {
+        fun startActivity(context: Context, taskID: String, scheduleID: String) {
             val intent = Intent(context, SubTasksActivity::class.java)
-            intent.putExtra(ID, id)
+            intent.putExtra(TASK_ID, taskID)
+            intent.putExtra(SCHEDULE_ID, scheduleID)
             context.startActivity(intent)
         }
     }
 
     private lateinit var presenter: ViewContract.Listener
 
-    private var id: String = ""
+    private var taskID: String = ""
+    private var scheduleID: String = ""
 
     private lateinit var titleView: TextView
     private lateinit var subTitleView: TextView
@@ -46,8 +49,12 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         presenter.onCreate()
     }
 
-    override fun getID(): String {
-        return id
+    override fun getTaskID(): String {
+        return taskID
+    }
+
+    override fun getScheduleID(): String {
+        return scheduleID
     }
 
     override fun setTitle(title: String) {
@@ -76,7 +83,8 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     }
 
     private fun initExtras(extras: Bundle) {
-        id = extras.getString(ID, "")
+        taskID = extras.getString(TASK_ID, "")
+        scheduleID = extras.getString(SCHEDULE_ID, "")
     }
 
     private fun initReferences() {

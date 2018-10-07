@@ -43,6 +43,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initReferences()
 
         if (isChildUserType()) {
             useChildView()
@@ -107,8 +108,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun useChildView() {
-        initReferences()
-
         supportFragmentManager.beginTransaction()
                 .replace(R.id.activity_main__content, tasksFragment)
                 .commit()
