@@ -9,7 +9,6 @@ import com.unknown.numee.business.command.GetUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.GeneralModel
-import java.lang.Exception
 
 
 class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model {
@@ -52,9 +51,10 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
-    override fun requestTasks(userID: String) {
+    override fun requestTasks(userID: String, scheduleID: String) {
         tasksApiFirebase.getTasks(
                 userID,
+                scheduleID,
                 { result -> presenter.onReceivedTasksSuccess(result) },
                 { e -> presenter.onError(e) }
         )
@@ -70,21 +70,22 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
-    override fun requestUpdateTaskStatus(userID: String, taskID: String, newStatus: Status) {
+    override fun requestUpdateTaskStatus(userID: String, taskID: String, scheduleID: String, newStatus: Status) {
         tasksApiFirebase.updateTaskStatus(
                 userID,
                 taskID,
+                scheduleID,
                 newStatus,
                 { presenter.onReceivedUpdateTaskStatusSuccess() },
                 { exception -> presenter.onError(exception) }
         )
     }
 
-    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status) {
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, scheduleID: String, subTaskIndex: String, newStatus: Status) {
         tasksApiFirebase.updateSubTaskStatus(
                 userID,
                 taskID,
-                subTaskID,
+                scheduleID,
                 subTaskIndex,
                 newStatus,
                 { presenter.onReceivedUpdateSubTaskStatusSuccess() },

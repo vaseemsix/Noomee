@@ -6,7 +6,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
-import java.lang.Exception
 
 
 class SubTasksFirebaseApi {
@@ -15,11 +14,12 @@ class SubTasksFirebaseApi {
 
     fun getTaskByID(
             userID: String,
+            scheduleID: String,
             taskID: String,
             onSuccess: (Task?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID)
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID).child(taskID)
 
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -37,13 +37,13 @@ class SubTasksFirebaseApi {
     fun updateSubTaskStatus(
             userID: String,
             taskID: String,
-            subTaskID: String,
+            scheduleID: String,
             subTaskIndex: String,
             status: Status,
             onSuccess: (Status?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID).child("subTasks").child(subTaskIndex).child("status")
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID).child(taskID).child("subTasks").child(subTaskIndex).child("status")
 
         reference.setValue(status)
                 .addOnSuccessListener { onSuccess.invoke(status) }

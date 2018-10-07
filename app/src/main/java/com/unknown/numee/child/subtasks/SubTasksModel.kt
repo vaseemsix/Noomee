@@ -20,20 +20,21 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
 
     private val subTasksApi = SubTasksFirebaseApi()
 
-    override fun requestTaskByID(userID: String, taskID: String) {
+    override fun requestTaskByID(userID: String, scheduleID: String, taskID: String) {
         subTasksApi.getTaskByID(
                 userID,
+                scheduleID,
                 taskID,
                 { task -> presenter.onReceivedGetTaskByIDSuccess(task) },
                 { exception -> presenter.onError(exception) }
         )
     }
 
-    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status) {
+    override fun requestUpdateSubTaskStatus(userID: String, taskID: String, scheduleID: String, subTaskIndex: String, newStatus: Status) {
         subTasksApi.updateSubTaskStatus(
                 userID,
                 taskID,
-                subTaskID,
+                scheduleID,
                 subTaskIndex,
                 newStatus,
                 { presenter.onReceivedUpdateSubTaskStatusSuccess() },

@@ -7,7 +7,6 @@ import com.google.firebase.database.ValueEventListener
 import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
-import java.lang.Exception
 import java.util.*
 
 
@@ -45,10 +44,11 @@ class TasksFirebaseApi {
 
     fun getTasks(
             userID: String,
+            scheduleID: String,
             onSuccess: (List<Task>?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID)
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID)
 
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -74,11 +74,12 @@ class TasksFirebaseApi {
     fun updateTaskStatus(
             userID: String,
             taskID: String,
+            scheduleID: String,
             status: Status,
             onSuccess: (Status?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID).child("status")
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID).child(taskID).child("status")
 
         reference.setValue(status)
                 .addOnSuccessListener { onSuccess.invoke(status) }
@@ -88,13 +89,13 @@ class TasksFirebaseApi {
     fun updateSubTaskStatus(
             userID: String,
             taskID: String,
-            subTaskID: String,
+            scheduleID: String,
             subTaskIndex: String,
             status: Status,
             onSuccess: (Status?) -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID).child(taskID).child("subTasks").child(subTaskIndex).child("status")
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID).child(taskID).child("subTasks").child(subTaskIndex).child("status")
 
         reference.setValue(status)
                 .addOnSuccessListener { onSuccess.invoke(status) }
@@ -108,7 +109,7 @@ class TasksFirebaseApi {
             onSuccess: () -> Unit,
             onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("tasks").child(userID)
+        val reference = firebaseDatabase.child("tasks").child(userID).child(scheduleID)
 
         val tasks = taskIDs.split(",")
         if (tasks.isNotEmpty()) {

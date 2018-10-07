@@ -3,7 +3,6 @@ package com.unknown.numee.child.subtasks
 import android.os.CountDownTimer
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
-import java.lang.Exception
 
 
 interface ModelContract {
@@ -13,8 +12,8 @@ interface ModelContract {
         var timer: CountDownTimer?
         var itemList: List<ViewContract.Item>
 
-        fun requestTaskByID(userID: String, taskID: String)
-        fun requestUpdateSubTaskStatus(userID: String, taskID: String, subTaskID: String, subTaskIndex: String, newStatus: Status)
+        fun requestTaskByID(userID: String, scheduleID: String, taskID: String)
+        fun requestUpdateSubTaskStatus(userID: String, taskID: String, scheduleID: String, subTaskIndex: String, newStatus: Status)
     }
 
     interface Listener {

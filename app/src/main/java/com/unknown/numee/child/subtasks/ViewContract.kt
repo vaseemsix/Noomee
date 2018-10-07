@@ -3,7 +3,8 @@ package com.unknown.numee.child.subtasks
 
 interface ViewContract {
     interface View {
-        fun getID(): String
+        fun getTaskID(): String
+        fun getScheduleID(): String
         fun setTitle(title: String)
         fun setSubTitle(subTitle: String)
         fun setSubTasksProgress(progress: Int)

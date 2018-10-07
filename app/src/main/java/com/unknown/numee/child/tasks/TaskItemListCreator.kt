@@ -22,15 +22,15 @@ class TaskItemListCreator(val context: Context) {
         }
 
         if (lastDoneTaskIndex != -1) {
-            itemList.add(createTaskItem(tasksInSchedule[lastDoneTaskIndex]))
+            itemList.add(createTaskItem(tasksInSchedule[lastDoneTaskIndex], schedule.id))
         }
         if (currentTaskIndex != -1) {
-            itemList.add(createTaskItem(tasksInSchedule[currentTaskIndex]))
+            itemList.add(createTaskItem(tasksInSchedule[currentTaskIndex], schedule.id))
         }
 
         tasksInSchedule.forEach {
             if (it.status == Status.TO_DO) {
-                itemList.add(createTaskItem(it))
+                itemList.add(createTaskItem(it, schedule.id))
             }
         }
 
@@ -38,12 +38,13 @@ class TaskItemListCreator(val context: Context) {
     }
 
 
-    private fun createTaskItem(task: Task): TaskItem {
+    private fun createTaskItem(task: Task, scheduleID: String): TaskItem {
         return TaskItem(
                 time = task.time,
                 name = task.name,
                 numCount = "${task.numCount} x ",
                 taskID = task.id,
+                scheduleID = scheduleID,
                 statusOrdinal = task.status.ordinal
         )
     }
