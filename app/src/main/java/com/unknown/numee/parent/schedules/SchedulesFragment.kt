@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
+import com.unknown.numee.parent.tasks.TasksListActivity
 import com.unknown.numee.parent.template.TemplateActivity
 
 
@@ -41,7 +42,7 @@ class SchedulesFragment : Fragment(), ViewContract.View {
     }
 
     private fun initPresenter() {
-        val schedulesModel = SchedulesModel(context!!)
+        val schedulesModel = TasksModel(context!!)
         val schedulesPresenter = SchedulesPresenter(schedulesModel)
         schedulesPresenter.setView(this)
         schedulesModel.presenter = schedulesPresenter
@@ -62,7 +63,11 @@ class SchedulesFragment : Fragment(), ViewContract.View {
         schedulesListView.setHasFixedSize(true)
         schedulesListView.layoutManager = LinearLayoutManager(context)
         scheduleListAdapter = SchedulesAdapter(object : SchedulesAdapter.OnItemClickListener {
-            override fun onItemClicked(item: Schedule) {
+            override fun onItemRemoveClicked(item: Schedule) {
+                presenter.onScheduleItemRemoved(item)
+            }
+
+            override fun onItemEditClicked(item: Schedule) {
                 presenter.onScheduleItemClicked(item)
             }
         })
@@ -80,5 +85,9 @@ class SchedulesFragment : Fragment(), ViewContract.View {
 
     private fun openSchedulesListActivity() {
         TemplateActivity.startActivity(context!!)
+    }
+
+    override fun openTasksActivity(scheduleId: String) {
+        TasksListActivity.startActivity(context!!, scheduleId)
     }
 }

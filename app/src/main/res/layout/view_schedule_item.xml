@@ -23,6 +23,7 @@
             android:layout_height="48dp"
             android:src="@drawable/images__cross_icon"
             tools:ignore="ContentDescription"
+            android:id="@+id/remove_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -31,6 +32,7 @@
             android:layout_height="48dp"
             android:src="@drawable/images__template_edit_icon"
             tools:ignore="ContentDescription"
+            android:id="@+id/edit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

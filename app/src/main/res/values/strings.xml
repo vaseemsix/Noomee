@@ -26,16 +26,16 @@
     <string name="cont">Continue</string>
     <string name="good_night">Good Night</string>
     <string name="you_have_x_num">You have \n\n %d \n\n nooms!</string>
-	
-	<string name="submit">Sign In</string>
-	<string name="wrong_password">Wrong Password</string>
+
+    <string name="submit">Sign In</string>
+    <string name="wrong_password">Wrong Password</string>
     <string name="password_validation_message">Password should contain letters, numbers and symbols, not less than 8 characters</string>
     <string name="email_sent_message">Please check your email for verification link</string>
 
     <!-- Language Selection Activity -->
     <string name="select_language">select language</string>
     <string name="language">LANGUAGE</string>
-	
+
     <!-- Parent Activity Part -->
     <string name="parent">Parent Control</string>
     <string name="child">Enter to child part</string>

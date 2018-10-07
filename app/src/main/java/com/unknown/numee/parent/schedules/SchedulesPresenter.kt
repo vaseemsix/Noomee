@@ -25,11 +25,22 @@ class SchedulesPresenter(
     override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
         if (schedule != null && schedule.isNotEmpty()) {
             view.updateSchedules(schedule)
+        } else {
+            view.updateSchedules(listOf())
         }
     }
 
     override fun onScheduleItemClicked(item: Schedule) {
+        view.openTasksActivity(item.id)
+    }
 
+    override fun onScheduleItemRemoved(item: Schedule) {
+        model.removeSchedule(item)
+    }
+
+    override fun onRemoveScheduleSuccess() {
+        model.requestSchedules(Preferences.userID)
+        view.showMessage("Schedule Removed Successfully")
     }
 
 }

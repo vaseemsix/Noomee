@@ -66,5 +66,16 @@
 		<item>fr</item>
 		<!--<item>ru</item>-->
 	</string-array>
+
+	<!-- Week Days -->
+	<string-array name="week_days">
+		<item>Mn</item>
+		<item>Tu</item>
+		<item>Wd</item>
+		<item>Th</item>
+		<item>Fr</item>
+		<item>St</item>
+		<item>Sn</item>
+	</string-array>
 	
 </resources>

@@ -6,10 +6,12 @@ import java.lang.Exception
 interface ModelContract {
     interface Model {
         fun requestSchedules(userID: String)
+        fun removeSchedule(schedule: Schedule)
     }
 
     interface Listener {
         fun onError(e: Exception?)
         fun onReceivedScheduleSuccess(schedule: List<Schedule>?)
+        fun onRemoveScheduleSuccess()
     }
 }

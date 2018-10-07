@@ -1,18 +1,15 @@
-package com.unknown.numee.parent.schedules
+package com.unknown.numee.parent.tasks
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.unknown.numee.business.beans.Schedule
-import com.unknown.numee.business.beans.Status
-import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.Preferences
 import java.lang.Exception
-import java.util.*
 
 
-class SchedulesFirebaseApi {
+class TasksFirebaseApi {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance().reference
 

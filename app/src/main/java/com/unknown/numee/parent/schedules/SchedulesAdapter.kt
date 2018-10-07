@@ -4,13 +4,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
 
 
 class SchedulesAdapter(
-        val onItemClickListener: OnItemClickListener
+        val onItemClickListener: OnItemClickListener?
 ) : RecyclerView.Adapter<SchedulesAdapter.ViewHolder>() {
 
     private var itemList: List<Schedule> = listOf()
@@ -32,11 +33,20 @@ class SchedulesAdapter(
         holder.textView.text = this.itemList[position].name
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.template_schedule_item_text_view)
+
+        val removeImageView: ImageView = view.findViewById(R.id.remove_icon)
+        val editImageView: ImageView = view.findViewById(R.id.edit_icon)
+
+        init {
+            removeImageView.setOnClickListener{onItemClickListener?.onItemRemoveClicked(itemList[adapterPosition])}
+            editImageView.setOnClickListener{onItemClickListener?.onItemEditClicked(itemList[adapterPosition])}
+        }
     }
 
     interface OnItemClickListener {
-        fun onItemClicked(item: Schedule)
+        fun onItemEditClicked(item: Schedule)
+        fun onItemRemoveClicked(item: Schedule)
     }
 }

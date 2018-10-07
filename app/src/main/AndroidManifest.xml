@@ -29,15 +29,17 @@
         <activity
             android:name=".child.reward.RewardActivity"
             android:theme="@style/RewardTheme" />
-        <activity android:name=".switcher.SwitcherActivity"/>
+        <activity android:name=".switcher.SwitcherActivity" />
         <activity android:name=".language.LanguageSelectionActivity" />
         <activity android:name=".parent.template.TemplateActivity" />
 
-	    <service android:name=".child.push.ChildFirebaseMessagingService">
-		    <intent-filter>
-			    <action android:name="com.google.firebase.MESSAGING_EVENT" />
-		    </intent-filter>
-	    </service>
+        <service android:name=".child.push.ChildFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".parent.tasks.TasksListActivity"></activity>
     </application>
 
 </manifest>
