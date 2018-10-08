@@ -8,7 +8,7 @@ interface ViewContract {
         fun initViews()
         fun showMessage(message: String)
         fun updateSchedules(schedule: List<Schedule>)
-        fun openTasksActivity(scheduleId: String)
+        fun openTasksActivity(scheduleId: String, scheduleName: String)
     }
 
     interface Listener {

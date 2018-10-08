@@ -8,8 +8,10 @@ interface ModelContract {
     interface Model {
         fun requestTemplatesName()
         fun requestTemplate(templateName: String)
-        fun getTemplateName(): String
+        fun getTemplateId(): String
         fun saveSchedule(templateName: String, tasksList: List<Task>)
+        fun saveTemplateName(templateName: String)
+        fun getTemplateName(): String
     }
 
     interface Listener {

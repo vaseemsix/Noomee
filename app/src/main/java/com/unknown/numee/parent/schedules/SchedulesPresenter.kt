@@ -31,7 +31,7 @@ class SchedulesPresenter(
     }
 
     override fun onScheduleItemClicked(item: Schedule) {
-        view.openTasksActivity(item.id)
+        view.openTasksActivity(item.id, item.name)
     }
 
     override fun onScheduleItemRemoved(item: Schedule) {

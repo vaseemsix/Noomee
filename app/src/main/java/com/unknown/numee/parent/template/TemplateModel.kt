@@ -9,10 +9,19 @@ class TemplateModel(context: Context) : GeneralModel(context), ModelContract.Mod
 
     lateinit var presenter: ModelContract.Listener
     private val templatesFirebaseApi = TemplatesFirebaseApi()
+    private var templateId: String = ""
     private var templateName: String = ""
 
+    override fun getTemplateId(): String {
+        return templateId
+    }
+
+    override fun saveTemplateName(templateName: String) {
+        this.templateName = templateName
+    }
+
     override fun getTemplateName(): String {
-        return templateName
+        return this.templateName
     }
 
 
@@ -25,7 +34,7 @@ class TemplateModel(context: Context) : GeneralModel(context), ModelContract.Mod
 
     override fun requestTemplate(templateName: String) {
 
-        this.templateName = templateName
+        this.templateId = templateName
         templatesFirebaseApi.getTemplate(
                 templateName,
                 { result -> presenter.onReceivedTemplateSuccess(result) },

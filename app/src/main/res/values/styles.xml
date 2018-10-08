@@ -27,4 +27,10 @@
 		<item name="android:textColor">@color/colorSubTitle</item>
 	</style>
 
+	<style name="ThemeTasksList" parent="AppTheme">
+		<item name="colorAccent">@color/colorPrimaryDark</item>
+
+
+	</style>
+
 </resources>

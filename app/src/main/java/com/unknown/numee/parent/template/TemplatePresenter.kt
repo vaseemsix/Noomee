@@ -28,6 +28,7 @@ class TemplatePresenter(
 
     override fun onTemplateItemClicked(templateName: String) {
         model.requestTemplate(templateName.split("_'_")[0])
+        model.saveTemplateName(templateName.split("_'_")[1])
     }
 
     override fun onReceivedTemplateSuccess(template: List<Task>?) {

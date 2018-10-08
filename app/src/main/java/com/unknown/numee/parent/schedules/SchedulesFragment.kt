@@ -2,7 +2,7 @@ package com.unknown.numee.parent.schedules
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +61,7 @@ class SchedulesFragment : Fragment(), ViewContract.View {
 
     override fun setupSchedulesListView() {
         schedulesListView.setHasFixedSize(true)
-        schedulesListView.layoutManager = LinearLayoutManager(context)
+        schedulesListView.layoutManager = GridLayoutManager(context, 3)
         scheduleListAdapter = SchedulesAdapter(object : SchedulesAdapter.OnItemClickListener {
             override fun onItemRemoveClicked(item: Schedule) {
                 presenter.onScheduleItemRemoved(item)
@@ -87,7 +87,7 @@ class SchedulesFragment : Fragment(), ViewContract.View {
         TemplateActivity.startActivity(context!!)
     }
 
-    override fun openTasksActivity(scheduleId: String) {
-        TasksListActivity.startActivity(context!!, scheduleId)
+    override fun openTasksActivity(scheduleId: String, scheduleName: String) {
+        TasksListActivity.startActivity(context!!, scheduleId, scheduleName)
     }
 }

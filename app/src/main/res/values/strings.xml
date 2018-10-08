@@ -47,4 +47,5 @@
 
     <string name="new_template">New\nTemplate\n+</string>
     <string name="gender">Gender</string>
+    <string name="choose_action">Choose Action</string>
 </resources>

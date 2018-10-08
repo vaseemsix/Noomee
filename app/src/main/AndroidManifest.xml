@@ -39,7 +39,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".parent.tasks.TasksListActivity"></activity>
+        <activity
+            android:name=".parent.tasks.TasksListActivity"
+            android:theme="@style/ThemeTasksList" />
+        <activity android:name=".parent.subtasks.SubTasksActivity"></activity>
     </application>
 
 </manifest>

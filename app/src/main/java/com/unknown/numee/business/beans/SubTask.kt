@@ -6,5 +6,6 @@ data class SubTask(
         val name: String = "",
         val imageUrl: String = "",
         val status: Status = Status.TO_DO,
+        val enable: Int = 1,
         val order: Int = 0
 )

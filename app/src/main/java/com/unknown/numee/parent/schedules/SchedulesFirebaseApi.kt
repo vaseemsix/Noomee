@@ -23,7 +23,7 @@ class SchedulesFirebaseApi {
     ) {
         val reference = firebaseDatabase.child("schedules").child(userID)
 
-        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
                 onError.invoke(Exception(databaseError.message))
             }

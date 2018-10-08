@@ -1,5 +1,7 @@
 package com.unknown.numee.parent.tasks
 
+import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +11,16 @@ import com.unknown.numee.R
 
 
 class WeekDaysAdapter(
+        val context: Context,
         val onClickListener: OnClickListener?
 ) : RecyclerView.Adapter<WeekDaysAdapter.ViewHolder>() {
 
-    private var itemList: List<Boolean> = listOf()
+    private var itemList: MutableList<Boolean> = mutableListOf()
     private var itemNames: Array<String> = arrayOf()
 
-    fun setItemList(itemList: List<Boolean>) {
+    fun setItemList(itemList: MutableList<Boolean>, itemNamesList: Array<String>) {
         this.itemList = itemList
+        this.itemNames = itemNamesList
         notifyDataSetChanged()
     }
 
@@ -30,18 +34,23 @@ class WeekDaysAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.textView.text = this.itemList[position].split("_'_")[1]
+        holder.textView.text = this.itemNames[position]
+
+        if (this.itemList[position]) {
+            holder.textView.background = ContextCompat.getDrawable(context, R.drawable.styles__button_type_3_on)
+            holder.textView.setTextColor(ContextCompat.getColor(context, R.color.colorRewardBg))
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.week_day_button)
 
         init {
-            view.setOnClickListener { onClickListener?.onDaysItemClicked(adapterPosition) }
+            view.setOnClickListener { onClickListener?.onDaysItemClicked(textView, adapterPosition) }
         }
     }
 
     interface OnClickListener {
-        fun onDaysItemClicked(item: Int)
+        fun onDaysItemClicked(textView: TextView, position: Int)
     }
 }
