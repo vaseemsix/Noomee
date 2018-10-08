@@ -43,14 +43,14 @@
 	<string name="language">ԼԵԶՈՒ</string>
 
 	<!-- Parent Activity Part -->
-	<string name="parent">Ծնող</string>
-	<string name="child">Մուտք գործել երեխաի հատված</string>
+	<string name="parent">Ծնողի Բաժին</string>
+	<string name="child">Երեխայի Բաժին</string>
 
-	<string name="schedule_name_sample">Գրաֆիկի անունը</string>
+	<string name="schedule_name_sample">Օրակարգի անունը</string>
 	<string name="set_days">Սահմանել օրեր</string>
 	<string name="day_schedule">Օրակարգ</string>
-	<string name="day_schedule_templates">Օրակարգի օրինակը</string>
+	<string name="day_schedule_templates">Օրակարգ</string>
 
 	<string name="new_template">Նոր շաբլոն +</string>
-	<string name="gender">Gender</string>
+	<string name="gender">Սեռը</string>
 </resources>
