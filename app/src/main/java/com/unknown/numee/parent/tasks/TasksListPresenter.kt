@@ -94,7 +94,9 @@ class TasksListPresenter(
         } else {
             textView.visibility = View.VISIBLE
             editText.visibility = View.INVISIBLE
-            textView.text = editText.text
+            if (editText.text.toString() != "") {
+                textView.text = editText.text
+            }
         }
     }
 

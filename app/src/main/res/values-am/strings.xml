@@ -53,4 +53,9 @@
 
 	<string name="new_template">Նոր շաբլոն +</string>
 	<string name="gender">Սեռը</string>
+	<string name="choose_action">Ընտրեք գործողություն</string>
+    <string name="set_duration">Սահմանել տեւողությունը</string>
+    <string name="hours">Ժամ</string>
+    <string name="minutes">Րոպե</string>
+    <string name="seconds">Վայրկյան</string>
 </resources>

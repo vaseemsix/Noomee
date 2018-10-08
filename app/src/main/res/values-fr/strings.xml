@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Noomee</string>
-	<string name="app_description">Guide to independence for your KID</string>
-	<string name="sign_in_with_email">Մուտք գործել</string>
-	<string name="sign_up_with_email">Գրանցվել</string>
-	<string name="hint_email">Էլ. հասցե</string>
-	<string name="hint_password">Գաղտնաբառ</string>
-	<string name="hint_name">Անուն</string>
-	
-	<string name="title_registration">Երեխայի մասին</string>
-	<string name="child_relation">Կապը երեխայի հետ</string>
-	<string name="child_name">Երեխայի անունը</string>
-	<string name="child_age">Երեխայի տարիքը</string>
-	<string name="diagnose">Diagnostic</string>
-	<string name="can_child_speak">Կարող է երեխան խոսել՞</string>
-	<string name="iq_level">IQ Աստիճան /եթե կա արված տեստ/</string>
-	<string name="independence_level">Ինքնուրույն լինելու աստիճանը</string>
-	<string name="promise">*Notez que vous faites la promesse à noomee de donner un petit encouragement à votre enfant à la fin de la journée après avoir terminé les tâches quotidiennes. Ce qu’il / elle aime le plus et travaillera dur pour surmonter les tâches difficiles. Par exemple, si un enfant aime "Kinder", nous l\’utilisons comme un encouragement. N\'oubliez pas que vous êtes obligé de restreindre le "Kinder" les autres fois, afin que l\'enfant comprenne qu\'il s\'agit d\'un moyen d\'encouragement. L\'enfant doit également comprendre clairement qu\'après chaque tâche, il / elle reçoit un "num", ce qui en fin de compte devient un prix.</string>
-	<string name="save">Պահպանել</string>
-	
-	<string name="welcome_child">Բարի գալուստ, %s</string>
-	<string name="welcome">Բարի գալուստ</string>
-	<string name="good_night">Բարի Գիշեր</string>
-	<string name="you_have_x_num">Դուք հավաքել եք \n\n %d \n\n նումեր!</string>
-	
-	<string name="submit">Մուտք</string>
-	<string name="wrong_password">Սխալ գաղտնաբառ</string>
-	
-	<string name="nums">Նում</string>
-	<string name="cont">Շարունակել</string>
-    <string name="password_validation_message">Password Should Contain Letters, Numbers and Symbols, not less then 8 characters</string>
-    <string name="email_sent_message">Please check your email for verification link</string>
+    <string name="app_description">Guide d\'indépendance pour votre enfant</string>
+    <string name="sign_in_with_email">Se connecter</string>
+    <string name="sign_up_with_email">Enregistrement</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_name">Nom</string>
+
+    <string name="title_registration">Informations générales d\'un enfant</string>
+    <string name="child_relation">Relation à l\'enfant </string>
+    <string name="child_name">Nom de l’enfant </string>
+    <string name="child_age">Age</string>
+    <string name="diagnose">Diagnostic</string>
+    <string name="can_child_speak">Est-ce que l\'enfant peut parler? (Case à cocher)</string>
+    <string name="iq_level">Niveau de QI / s\'il y en a /</string>
+    <string name="independence_level">Niveau d\'indépendance</string>
+    <string name="promise">*Notez que vous faites la promesse à noomee de donner un petit encouragement à votre enfant à la fin de la journée après avoir terminé les tâches quotidiennes. Ce qu’il / elle aime le plus et travaillera dur pour surmonter les tâches difficiles. Par exemple, si un enfant aime "Kinder", nous l’utilisons comme un encouragement. N\'oubliez pas que vous êtes obligé de restreindre le "Kinder" les autres fois, afin que l\'enfant comprenne qu\'il s\'agit d\'un moyen d\'encouragement. L\'enfant doit également comprendre clairement qu\'après chaque tâche, il / elle reçoit un "num", ce qui en fin de compte devient un prix.</string>
+    <string name="save">Sauvegarder</string>
+
+    <string name="welcome_child">Bienvenue, %s</string>
+    <string name="welcome">Bienvenue</string>
+
+    <string name="nums">Noom</string>
+    <string name="cont">Continuer</string>
+    <string name="good_night">Bonne nuit</string>
+    <string name="you_have_x_num">Tu as \n\n %d \n\n nooms!</string>
+
+    <string name="submit">Se connecter</string>
+    <string name="wrong_password">Mauvais mot de passe</string>
+    <string name="password_validation_message">Le mot de passe doit contenir des lettres, des chiffres et des symboles d\'au moins 8 caractères.</string>
+    <string name="email_sent_message">S\'il vous plaît vérifier votre email pour le lien de vérification</string>
 
 	<!-- Language Selection Activity -->
-	<string name="select_language">select language</string>
-	<string name="language">LANGUAGE</string>
+	<string name="select_language">Choisir la langue</string>
+	<string name="language">LA LANGUE</string>
 
 	<!-- Parent Activity Part -->
-	<string name="parent">Parent Control</string>
-	<string name="child">Enter to child part</string>
+	<string name="parent">Partie parent</string>
+	<string name="child">Partie enfant</string>
 
-	<string name="schedule_name_sample">Schedule Name</string>
-	<string name="set_days">SET DAYS</string>
-	<string name="day_schedule">DAY SCHEDULE</string>
-	<string name="day_schedule_templates">Day Schedule Templates</string>
+	<string name="schedule_name_sample">Nom du calendrier</string>
+	<string name="set_days">Fixer les jours</string>
+	<string name="day_schedule">CALENDRIER DE JOUR</string>
+	<string name="day_schedule_templates">Modèles d\'horaire journalier</string>
 
 	<string name="new_template">Nouveau modèle +</string>
-	<string name="gender">Gender</string>
+	<string name="gender">Le genre</string>
+	<string name="choose_action">Choisir une action</string>
+	<string name="set_duration">Définir la durée</string>
+	<string name="hours">Heures</string>
+	<string name="minutes">Minutes</string>
+	<string name="seconds">Secondes</string>
 </resources>

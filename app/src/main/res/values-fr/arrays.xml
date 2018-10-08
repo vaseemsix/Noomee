@@ -69,13 +69,13 @@
 
 	<!-- Week Days -->
 	<string-array name="week_days">
-		<item>Mn</item>
-		<item>Tu</item>
-		<item>Wd</item>
-		<item>Th</item>
-		<item>Fr</item>
-		<item>St</item>
-		<item>Sn</item>
+		<item>Ln</item>
+		<item>Ma</item>
+		<item>Me</item>
+		<item>Jd</item>
+		<item>Vn</item>
+		<item>Sm</item>
+		<item>Dm</item>
 	</string-array>
 	
 </resources>

@@ -42,7 +42,8 @@
         <activity
             android:name=".parent.tasks.TasksListActivity"
             android:theme="@style/ThemeTasksList" />
-        <activity android:name=".parent.subtasks.SubTasksActivity"></activity>
+        <activity android:name=".parent.subtasks.SubTasksActivity"
+            android:theme="@style/ThemeTasksList"/>
     </application>
 
 </manifest>

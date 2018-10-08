@@ -68,13 +68,13 @@
 
 	<!-- Week Days -->
 	<string-array name="week_days">
-		<item>Mn</item>
-		<item>Tu</item>
-		<item>Wd</item>
-		<item>Th</item>
-		<item>Fr</item>
-		<item>St</item>
-		<item>Sn</item>
+		<item>Եկ</item>
+		<item>Եք</item>
+		<item>Չք</item>
+		<item>Հգ</item>
+		<item>Ուր</item>
+		<item>Շբ</item>
+		<item>Կր</item>
 	</string-array>
 	
 </resources>
