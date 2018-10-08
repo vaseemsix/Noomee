@@ -8,6 +8,8 @@ import com.unknown.numee.business.beans.Task
 interface ModelContract {
     interface Model {
         val currentUserID: String
+        var scheduleID: String
+        var taskID: String
         var task: Task?
         var timer: CountDownTimer?
         var itemList: List<ViewContract.Item>

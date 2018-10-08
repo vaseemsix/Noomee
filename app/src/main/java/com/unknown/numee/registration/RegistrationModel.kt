@@ -9,7 +9,6 @@ import com.unknown.numee.business.command.SaveUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.GeneralModel
-import java.lang.Exception
 
 
 class RegistrationModel(context: Context) : GeneralModel(context), ModelContract.Model {
@@ -33,10 +32,6 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
         return context.resources.getStringArray(R.array.genders)
     }
 
-    override fun getGenderDisplayItems(): Array<String> {
-        return context.resources.getStringArray(R.array.genders_display)
-    }
-
     override fun getSpeakItems(): Array<String> {
         return context.resources.getStringArray(R.array.speak)
     }
@@ -47,6 +42,13 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
 
     override fun getIndependenceLevelItems(): Array<String> {
         return context.resources.getStringArray(R.array.independence_levels)
+    }
+
+    override fun setGender(position: Int) {
+        when (position) {
+            0 -> Preferences.gender = "boy"
+            1 -> Preferences.gender = "girl"
+        }
     }
 
     override fun getUser(ID: String) {

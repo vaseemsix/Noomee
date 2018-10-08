@@ -1,19 +1,21 @@
 package com.unknown.numee.util.widget
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.BounceInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.unknown.numee.R
 import com.unknown.numee.child.subtasks.ViewContract
 import com.unknown.numee.util.GlideApp
-import android.animation.ObjectAnimator
-import android.view.animation.Animation
-import android.view.animation.BounceInterpolator
-import android.view.animation.Interpolator
+import com.unknown.numee.util.Preferences
 
 
 class SubTasksView @JvmOverloads constructor(
@@ -76,15 +78,31 @@ class SubTasksView @JvmOverloads constructor(
             loadImage(toDoImgView, itemList[1].imageUrl)
         }
 
-        doBounceAnimation(currentView)
+        if (itemList[0].doAnimation) {
+            doBounceAnimation(currentView)
+        }
     }
 
     private fun loadImage(view: ImageView, url: String) {
+        val storageReference = getImageStorageReference(url)
+        storageReference?.let {
         GlideApp
                 .with(view.context)
-                .load(url)
+                .load(it)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(view)
+        }
+    }
+
+    // this probably needs to be changed
+    private fun getImageStorageReference(url: String): StorageReference? {
+        return if (url.isNotEmpty()) {
+            val storage = FirebaseStorage.getInstance()
+            val urlWithGender = url.replace("gender", Preferences.gender)
+            storage.reference.child(urlWithGender)
+        } else {
+            null
+        }
     }
 
     private fun doBounceAnimation(targetView: View) {

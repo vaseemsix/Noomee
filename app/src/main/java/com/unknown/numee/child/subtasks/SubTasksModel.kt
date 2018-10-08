@@ -14,6 +14,8 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
 
     override val currentUserID: String
         get() = Preferences.userID
+    override var scheduleID: String = ""
+    override var taskID: String = ""
     override var task: Task? = null
     override var timer: CountDownTimer? = null
     override var itemList: List<ViewContract.Item> = listOf()
