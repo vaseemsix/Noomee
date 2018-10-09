@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
+import com.unknown.numee.login.LoginActivity
 import com.unknown.numee.main.MainActivity
 import com.unknown.numee.util.Preferences
 
@@ -36,5 +38,11 @@ class SwitcherActivity : BaseActivity() {
     private fun startMainActivity() {
         finish()
         MainActivity.startActivity(this@SwitcherActivity)
+    }
+
+    public fun logOut(view: View) {
+        FirebaseAuth.getInstance().signOut()
+        finish()
+        LoginActivity.startActivity(this)
     }
 }

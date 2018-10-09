@@ -3,7 +3,6 @@ package com.unknown.numee.parent.subtasks
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SwitchCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,13 +38,15 @@ class SubTasksAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textName.text = this.itemList[position].name
-        GlideApp
-                .with(holder.taskImage.context)
-                .load(storageRef.child(this.itemList[position].imageUrl.replace("gender", Preferences.gender)))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.taskImage)
+        if (this.itemList[position].imageUrl != "") {
+            GlideApp
+                    .with(holder.taskImage.context)
+                    .load(storageRef.child(this.itemList[position].imageUrl.replace("gender", Preferences.gender)))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(holder.taskImage)
 
-        holder.switcher.isChecked = this.itemList[position].enable == 1
+            holder.switcher.isChecked = this.itemList[position].enable == 1
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

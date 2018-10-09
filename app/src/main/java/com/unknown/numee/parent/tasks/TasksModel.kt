@@ -1,7 +1,6 @@
 package com.unknown.numee.parent.tasks
 
 import android.content.Context
-import android.util.Log
 import com.unknown.numee.business.beans.Calendar
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.GeneralModel
@@ -13,17 +12,19 @@ class TasksModel(context: Context, private val scheduleId: String) : GeneralMode
     private val taskApiFirebase = TasksFirebaseApi()
 
     private var scheduleDays: MutableList<String> = mutableListOf("", "", "", "", "", "", "")
-    private lateinit var calendar: Calendar
+    private var calendar: Calendar = Calendar(mutableListOf())
 
     override fun updateScheduleDays(position: Int) {
         scheduleDays[position] = scheduleId
     }
 
     override fun removeScheduleFromDays(position: Int) {
-        if (calendar.days[position] == scheduleId) {
-            scheduleDays[position] = ""
-        } else {
-            scheduleDays[position] = calendar.days[position]
+        if (calendar.days.size >= position) {
+            if (calendar.days[position] == scheduleId) {
+                scheduleDays[position] = ""
+            } else {
+                scheduleDays[position] = calendar.days[position]
+            }
         }
     }
 

@@ -16,6 +16,7 @@ import com.unknown.numee.switcher.SwitcherActivity
 import com.unknown.numee.util.GlideApp
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.EventManager
+import java.util.*
 
 class SplashScreenActivity : BaseActivity() {
 
@@ -24,6 +25,8 @@ class SplashScreenActivity : BaseActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Preferences.initialize(this)
+        changeLanguage()
+
         EventManager.initialize(this)
 
         if (isUserLoggedIn()) {
@@ -110,5 +113,23 @@ class SplashScreenActivity : BaseActivity() {
 
     private fun isChildInfoExist(): Boolean {
         return Preferences.childInfo
+    }
+
+    private fun changeLanguage() {
+        if (languageIsSet()) {
+            updateResource()
+        }
+    }
+
+    fun languageIsSet(): Boolean {
+        return Preferences.language.isNotEmpty()
+    }
+
+    fun updateResource() {
+        val myLocale = Locale(Preferences.language)
+        val res = resources
+        val conf = res.configuration
+        conf.locale = myLocale
+        res.updateConfiguration(conf, res.displayMetrics)
     }
 }
