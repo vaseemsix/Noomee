@@ -24,7 +24,7 @@
     <string name="nums">Num</string>
     <string name="cont">Continuer</string>
     <string name="good_night">Bonne nuit</string>
-    <string name="you_have_x_num">Tu as \n\n %d \n\n nooms!</string>
+    <string name="you_have_x_num">Tu as \n\n %d \n\n nums!</string>
 
     <string name="submit">Se connecter</string>
     <string name="wrong_password">Mauvais mot de passe</string>
