@@ -22,10 +22,10 @@
     <string name="welcome_child">Welcome, %s</string>
     <string name="welcome">Welcome</string>
 
-    <string name="nums">Noom</string>
+    <string name="nums">Num</string>
     <string name="cont">Continue</string>
     <string name="good_night">Good Night</string>
-    <string name="you_have_x_num">You have \n\n %d \n\n nooms!</string>
+    <string name="you_have_x_num">You have \n\n %d \n\n nums!</string>
 
     <string name="submit">Sign In</string>
     <string name="wrong_password">Wrong Password</string>
