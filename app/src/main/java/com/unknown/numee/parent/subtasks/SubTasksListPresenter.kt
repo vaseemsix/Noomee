@@ -38,15 +38,18 @@ class SubTasksListPresenter(
     }
 
     override fun saveChanges() {
-
+        model.updateTaskTime(view.getTime())
+        model.updateTaskDuration(view.getDuration())
+        model.updateTaskName(view.getTaskName())
+        model.saveTask(Preferences.userID, view.getScheduleId())
     }
 
     override fun onSubTaskStatusChange(isChecked: Boolean, position: Int) {
-
+        model.updateTaskStatus(isChecked, position)
     }
 
-    override fun onSubTaskItemClicked(position: Int) {
-
+    override fun onSubTaskItemNameClicked(position: Int) {
+//        model.updateSubTaskName()
     }
 
     override fun onError(e: Exception?) {
@@ -57,8 +60,14 @@ class SubTasksListPresenter(
 
     override fun onReceivedGetTaskByIDSuccess(task: Task?) {
         if (task != null) {
-            view.updateAdapter(task)
+            model.updateTask(task)
+            view.updateTaskTime(model.getTask())
+            view.updateAdapter(model.getTask())
         }
+    }
+
+    override fun onReceivedSaveTaskSuccess(scheduleId: String, scheduleName: String) {
+        view.startTasksListActivity(scheduleId, scheduleName)
     }
 
 }

@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".parent.subtasks.SubTasksActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:padding="8dp">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/card_constratint_view"
+        android:id="@+id/card_constraint_view"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="32dp"
-        android:background="@android:color/white"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/styles__time_picker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,21 +54,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:maxLength="12"
+            android:ellipsize="end"/>
 
         <EditText
             android:id="@+id/task_title_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="50dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:maxLines="1"
+            android:maxLength="12"
+            android:ellipsize="end"
             android:visibility="gone"/>
 
         <ImageView
@@ -105,46 +112,62 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_constratint_view" />
+        app:layout_constraintTop_toBottomOf="@+id/card_constraint_view" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/styles__time_picker"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/timer_area"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/images__time"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/app_name" />
+
         <EditText
             android:id="@+id/hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_weight="1"
             android:hint="@string/hours"
             android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="5"
+            android:ellipsize="end"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_weight="1"
             android:hint="@string/minutes"
             android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="5"
+            android:ellipsize="end"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/seconds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_weight="1"
+            android:maxLines="1"
+            android:maxLength="5"
+            android:ellipsize="end"
             android:hint="@string/seconds"
             android:inputType="number"
             android:textAlignment="center" />

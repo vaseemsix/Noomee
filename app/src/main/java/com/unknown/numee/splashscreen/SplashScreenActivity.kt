@@ -121,11 +121,11 @@ class SplashScreenActivity : BaseActivity() {
         }
     }
 
-    fun languageIsSet(): Boolean {
+    private fun languageIsSet(): Boolean {
         return Preferences.language.isNotEmpty()
     }
 
-    fun updateResource() {
+    private fun updateResource() {
         val myLocale = Locale(Preferences.language)
         val res = resources
         val conf = res.configuration

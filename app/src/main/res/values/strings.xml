@@ -45,6 +45,8 @@
     <string name="day_schedule">DAY SCHEDULE</string>
     <string name="day_schedule_templates">Day Schedule Templates</string>
 
+    <string name="plus_sign">+</string>
+
     <string name="new_template">New\nTemplate\n+</string>
     <string name="gender">Gender</string>
     <string name="choose_action">Choose Action</string>
@@ -53,4 +55,5 @@
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
     <string name="log_out">Log Out</string>
+    <string name="schedule_remove_message">Schedule Removed Successfully</string>
 </resources>

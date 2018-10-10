@@ -61,7 +61,7 @@ class SchedulesFragment : Fragment(), ViewContract.View {
 
     override fun setupSchedulesListView() {
         schedulesListView.setHasFixedSize(true)
-        schedulesListView.layoutManager = GridLayoutManager(context, 3)
+        schedulesListView.layoutManager = GridLayoutManager(context, 2)
         scheduleListAdapter = SchedulesAdapter(object : SchedulesAdapter.OnItemClickListener {
             override fun onItemRemoveClicked(item: Schedule) {
                 presenter.onScheduleItemRemoved(item)

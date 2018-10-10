@@ -7,51 +7,56 @@
 	android:background="@color/colorPrimary"
 	tools:context=".switcher.SwitcherActivity">
 
-	<TextView
-		android:id="@+id/textView"
+	<!--<TextView-->
+		<!--android:id="@+id/textView"-->
+		<!--android:layout_width="0dp"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:layout_marginBottom="@dimen/spacing_huge"-->
+		<!--android:layout_marginEnd="@dimen/spacing_small"-->
+		<!--android:layout_marginStart="@dimen/spacing_small"-->
+		<!--android:textAlignment="center"-->
+		<!--android:textSize="24sp"-->
+		<!--app:layout_constraintBottom_toTopOf="@+id/activity_switcher__parent"-->
+		<!--app:layout_constraintEnd_toEndOf="parent"-->
+		<!--app:layout_constraintStart_toStartOf="parent"-->
+		<!--app:layout_constraintTop_toTopOf="parent"-->
+		<!--app:layout_constraintVertical_chainStyle="packed" />-->
+
+	<LinearLayout
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="@dimen/spacing_huge"
-		android:layout_marginEnd="@dimen/spacing_small"
-		android:layout_marginStart="@dimen/spacing_small"
-		android:textAlignment="center"
-		android:textSize="24sp"
-		app:layout_constraintBottom_toTopOf="@+id/activity_switcher__parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_chainStyle="packed" />
-	
-	<com.unknown.numee.util.widget.ButtonView
-		android:id="@+id/activity_switcher__parent"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/spacing_normal"
-		android:onClick="useAsParent"
-		android:textColor="@color/colorPrimaryDark"
-		app:layout_constraintBottom_toTopOf="@id/activity_switcher__child"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textView"
-		app:text="@string/parent" />
-	
-	<com.unknown.numee.util.widget.ButtonView
-		android:id="@+id/activity_switcher__child"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/spacing_normal"
-		android:onClick="useAsChild"
-		android:textColor="@color/colorPrimaryDark"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/activity_switcher__parent"
-		app:text="@string/child" />
+		android:orientation="vertical"
+		app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/switcher_area">
+
+		<com.unknown.numee.util.widget.ButtonView
+			android:id="@+id/activity_switcher__parent"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/spacing_normal"
+			android:onClick="useAsParent"
+			android:textColor="@color/colorPrimaryDark"
+
+			app:text="@string/parent" />
+
+		<com.unknown.numee.util.widget.ButtonView
+			android:id="@+id/activity_switcher__child"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/spacing_normal"
+			android:onClick="useAsChild"
+			android:textColor="@color/colorPrimaryDark"
+			app:text="@string/child" />
+
+	</LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
@@ -62,19 +67,20 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="32dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		android:onClick="logOut"
+		android:text="@string/log_out"
 		android:textAlignment="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/log_out"
-        android:textColor="@color/colorSubTitle"
-        android:textSize="18sp"
-        android:onClick="logOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+		android:textColor="@color/colorSubTitle"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/switcher_area" />
 
 </android.support.constraint.ConstraintLayout>

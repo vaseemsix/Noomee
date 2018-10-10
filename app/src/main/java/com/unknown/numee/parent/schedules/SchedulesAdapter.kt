@@ -36,8 +36,8 @@ class SchedulesAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.template_schedule_item_text_view)
 
-        val removeImageView: ImageView = view.findViewById(R.id.remove_icon)
-        val editImageView: ImageView = view.findViewById(R.id.edit_icon)
+        private val removeImageView: ImageView = view.findViewById(R.id.remove_icon)
+        private val editImageView: ImageView = view.findViewById(R.id.edit_icon)
 
         init {
             removeImageView.setOnClickListener{onItemClickListener?.onItemRemoveClicked(itemList[adapterPosition])}

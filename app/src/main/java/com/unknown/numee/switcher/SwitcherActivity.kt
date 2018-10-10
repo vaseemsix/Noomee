@@ -16,6 +16,7 @@ class SwitcherActivity : BaseActivity() {
     companion object {
         fun startActivity(context: Context) {
             val intent = Intent(context, SwitcherActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
     }

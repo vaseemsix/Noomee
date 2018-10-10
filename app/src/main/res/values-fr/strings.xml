@@ -51,4 +51,8 @@
 	<string name="hours">Heures</string>
 	<string name="minutes">Minutes</string>
 	<string name="seconds">Secondes</string>
+
+    <string name="log_out">Déconnexion</string>
+    <string name="plus_sign">+</string>
+    <string name="schedule_remove_message">Schedule Removed Successfully</string>
 </resources>

@@ -32,4 +32,14 @@ class SubTasksFirebaseApi {
 
         })
     }
+
+    fun saveTask(
+            userID: String,
+            scheduleId: String,
+            task: Task,
+            onSuccess: () -> Unit
+    ) {
+        firebaseDatabase.child("tasks").child(userID).child(scheduleId).child(task.id).setValue(task)
+        onSuccess.invoke()
+    }
 }

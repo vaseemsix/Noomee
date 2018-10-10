@@ -58,8 +58,7 @@
     <string name="hours">Ժամ</string>
     <string name="minutes">Րոպե</string>
     <string name="seconds">Վայրկյան</string>
-	<string name="log_out">Դուրս գալ</string>
+	<string name="log_out">Log Out</string>
 	<string name="plus_sign">+</string>
-    <string name="schedule_remove_message">Schedule Removed Successfully</string>
-
+    <string name="schedule_remove_message">"Schedule Removed Successfully"</string>
 </resources>

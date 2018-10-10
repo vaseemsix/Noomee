@@ -16,6 +16,9 @@ interface ViewContract {
         fun getTaskID(): String
 
         fun updateAdapter(task: Task)
+        fun updateTaskTime(task: Task)
+
+        fun getTaskName(): String
     }
 
     interface Listener {
@@ -23,7 +26,7 @@ interface ViewContract {
         fun changeView(textView: TextView, editText: EditText)
         fun saveChanges()
         fun cancelChanges(scheduleId: String, scheduleName: String)
-        fun onSubTaskItemClicked(position: Int)
+        fun onSubTaskItemNameClicked(position: Int)
         fun onSubTaskStatusChange(isChecked: Boolean, position: Int)
     }
 }

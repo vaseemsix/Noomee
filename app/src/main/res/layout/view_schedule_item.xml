@@ -1,47 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120dp"
-    android:layout_height="150dp"
-    android:orientation="vertical">
+    android:layout_width="141dp"
+    android:layout_height="185dp"
+    android:layout_margin="16dp"
+    android:id="@+id/icon_constraint_view"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/edit_image_view"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/images__template_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/images__template_icon"
-            android:id="@+id/edit_image_view"
-            tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/remove_icon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/images__cross_icon"
+        app:layout_constraintBottom_toTopOf="@+id/template_schedule_item_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/images__cross_icon"
-            tools:ignore="ContentDescription"
-            android:id="@+id/remove_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/images__template_edit_icon"
-            tools:ignore="ContentDescription"
-            android:id="@+id/edit_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/edit_icon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/images__template_edit_icon"
+        app:layout_constraintBottom_toTopOf="@+id/template_schedule_item_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/template_schedule_item_text_view"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:textAlignment="center"
-        android:textColor="@android:color/black"/>
-</LinearLayout>
+        android:textColor="@android:color/black"
+        android:maxLines="1"
+        android:maxLength="25"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

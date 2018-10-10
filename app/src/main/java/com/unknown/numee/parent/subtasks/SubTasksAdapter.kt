@@ -61,11 +61,14 @@ class SubTasksAdapter(
             switcher.setOnCheckedChangeListener { _, isChecked ->
                 onClickListener?.onSwitchClicked(isChecked, adapterPosition)
             }
+            textName.setOnClickListener{
+                onClickListener?.onSubTaskItemNameClicked(adapterPosition)
+            }
         }
     }
 
     interface OnClickListener {
-        fun onTaskItemClicked(position: Int)
+        fun onSubTaskItemNameClicked(position: Int )
         fun onSwitchClicked(isChecked: Boolean, position: Int)
     }
 }

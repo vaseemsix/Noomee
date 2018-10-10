@@ -108,19 +108,37 @@ class MainActivity : BaseActivity() {
                 .commit()
     }
 
+    private val scheduleFragmentTag: String = "schedule"
+    private val tasksFragmentTag: String = "tasks"
+
     private fun useParentView() {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_main__content, schedulesFragment)
-                .commit()
+        if ((supportFragmentManager.findFragmentByTag(tasksFragmentTag) != null) && (supportFragmentManager.findFragmentByTag(tasksFragmentTag).isVisible)) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_main__content, schedulesFragment, scheduleFragmentTag)
+                    .remove(tasksFragment)
+                    .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_main__content, schedulesFragment, scheduleFragmentTag)
+                    .commit()
+        }
     }
 
     private fun useChildView() {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_main__content, tasksFragment)
-                .commit()
+        if ((supportFragmentManager.findFragmentByTag(scheduleFragmentTag) != null) && (supportFragmentManager.findFragmentByTag(scheduleFragmentTag).isVisible)) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_main__content, tasksFragment, tasksFragmentTag)
+                    .remove(schedulesFragment)
+                    .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_main__content, tasksFragment, tasksFragmentTag)
+                    .commit()
+        }
     }
 
     private fun startSwitcherActivity() {
+        finish()
         SwitcherActivity.startActivity(applicationContext)
     }
 }

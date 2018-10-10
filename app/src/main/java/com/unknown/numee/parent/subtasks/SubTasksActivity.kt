@@ -103,8 +103,8 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         subTaskRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         subTaskAdapter = SubTasksAdapter(this, object : SubTasksAdapter.OnClickListener {
-            override fun onTaskItemClicked(position: Int) {
-                presenter.onSubTaskItemClicked(position)
+            override fun onSubTaskItemNameClicked(position: Int) {
+                presenter.onSubTaskItemNameClicked(position)
             }
 
             override fun onSwitchClicked(isChecked: Boolean, position: Int) {
@@ -113,6 +113,10 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         })
 
         subTaskRecyclerView.adapter = subTaskAdapter
+    }
+
+    override fun getTaskName(): String {
+        return taskTitleTextView.text.toString()
     }
 
     override fun showMessage(message: String) {
@@ -157,5 +161,20 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
 
     override fun updateAdapter(task: Task) {
         subTaskAdapter.setItemList(task.subTasks)
+    }
+
+    override fun updateTaskTime(task: Task) {
+        if (task.time.length == 5) {
+            val time = task.time.split(":")
+            if (time.size == 2) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    timePicker.hour = time[0].toInt()
+                    timePicker.minute = time[1].toInt()
+                } else {
+                    timePicker.currentHour = time[0].toInt()
+                    timePicker.currentMinute = time[1].toInt()
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.unknown.numee.parent.subtasks
 
 import android.content.Context
+import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.GeneralModel
 
 
@@ -17,5 +18,47 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
                     { task -> presenter.onReceivedGetTaskByIDSuccess(task) },
                     { exception -> presenter.onError(exception) }
         )
+    }
+
+    private lateinit var task: Task
+
+    override fun updateTask(task: Task) {
+        this.task = task
+    }
+
+    override fun getTask(): Task {
+        return this.task
+    }
+
+    override fun updateTaskStatus(status: Boolean, position: Int) {
+        if (status) {
+            task.subTasks[position].enable = 1
+        } else {
+            task.subTasks[position].enable = 0
+        }
+    }
+
+    override fun updateTaskDuration(duration: Int) {
+        task.duration = duration
+    }
+
+    override fun updateTaskTime(timeInString: String) {
+        task.time = timeInString
+    }
+
+    override fun updateTaskName(taskName: String) {
+        task.name = taskName
+    }
+
+    override fun updateSubTaskName(position: Int, newName: String) {
+        task.subTasks[position].name = newName
+    }
+
+    override fun saveTask(userID: String, scheduleID: String) {
+            taskApiFirebase.saveTask(
+                    userID,
+                    scheduleID,
+                    task
+            ) { presenter.onReceivedSaveTaskSuccess(scheduleID, task.name) }
     }
 }
