@@ -3,6 +3,7 @@ package com.unknown.numee.child.subtasks
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -71,6 +72,10 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
 
     override fun setSubTasksTime(time: String) {
         timeView.text = time
+    }
+
+    override fun setSubTasksTimeVisibility(isVisible: Boolean) {
+        timeView.visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
     }
 
     override fun setItemList(itemList: List<ViewContract.Item>) {
