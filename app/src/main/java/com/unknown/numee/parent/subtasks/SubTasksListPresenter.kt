@@ -70,4 +70,12 @@ class SubTasksListPresenter(
         view.startTasksListActivity(scheduleId, scheduleName)
     }
 
+    override fun onCameraIconClick(position: Int) {
+        view.showMessage("Will Be Available Soon")
+    }
+
+    override fun onRecordIconClick(position: Int) {
+        view.showMessage("Will Be Available Soon")
+    }
+
 }

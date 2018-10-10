@@ -56,6 +56,7 @@
                 android:layout_height="32dp"
                 android:src="@drawable/images_record"
                 android:layout_margin="16dp"
+                android:id="@+id/record_icon"
                 card_view:layout_constraintStart_toEndOf="@id/camera_image_view"
                 card_view:layout_constraintBottom_toBottomOf="parent"/>
 

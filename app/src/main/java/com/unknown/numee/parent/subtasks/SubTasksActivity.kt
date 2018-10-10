@@ -110,6 +110,14 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
             override fun onSwitchClicked(isChecked: Boolean, position: Int) {
                 presenter.onSubTaskStatusChange(isChecked, position)
             }
+
+            override fun onCameraIconClick(position: Int) {
+                presenter.onCameraIconClick(position)
+            }
+
+            override fun onRecordIconClick(position: Int) {
+                presenter.onRecordIconClick(position)
+            }
         })
 
         subTaskRecyclerView.adapter = subTaskAdapter

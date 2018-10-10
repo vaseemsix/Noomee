@@ -28,5 +28,7 @@ interface ViewContract {
         fun cancelChanges(scheduleId: String, scheduleName: String)
         fun onSubTaskItemNameClicked(position: Int)
         fun onSubTaskStatusChange(isChecked: Boolean, position: Int)
+        fun onRecordIconClick(position: Int)
+        fun onCameraIconClick(position: Int)
     }
 }

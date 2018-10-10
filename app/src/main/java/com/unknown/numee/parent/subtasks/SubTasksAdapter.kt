@@ -52,6 +52,8 @@ class SubTasksAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textName: TextView = view.findViewById(R.id.sub_task_name_text_view)
         val taskImage: ImageView = view.findViewById(R.id.task_image_view)
+        private val cameraButton: ImageView = view.findViewById(R.id.camera_image_view)
+        private val recordButton: ImageView = view.findViewById(R.id.record_icon)
 
         val switcher: SwitchCompat = view.findViewById(R.id.sub_task_switcher)
 //        private val imageView: ImageView = view.findViewById(R.id.edit_task_icon)
@@ -64,11 +66,16 @@ class SubTasksAdapter(
             textName.setOnClickListener{
                 onClickListener?.onSubTaskItemNameClicked(adapterPosition)
             }
+
+            cameraButton.setOnClickListener{ onClickListener?.onCameraIconClick(adapterPosition) }
+            recordButton.setOnClickListener{ onClickListener?.onRecordIconClick(adapterPosition) }
         }
     }
 
     interface OnClickListener {
         fun onSubTaskItemNameClicked(position: Int )
         fun onSwitchClicked(isChecked: Boolean, position: Int)
+        fun onCameraIconClick(position: Int)
+        fun onRecordIconClick(position: Int)
     }
 }
