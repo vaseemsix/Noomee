@@ -6,7 +6,6 @@
 		<item>TDAH</item>
 		<item>Le syndrome d\'asperger</item>
 		<item>Trouble envahissant du développement</item>
-		<item>Autre</item>
 	</array>
 
 	<array name="genders">
@@ -19,14 +18,12 @@
 		<item>Père</item>
 		<item>Thérapeute</item>
 		<item>Soignant</item>
-		<item>Autre</item>
 	</array>
 	
 	<array name="speak">
 		<item>Oui</item>
 		<item>Non</item>
 		<item>Discours répétitif</item>
-		<item>Autre</item>
 	</array>
 	
 	<array name="iq_levels">
