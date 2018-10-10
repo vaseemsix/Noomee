@@ -5,7 +5,6 @@ import android.os.Handler
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.google.firebase.auth.FirebaseAuth
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.language.LanguageSelectionActivity
@@ -18,42 +17,24 @@ import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.EventManager
 import java.util.*
 
-class SplashScreenActivity : BaseActivity() {
+class SplashScreenActivity : BaseActivity(), ViewContract.View {
+
+    private lateinit var presenter: ViewContract.Listener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
         Preferences.initialize(this)
-        changeLanguage()
-
         EventManager.initialize(this)
 
-        if (isUserLoggedIn()) {
-            if (FirebaseAuth.getInstance().currentUser!!.isEmailVerified) {
-                if (isChildInfoExist()) {
-                    if (isUserTypeSet()) {
-                        startMainActivity()
-                    } else {
-                        startUserSwitcherActivity()
-                    }
-                } else {
-                    startRegistrationActivity()
-                }
-            } else {
-                startLoginActivity()
-            }
-        } else {
-            if (!isLanguageSelected()) {
-                startLanguageSelectorActivity()
-            } else {
-                startLoginActivity()
-            }
-        }
+        initPresenter()
+        presenter.onCreate()
 
         val iconView = findViewById<ImageView>(R.id.splash_screen__icon)
         GlideApp
-                .with(this).asGif()
+                .with(this)
+                .asGif()
                 .load(R.raw.logo_animation)
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE))
                 .into(iconView)
@@ -64,69 +45,52 @@ class SplashScreenActivity : BaseActivity() {
         finish()
     }
 
-    private fun startMainActivity() {
+    private fun initPresenter() {
+        val model = SplashScreenModel(this)
+        val splashScreenPresenter = SplashScreenPresenter(model)
+        splashScreenPresenter.setView(this)
+        model.presenter = splashScreenPresenter
+
+        presenter = splashScreenPresenter
+    }
+
+    override fun startMainActivity() {
         val handler = Handler()
         handler.postDelayed({
             MainActivity.startActivity(this@SplashScreenActivity)
         }, 5000)
     }
 
-    private fun startLoginActivity() {
+    override fun startLoginActivity() {
         val handler = Handler()
         handler.postDelayed({
             LoginActivity.startActivity(this@SplashScreenActivity)
         }, 5000)
     }
 
-    private fun startUserSwitcherActivity() {
+    override fun startUserSwitcherActivity() {
         val handler = Handler()
         handler.postDelayed({
             SwitcherActivity.startActivity(this@SplashScreenActivity)
         }, 6000)
     }
 
-    private fun startRegistrationActivity() {
+    override fun startRegistrationActivity() {
         val handler = Handler()
         handler.postDelayed({
             RegistrationActivity.startActivity(this@SplashScreenActivity)
         }, 5000)
     }
 
-    private fun startLanguageSelectorActivity() {
+    override fun startLanguageSelectorActivity() {
         val handler = Handler()
         handler.postDelayed({
             LanguageSelectionActivity.startActivity(this@SplashScreenActivity)
         }, 5000)
     }
 
-    private fun isUserLoggedIn(): Boolean {
-        return Preferences.userID.isNotEmpty()
-    }
-
-    private fun isUserTypeSet(): Boolean {
-        return Preferences.userType.isNotEmpty()
-    }
-
-    private fun isLanguageSelected(): Boolean {
-        return Preferences.language.isNotEmpty()
-    }
-
-    private fun isChildInfoExist(): Boolean {
-        return Preferences.childInfo
-    }
-
-    private fun changeLanguage() {
-        if (languageIsSet()) {
-            updateResource()
-        }
-    }
-
-    fun languageIsSet(): Boolean {
-        return Preferences.language.isNotEmpty()
-    }
-
-    fun updateResource() {
-        val myLocale = Locale(Preferences.language)
+    override fun setLanguage(language: String) {
+        val myLocale = Locale(language)
         val res = resources
         val conf = res.configuration
         conf.locale = myLocale
