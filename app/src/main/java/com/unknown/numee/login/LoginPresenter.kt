@@ -81,11 +81,11 @@ class LoginPresenter(
         var userID = ""
         if (user != null) {
             model.saveUserID(user.id)
-            if (isChildInfoExist()) {
+            if (user.child != null) {
                 if (isUserTypeExist()) {
-                    view.startUserSwitcherActivity()
-                } else {
                     view.startMainActivity()
+                } else {
+                    view.startUserSwitcherActivity()
                 }
             } else {
                 view.startRegistrationActivity()
@@ -112,10 +112,6 @@ class LoginPresenter(
 
     private fun isUserTypeExist(): Boolean {
         return Preferences.userType.isNotEmpty()
-    }
-
-    private fun isChildInfoExist(): Boolean {
-        return Preferences.childInfo
     }
 
     private fun showEmailSentMessage() {

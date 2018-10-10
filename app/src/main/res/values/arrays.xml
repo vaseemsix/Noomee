@@ -6,7 +6,6 @@
 		<item>ADHD</item>
 		<item>Asperger’s syndrome</item>
 		<item>Pervasive developmental disorder</item>
-		<item>Other</item>
 	</array>
 
 	<array name="genders">
@@ -19,14 +18,12 @@
 		<item>Father</item>
 		<item>Therapist</item>
 		<item>Care giver</item>
-		<item>Other</item>
 	</array>
 	
 	<array name="speak">
 		<item>Yes</item>
 		<item>No</item>
 		<item>Repetitive speech</item>
-		<item>Other</item>
 	</array>
 	
 	<array name="iq_levels">

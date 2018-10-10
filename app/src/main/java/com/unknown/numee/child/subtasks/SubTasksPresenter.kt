@@ -72,7 +72,12 @@ class SubTasksPresenter(
             view.setTitle(it.name)
         }
         view.setSubTasksProgress(getSubTaskProgress(task.subTasks))
-        startSubTaskTime(task.duration)
+        if (task.duration == 0) {
+            view.setSubTasksTimeVisibility(false)
+        } else {
+            view.setSubTasksTimeVisibility(true)
+            startSubTaskTime(task.duration)
+        }
         model.itemList = itemList
         view.setItemList(model.itemList)
     }

@@ -6,7 +6,6 @@
 		<item>Ուշադրության պակասի և հիպերակտիվության համախտանիշ (ADHD)</item>
 		<item>Ասպերգերի սինդրոմ</item>
 		<item>Զարգացման ընդհանուր հապաղում (PDD)</item>
-		<item>Այլ</item>
 	</array>
 
 	<array name="genders">
@@ -19,14 +18,12 @@
 		<item>Հայրիկ</item>
 		<item>Թերապիստ</item>
 		<item>Խնամակալ</item>
-		<item>Այլ</item>
 	</array>
 	
 	<array name="speak">
 		<item>Այո</item>
 		<item>Ոչ</item>
 		<item>Կրկնվող խոսք</item>
-		<item>Այլ</item>
 	</array>
 	
 	<array name="iq_levels">
