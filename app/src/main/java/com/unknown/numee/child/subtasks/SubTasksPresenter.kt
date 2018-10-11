@@ -45,7 +45,7 @@ class SubTasksPresenter(
     private fun getNextToDoIndex(task: Task): Int {
         var subTasks = task.subTasks
         subTasks = subTasks.sortedBy { it.order }
-        return subTasks.indexOfFirst { it.status == Status.TO_DO }
+        return subTasks.indexOfFirst { (it.status == Status.TO_DO) && (it.enable == 1) }
     }
 
     override fun onError(e: Exception?) {
@@ -53,6 +53,17 @@ class SubTasksPresenter(
     }
 
     override fun onReceivedGetTaskByIDSuccess(task: Task?) {
+//        if (task != null) {
+//
+//            val newSubTasksList: MutableList<SubTask> = mutableListOf()
+//            for (i in 0 until task.subTasks.size) {
+//                if (task.subTasks[i].enable == 1) {
+//                    newSubTasksList.add(task.subTasks[i])
+//                }
+//            }
+//            task.subTasks = newSubTasksList.toList()
+//        }
+
         model.task = task
         update()
     }

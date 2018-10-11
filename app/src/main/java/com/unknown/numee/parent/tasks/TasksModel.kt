@@ -1,7 +1,9 @@
 package com.unknown.numee.parent.tasks
 
 import android.content.Context
+import android.util.Log
 import com.unknown.numee.business.beans.Calendar
+import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.GeneralModel
 
@@ -100,13 +102,32 @@ class TasksModel(context: Context, private val scheduleId: String) : GeneralMode
     }
 
     override fun saveTasks(userID: String) {
+        var notFoundFirstTask = true
+
         for (i in 0 until tasksList.size) {
+            val newTask: Task = tasksList[i]
+
+            if (newTask.enable != 1) {
+                if (newTask.status == Status.CURRENT) {
+                    newTask.status = Status.TO_DO
+                }
+            } else {
+                if ((newTask.status == Status.TO_DO) && (notFoundFirstTask)) {
+                    notFoundFirstTask = false
+                    newTask.status = Status.CURRENT
+                } else {
+                    notFoundFirstTask = false
+                }
+            }
+
             taskApiFirebase.saveTask(
                     userID,
                     scheduleId,
-                    tasksList[i]
+                    newTask
             ) { presenter.onReceivedSaveTaskSuccess() }
         }
+
+        presenter.onAllTasksSaved()
     }
 
     override fun saveScheduleName(scheduleName: String, userId: String) {

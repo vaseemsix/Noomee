@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/close_icon"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/images__close"
@@ -34,8 +34,8 @@
 
         <ImageView
             android:id="@+id/done_icon"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/images__done"

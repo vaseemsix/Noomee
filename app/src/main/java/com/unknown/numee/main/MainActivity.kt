@@ -112,6 +112,7 @@ class MainActivity : BaseActivity() {
     private val tasksFragmentTag: String = "tasks"
 
     private fun useParentView() {
+        Preferences.userType = "PARENT"
         if ((supportFragmentManager.findFragmentByTag(tasksFragmentTag) != null) && (supportFragmentManager.findFragmentByTag(tasksFragmentTag).isVisible)) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.activity_main__content, schedulesFragment, scheduleFragmentTag)
@@ -125,6 +126,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun useChildView() {
+        Preferences.userType = "CHILD"
         if ((supportFragmentManager.findFragmentByTag(scheduleFragmentTag) != null) && (supportFragmentManager.findFragmentByTag(scheduleFragmentTag).isVisible)) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.activity_main__content, tasksFragment, tasksFragmentTag)

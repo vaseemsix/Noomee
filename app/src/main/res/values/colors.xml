@@ -4,7 +4,8 @@
 	<color name="colorPrimaryDark">#2AD27F</color>
 	<color name="colorAccent">#303030</color>
 	<color name="colorSubTitle">#898989</color>
-	
+	<color name="colorDivider">#eeeeee</color>
+
 	<color name="colorBlue">#3ACBEC</color>
 	<color name="colorRewardBg">#F9FFFB</color>
 

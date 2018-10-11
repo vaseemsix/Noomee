@@ -74,7 +74,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:maxLines="1"
-            android:maxLength="12"
+            android:maxLength="18"
             android:ellipsize="end"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"

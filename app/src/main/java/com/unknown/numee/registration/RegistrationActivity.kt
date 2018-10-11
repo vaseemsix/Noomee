@@ -79,6 +79,10 @@ class RegistrationActivity : BaseActivity(), ViewContract.View {
         SwitcherActivity.startActivity(this)
     }
 
+//    override fun validateInputes(): Boolean {
+//        if childName
+//    }
+
     private fun initReferences() {
         childRelation = findViewById(R.id.activity_registration__edit_child_relation)
         childName = findViewById(R.id.activity_registration__edit_child_name)

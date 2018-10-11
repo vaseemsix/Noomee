@@ -15,7 +15,7 @@ import java.util.*
 
 class TasksPresenter(
         val model: ModelContract.Model,
-        val taskItemListCreator: TaskItemListCreator
+        private val taskItemListCreator: TaskItemListCreator
 ) : Presenter<ViewContract.View>(), ViewContract.Listener, ModelContract.Listener {
 
     private val taskFinishedCallback = object : EventCallback {
@@ -75,10 +75,20 @@ class TasksPresenter(
     }
 
     override fun onReceivedTasksSuccess(tasks: List<Task>?) {
-        tasks?.let {
-            model.tasks = it
-            update()
+        tasks?.let { updateTasks(it) }
+    }
+
+    private fun updateTasks(tasksList: List<Task>) {
+        val newTasksList: MutableList<Task> = mutableListOf()
+
+        for (task in tasksList) {
+            if (task.enable == 1) {
+                newTasksList.add(task)
+            }
         }
+
+        model.tasks = newTasksList.toList()
+        update()
     }
 
     override fun onReceivedResetTasksSuccess() {

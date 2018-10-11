@@ -1,6 +1,8 @@
 package com.unknown.numee.parent.subtasks
 
 import android.content.Context
+import com.unknown.numee.business.beans.Status
+import com.unknown.numee.business.beans.SubTask
 import com.unknown.numee.business.beans.Task
 import com.unknown.numee.util.mvp.GeneralModel
 
@@ -55,10 +57,33 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
     }
 
     override fun saveTask(userID: String, scheduleID: String) {
-            taskApiFirebase.saveTask(
-                    userID,
-                    scheduleID,
-                    task
-            ) { presenter.onReceivedSaveTaskSuccess(scheduleID, task.name) }
+        var notFoundFirstTask = true
+        val newSubTaskList: MutableList<SubTask> = mutableListOf()
+        for (i in 0 until task.subTasks.size) {
+            val newSubTask: SubTask = task.subTasks[i]
+
+            if (newSubTask.enable != 1) {
+                if (newSubTask.status == Status.CURRENT) {
+                    newSubTask.status = Status.TO_DO
+                }
+            } else {
+                if ((newSubTask.status == Status.TO_DO) && (notFoundFirstTask)) {
+                    notFoundFirstTask = false
+                    newSubTask.status = Status.CURRENT
+                } else {
+                    notFoundFirstTask = false
+                }
+            }
+
+            newSubTaskList.add(newSubTask)
+        }
+
+        task.subTasks = newSubTaskList.toList()
+
+        taskApiFirebase.saveTask(
+                userID,
+                scheduleID,
+                task
+        ) { presenter.onReceivedSaveTaskSuccess(scheduleID, task.name) }
     }
 }

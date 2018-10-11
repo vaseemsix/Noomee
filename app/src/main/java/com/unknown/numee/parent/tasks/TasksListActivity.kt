@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.business.beans.Task
+import com.unknown.numee.main.MainActivity
 import com.unknown.numee.parent.subtasks.SubTasksActivity
 
 class TasksListActivity : BaseActivity(), ViewContract.View {
@@ -118,7 +119,12 @@ class TasksListActivity : BaseActivity(), ViewContract.View {
         SubTasksActivity.startActivity(this, scheduleId, scheduleName, taskId, taskName)
     }
 
+    override fun startMainActivity() {
+        finish()
+        MainActivity.startActivity(this)
+    }
+
     override fun getScheduleName(): String {
-        return title.text.toString()
+        return scheduleName
     }
 }

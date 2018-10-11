@@ -29,5 +29,6 @@ interface ModelContract {
         fun onCalendarExist(calendarExist: Boolean?)
         fun onReceivedSaveCalendarSuccess()
         fun onReceivedSaveTaskSuccess()
+        fun onAllTasksSaved()
     }
 }

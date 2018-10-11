@@ -11,6 +11,7 @@ interface ViewContract {
         fun setIndependenceLevels(items: Array<String>)
         fun startMainActivity()
         fun startSwitcherActivity()
+//        fun validateInputs(name: String, age: String, policy: Boolean): Boolean
     }
 
     interface Listener {

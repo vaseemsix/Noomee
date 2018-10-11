@@ -2,7 +2,6 @@ package com.unknown.numee.parent.tasks
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -58,7 +57,6 @@ class TasksListPresenter(
     override fun onReceivedCalendarSuccess(calendar: Calendar?) {
         if (calendar != null) {
             model.updateCalendar(calendar)
-            Log.d("Vlad", calendar.days.size.toString())
             view.updateWeekDays(model.getWeekDays())
         }
     }
@@ -98,6 +96,10 @@ class TasksListPresenter(
                 textView.text = editText.text
             }
         }
+    }
+
+    override fun onAllTasksSaved() {
+        view.startMainActivity()
     }
 
 }

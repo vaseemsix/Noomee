@@ -40,7 +40,6 @@ class TasksAdapter(
         holder.textView.text = this.itemList[position].name
         holder.taskTime.text = this.itemList[position].time
 
-        Log.d("Vlad", this.itemList[position].enable.toString())
         holder.switcher.isChecked = this.itemList[position].enable == 1
     }
 

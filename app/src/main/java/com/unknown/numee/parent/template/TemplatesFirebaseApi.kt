@@ -58,7 +58,6 @@ class TemplatesFirebaseApi {
                 val result: MutableList<Task> = mutableListOf()
                 if (dataSnapshot.exists()) {
                     for (item in dataSnapshot.children) {
-                        Log.d("Vlad", item.toString())
                         val resultItem = item.getValue(Task::class.java)
                         resultItem?.let {
                             result.add(it)

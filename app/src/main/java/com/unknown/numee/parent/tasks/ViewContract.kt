@@ -11,6 +11,7 @@ interface ViewContract {
         fun updateWeekDays(enabledWeekDays: MutableList<Boolean>)
         fun updateTasksList(tasksList: MutableList<Task>)
         fun startSubTaskActivity(taskId: String, taskName: String)
+        fun startMainActivity()
         fun getScheduleName(): String
     }
 

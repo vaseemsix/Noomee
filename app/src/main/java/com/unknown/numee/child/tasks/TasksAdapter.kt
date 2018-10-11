@@ -11,7 +11,7 @@ import com.unknown.numee.R
 
 
 class TasksAdapter(
-        val onItemClickListener: OnItemClickListener
+        private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     private var itemList: List<ViewContract.Item> = listOf()
