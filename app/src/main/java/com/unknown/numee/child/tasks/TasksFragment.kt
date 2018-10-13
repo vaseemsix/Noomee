@@ -91,8 +91,8 @@ class TasksFragment : Fragment(), ViewContract.View {
     override fun setContentVisibility(isVisible: Boolean) {
         tasksListView.visibility = if (isVisible) View.VISIBLE else View.GONE
         progressView.visibility = if (isVisible) View.VISIBLE else View.GONE
+        welcomeTxtView.visibility = if (isVisible) View.VISIBLE else View.GONE
         finishView.visibility = if (isVisible) View.GONE else View.VISIBLE
-        welcomeTxtView.visibility = if (isVisible) View.GONE else View.VISIBLE
     }
 
     override fun showMessage(message: String) {

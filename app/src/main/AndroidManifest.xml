@@ -33,12 +33,6 @@
         <activity android:name=".language.LanguageSelectionActivity" />
         <activity android:name=".parent.template.TemplateActivity" />
 
-        <service android:name=".child.push.ChildFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
         <activity
             android:name=".parent.tasks.TasksListActivity"
             android:theme="@style/ThemeTasksList" />
