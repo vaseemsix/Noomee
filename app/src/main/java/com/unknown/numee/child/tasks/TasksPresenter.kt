@@ -121,7 +121,8 @@ class TasksPresenter(
 
     private fun getTasksProgress(item: List<Task>): Int {
         val doneCount = item.count { it.status == Status.DONE }
-        return ((doneCount.toFloat() / item.size) * 100).toInt()
+        val allCount = item.count { it.enable == 1 }
+        return ((doneCount.toFloat() / allCount) * 100).toInt()
     }
 
     private fun hasDayPassed(fromDate: Long): Boolean {
