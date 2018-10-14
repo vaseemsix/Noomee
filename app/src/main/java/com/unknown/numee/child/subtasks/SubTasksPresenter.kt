@@ -28,7 +28,7 @@ class SubTasksPresenter(
                     item.index,
                     Status.DONE)
 
-            val toDoIndex = getNextToDoIndex(task)
+            val toDoIndex = getNextToDoIndex(task.subTasks)
             if (toDoIndex != -1) {
                 model.requestUpdateSubTaskStatus(
                         model.currentUserID,
@@ -42,10 +42,9 @@ class SubTasksPresenter(
         }
     }
 
-    private fun getNextToDoIndex(task: Task): Int {
-        var subTasks = task.subTasks
-        subTasks = subTasks.sortedBy { it.order }
-        return subTasks.indexOfFirst { (it.status == Status.TO_DO) && (it.enable == 1) }
+    private fun getNextToDoIndex(subTasks: List<SubTask>): Int {
+        val sortedSubTasks = subTasks.sortedBy { it.order }
+        return sortedSubTasks.indexOfFirst { it.status == Status.TO_DO && it.enable == 1 }
     }
 
     override fun onError(e: Exception?) {
@@ -53,17 +52,6 @@ class SubTasksPresenter(
     }
 
     override fun onReceivedGetTaskByIDSuccess(task: Task?) {
-//        if (task != null) {
-//
-//            val newSubTasksList: MutableList<SubTask> = mutableListOf()
-//            for (i in 0 until task.subTasks.size) {
-//                if (task.subTasks[i].enable == 1) {
-//                    newSubTasksList.add(task.subTasks[i])
-//                }
-//            }
-//            task.subTasks = newSubTasksList.toList()
-//        }
-
         model.task = task
         update()
     }
@@ -98,7 +86,8 @@ class SubTasksPresenter(
         var subTasks = task.subTasks
         subTasks = subTasks.sortedBy { it.order }
 
-        val currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT }
+        val currentSubTaskIndex = subTasks.indexOfFirst { it.status == Status.CURRENT  && it.enable == 1 }
+        val nextToDoSubTaskIndex = subTasks.indexOfFirst { it.status == Status.TO_DO  && it.enable == 1 }
 
         if (currentSubTaskIndex != -1) {
             itemList.add(
@@ -111,27 +100,29 @@ class SubTasksPresenter(
                             doAnimation = !checkIsToiledOrWashing(task.name)
                     )
             )
-
-            if (currentSubTaskIndex + 1 < subTasks.size) {
-                itemList.add(
-                        SubTaskItem(
-                                id = subTasks[currentSubTaskIndex + 1].id,
-                                name = subTasks[currentSubTaskIndex + 1].name,
-                                imageUrl = subTasks[currentSubTaskIndex + 1].imageUrl,
-                                status = subTasks[currentSubTaskIndex + 1].status.ordinal,
-                                index = (currentSubTaskIndex + 1).toString(),
-                                doAnimation = !checkIsToiledOrWashing(task.name)
-                        )
-                )
-            }
         }
+
+        if (nextToDoSubTaskIndex != -1) {
+            itemList.add(
+                    SubTaskItem(
+                            id = subTasks[currentSubTaskIndex + 1].id,
+                            name = subTasks[currentSubTaskIndex + 1].name,
+                            imageUrl = subTasks[currentSubTaskIndex + 1].imageUrl,
+                            status = subTasks[currentSubTaskIndex + 1].status.ordinal,
+                            index = nextToDoSubTaskIndex.toString(),
+                            doAnimation = !checkIsToiledOrWashing(task.name)
+                    )
+            )
+        }
+
 
         return itemList
     }
 
     private fun getSubTaskProgress(subTasks: List<SubTask>): Int {
         val doneCount = subTasks.count { it.status == Status.DONE }
-        return ((doneCount.toFloat() / subTasks.size) * 100).toInt()
+        val allCount = subTasks.count { it.enable == 1 }
+        return ((doneCount.toFloat() / allCount) * 100).toInt()
     }
 
     private fun startSubTaskTime(time: Int) {

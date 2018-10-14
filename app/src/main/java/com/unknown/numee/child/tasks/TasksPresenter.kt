@@ -147,15 +147,17 @@ class TasksPresenter(
         var subTasks = tasks[index].subTasks
         subTasks = subTasks.sortedBy { it.order }
 
-        if (subTasks.isNotEmpty())  {
+        val indexOfFirstSubtask = subTasks.indexOfFirst { it.enable == 1 }
+        if (subTasks.isNotEmpty() && indexOfFirstSubtask != -1)  {
             model.requestUpdateSubTaskStatus(
                     model.currentUserID,
                     taskID,
                     scheduleID,
-                    "0",
+                    indexOfFirstSubtask.toString(),
                     Status.CURRENT)
 
-            for (i in 1 until subTasks.size) {
+            for (i in 0 until subTasks.size) {
+                if (i == indexOfFirstSubtask) continue
                 model.requestUpdateSubTaskStatus(
                         model.currentUserID,
                         taskID,
