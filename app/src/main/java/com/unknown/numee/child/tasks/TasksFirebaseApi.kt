@@ -4,6 +4,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.unknown.numee.business.beans.Calendar
 import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.business.beans.Status
 import com.unknown.numee.business.beans.Task
@@ -14,12 +15,34 @@ class TasksFirebaseApi {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance().reference
 
-    fun getSchedules(
-            userID: String,
-            onSuccess: (List<Schedule>?) -> Unit,
-            onError: (Exception?) -> Unit
+	fun getCalendar(
+			userID: String,
+			onSuccess: (Calendar?) -> Unit,
+			onError: (Exception?) -> Unit
+	) {
+		val reference = firebaseDatabase.child("calendar").child(userID)
+
+		reference.addListenerForSingleValueEvent(object : ValueEventListener {
+			override fun onCancelled(databaseError: DatabaseError) {
+				onError.invoke(Exception(databaseError.message))
+			}
+
+			override fun onDataChange(dataSnapshot: DataSnapshot) {
+				if (dataSnapshot.exists()) {
+					val result: Calendar? = dataSnapshot.getValue(Calendar::class.java)
+					onSuccess.invoke(result)
+				}
+			}
+		})
+	}
+
+    fun getSchedule(
+		    userID: String,
+		    scheduleID: String,
+		    onSuccess: (Schedule?) -> Unit,
+		    onError: (Exception?) -> Unit
     ) {
-        val reference = firebaseDatabase.child("schedules").child(userID)
+        val reference = firebaseDatabase.child("schedules").child(userID).child(scheduleID)
 
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
@@ -27,16 +50,10 @@ class TasksFirebaseApi {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val result: MutableList<Schedule> = mutableListOf()
                 if (dataSnapshot.exists()) {
-                    for (item in dataSnapshot.children) {
-                        val resultItem = item.getValue(Schedule::class.java)
-                        resultItem?.let {
-                            result.add(it)
-                        }
-                    }
+	                val result = dataSnapshot.getValue(Schedule::class.java)
+	                onSuccess.invoke(result)
                 }
-                onSuccess.invoke(result)
             }
 
         })

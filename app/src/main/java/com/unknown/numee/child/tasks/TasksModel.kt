@@ -27,7 +27,7 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
 
     private val tasksApiFirebase = TasksFirebaseApi()
 
-    override fun getUser(ID: String) {
+    override fun requestUser(ID: String) {
         businessCommandExecutor.execute(
                 GetUser(ID,
                         object : BusinessCommandCallback<User> {
@@ -43,11 +43,20 @@ class TasksModel(context: Context) : GeneralModel(context), ModelContract.Model 
         )
     }
 
-    override fun requestSchedules(userID: String) {
-        tasksApiFirebase.getSchedules(
-                userID,
-                { result -> presenter.onReceivedScheduleSuccess(result) },
-                { e -> presenter.onError(e) }
+	override fun requestCalendar(userID: String) {
+		tasksApiFirebase.getCalendar(
+				userID,
+				{ result -> presenter.onReceivedCalendarSuccess(result) },
+				{ e -> presenter.onError(e) }
+		)
+	}
+
+	override fun requestSchedule(userID: String, scheduleID: String) {
+        tasksApiFirebase.getSchedule(
+		        userID,
+		        scheduleID,
+		        { result -> presenter.onReceivedScheduleSuccess(result) },
+		        { e -> presenter.onError(e) }
         )
     }
 

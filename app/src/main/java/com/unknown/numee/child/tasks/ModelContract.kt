@@ -1,10 +1,7 @@
 package com.unknown.numee.child.tasks
 
 import android.support.annotation.StringRes
-import com.unknown.numee.business.beans.Schedule
-import com.unknown.numee.business.beans.Status
-import com.unknown.numee.business.beans.Task
-import com.unknown.numee.business.beans.User
+import com.unknown.numee.business.beans.*
 
 
 interface ModelContract {
@@ -15,8 +12,9 @@ interface ModelContract {
         var totalNumCount: Int
         fun getStringById(@StringRes resId: Int): String
 
-        fun getUser(ID: String)
-        fun requestSchedules(userID: String)
+        fun requestUser(ID: String)
+	    fun requestCalendar(userID: String)
+        fun requestSchedule(userID: String, scheduleID: String)
         fun requestTasks(userID: String, scheduleID: String)
         fun requestResetTasks(userID: String, taskIDs: String, scheduleID: String)
         fun requestUpdateTaskStatus(userID: String, taskID: String, scheduleID: String, newStatus: Status)
@@ -26,7 +24,8 @@ interface ModelContract {
     interface Listener {
         fun onError(e: Exception?)
         fun onReceivedGetUserSuccess(user: User?)
-        fun onReceivedScheduleSuccess(schedule: List<Schedule>?)
+	    fun onReceivedCalendarSuccess(calendar: Calendar?)
+        fun onReceivedScheduleSuccess(schedule: Schedule?)
         fun onReceivedTasksSuccess(tasks: List<Task>?)
         fun onReceivedResetTasksSuccess()
         fun onReceivedUpdateTaskStatusSuccess()

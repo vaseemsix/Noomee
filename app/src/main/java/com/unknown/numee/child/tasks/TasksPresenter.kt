@@ -1,14 +1,13 @@
 package com.unknown.numee.child.tasks
 
 import com.unknown.numee.R
-import com.unknown.numee.business.beans.Schedule
-import com.unknown.numee.business.beans.Status
-import com.unknown.numee.business.beans.Task
-import com.unknown.numee.business.beans.User
+import com.unknown.numee.business.beans.*
+import com.unknown.numee.business.beans.Calendar
 import com.unknown.numee.util.event.Event
 import com.unknown.numee.util.event.EventCallback
 import com.unknown.numee.util.event.EventManager
 import com.unknown.numee.util.event.events.TaskFinishedEvent
+import com.unknown.numee.util.extensions.dayOfWeek
 import com.unknown.numee.util.mvp.Presenter
 import java.util.*
 
@@ -28,8 +27,8 @@ class TasksPresenter(
     }
 
     override fun onViewCreated() {
-        model.getUser(model.currentUserID)
-        model.requestSchedules(model.currentUserID)
+        model.requestUser(model.currentUserID)
+        model.requestCalendar(model.currentUserID)
         EventManager.register(TaskFinishedEvent::class.java, taskFinishedCallback)
     }
 
@@ -60,9 +59,22 @@ class TasksPresenter(
         }
     }
 
-    override fun onReceivedScheduleSuccess(schedule: List<Schedule>?) {
-        if (schedule != null && schedule.isNotEmpty()) {
-            model.schedule = schedule[0] // find the right schedule for current day
+	override fun onReceivedCalendarSuccess(calendar: Calendar?) {
+		calendar?.let {
+			val dayOfWeek = Date().dayOfWeek()
+			val convertedDayOfWeek = if (dayOfWeek - 2 < 0) 6 else dayOfWeek - 2
+			val scheduleID = calendar.days[convertedDayOfWeek]
+			if (scheduleID.isNotEmpty()) {
+				model.requestSchedule(model.currentUserID, scheduleID)
+			} else {
+				// show error message?
+			}
+		}
+	}
+
+	override fun onReceivedScheduleSuccess(schedule: Schedule?) {
+        if (schedule != null) {
+            model.schedule = schedule
             val scheduleID = model.schedule?.id ?: ""
 
             if (hasDayPassed(model.schedule?.date ?: 0)) {
