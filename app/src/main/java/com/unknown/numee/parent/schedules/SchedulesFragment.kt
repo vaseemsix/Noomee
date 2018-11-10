@@ -76,7 +76,9 @@ class SchedulesFragment : Fragment(), ViewContract.View {
     }
 
     override fun showMessage(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+	    context?.let {
+		    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+	    }
     }
 
     override fun updateSchedules(schedule: List<Schedule>) {
@@ -84,10 +86,14 @@ class SchedulesFragment : Fragment(), ViewContract.View {
     }
 
     private fun openSchedulesListActivity() {
-        TemplateActivity.startActivity(context!!)
+	    context?.let {
+		    TemplateActivity.startActivity(it)
+	    }
     }
 
     override fun openTasksActivity(scheduleId: String, scheduleName: String) {
-        TasksListActivity.startActivity(context!!, scheduleId, scheduleName)
+	    context?.let {
+		    TasksListActivity.startActivity(it, scheduleId, scheduleName)
+	    }
     }
 }
