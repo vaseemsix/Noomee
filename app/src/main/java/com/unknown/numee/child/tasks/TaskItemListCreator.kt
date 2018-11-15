@@ -45,7 +45,8 @@ class TaskItemListCreator(val context: Context) {
                 numCount = "${task.numCount} x ",
                 taskID = task.id,
                 scheduleID = scheduleID,
-                statusOrdinal = task.status.ordinal
+                statusOrdinal = task.status.ordinal,
+		        type = task.type
         )
     }
 

@@ -38,9 +38,13 @@ class TasksPresenter(
 
     override fun onItemClicked(item: ViewContract.Item) {
         if (item is TaskItem) {
-            if (item.statusOrdinal == Status.CURRENT.ordinal) {
-                view.startSubTasksActivity(item.taskID, item.scheduleID)
-            }
+	        if (item.statusOrdinal == Status.CURRENT.ordinal) {
+		        if (item.type == Type.TASK) {
+			        view.startSubTasksActivity(item.taskID, item.scheduleID)
+		        } else if (item.type == Type.STORY) {
+
+		        }
+	        }
         }
     }
 
