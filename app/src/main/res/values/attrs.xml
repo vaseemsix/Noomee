@@ -17,4 +17,8 @@
 		<attr name="text" />
 	</declare-styleable>
 
+	<declare-styleable name="NoomeeProgressView">
+		<attr name="progress" format="integer" />
+	</declare-styleable>
+
 </resources>

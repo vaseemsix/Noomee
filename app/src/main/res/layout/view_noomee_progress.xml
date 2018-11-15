@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	<ProgressBar
+			android:id="@+id/view_noomee_progress__progress"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="0dp"
+			android:layout_height="8dp"
+			android:progressDrawable="@drawable/subtask_progress"
+			android:secondaryProgress="100"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:progress="50" />
+
+	<ImageView
+			android:id="@+id/view_noomee_progress__icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_noomee_small"
+			app:layout_constraintBottom_toBottomOf="@id/view_noomee_progress__progress"
+			app:layout_constraintEnd_toEndOf="@id/view_noomee_progress__progress"
+			app:layout_constraintTop_toTopOf="@id/view_noomee_progress__progress"
+			tools:ignore="ContentDescription" />
+
+</android.support.constraint.ConstraintLayout>

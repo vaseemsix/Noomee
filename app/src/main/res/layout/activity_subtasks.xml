@@ -59,28 +59,15 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/activity_subtasks__txt_time"/>
 	
-	<ProgressBar
+	<com.unknown.numee.util.widget.NoomeeProgressView
 		android:id="@+id/activity_subtasks__progress"
-		style="?android:attr/progressBarStyleHorizontal"
 		android:layout_width="0dp"
-		android:layout_height="8dp"
+		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/spacing_huge"
 		android:layout_marginEnd="@dimen/spacing_big"
 		android:layout_marginStart="@dimen/spacing_big"
-		android:progressDrawable="@drawable/subtask_progress"
-		android:secondaryProgress="100"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		tools:progress="50" />
-	
-	<ImageView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:src="@drawable/ic_noomee_small"
-		app:layout_constraintBottom_toBottomOf="@id/activity_subtasks__progress"
-		app:layout_constraintEnd_toEndOf="@id/activity_subtasks__progress"
-		app:layout_constraintTop_toTopOf="@id/activity_subtasks__progress"
-		tools:ignore="ContentDescription" />
-	
+		app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

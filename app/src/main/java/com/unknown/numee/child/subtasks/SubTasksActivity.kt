@@ -5,11 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.ProgressBar
 import android.widget.TextView
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.child.reward.RewardActivity
+import com.unknown.numee.util.widget.NoomeeProgressView
 import com.unknown.numee.util.widget.SubTasksView
 
 
@@ -36,7 +36,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     private lateinit var titleView: TextView
     private lateinit var subTitleView: TextView
     private lateinit var timeView: TextView
-    private lateinit var progressView: ProgressBar
+    private lateinit var progressView: NoomeeProgressView
     private lateinit var subTasksView: SubTasksView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +67,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
     }
 
     override fun setSubTasksProgress(progress: Int) {
-        progressView.progress = progress
+        progressView.setProgress(progress)
     }
 
     override fun setSubTasksTime(time: String) {

@@ -22,7 +22,7 @@ class ButtonView @JvmOverloads constructor(
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ButtonView)
         try {
-            textView.text = typedArray.getString(R.styleable.SpinnerView_title) ?: ""
+            textView.text = typedArray.getString(R.styleable.ButtonView_text) ?: ""
         } finally {
             typedArray.recycle()
         }
