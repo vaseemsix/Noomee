@@ -10,6 +10,7 @@ interface ViewContract {
         fun setContentVisibility(isVisible: Boolean)
         fun showMessage(message: String)
         fun startSubTasksActivity(taskID: String, scheduleID: String)
+        fun startStoryActivity(taskID: String, scheduleID: String)
         fun finish()
     }
 

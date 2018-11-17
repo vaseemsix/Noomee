@@ -12,6 +12,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.unknown.numee.R
+import com.unknown.numee.child.story.ChildStoryActivity
 import com.unknown.numee.child.subtasks.SubTasksActivity
 import com.unknown.numee.util.widget.ButtonView
 
@@ -100,10 +101,18 @@ class TasksFragment : Fragment(), ViewContract.View {
     }
 
     override fun startSubTasksActivity(taskID: String, scheduleID: String) {
-        SubTasksActivity.startActivity(context!!, taskID, scheduleID)
+	    context?.let {
+		    SubTasksActivity.startActivity(it, taskID, scheduleID)
+	    }
     }
 
-    override fun finish() {
+	override fun startStoryActivity(taskID: String, scheduleID: String) {
+		context?.let {
+			ChildStoryActivity.startActivity(it, taskID, scheduleID)
+		}
+	}
+
+	override fun finish() {
         activity?.finish()
     }
 

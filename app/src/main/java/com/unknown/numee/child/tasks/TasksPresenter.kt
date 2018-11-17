@@ -42,7 +42,7 @@ class TasksPresenter(
 		        if (item.type == Type.TASK) {
 			        view.startSubTasksActivity(item.taskID, item.scheduleID)
 		        } else if (item.type == Type.STORY) {
-
+					view.startStoryActivity(item.taskID, item.scheduleID)
 		        }
 	        }
         }

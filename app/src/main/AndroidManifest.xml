@@ -29,6 +29,7 @@
         <activity
             android:name=".child.reward.RewardActivity"
             android:theme="@style/RewardTheme" />
+	    <activity android:name=".child.story.ChildStoryActivity" />
         <activity android:name=".switcher.SwitcherActivity" />
         <activity android:name=".language.LanguageSelectionActivity" />
         <activity android:name=".parent.template.TemplateActivity" />
