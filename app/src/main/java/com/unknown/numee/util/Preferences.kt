@@ -23,6 +23,10 @@ object Preferences {
         editor = sharedPreferences.edit()
     }
 
+	fun clear() {
+		editor.clear().commit()
+	}
+
     var userID: String
         get() = sharedPreferences.getString(USER_ID, "")
         set(value) = editor.putString(USER_ID, value).apply()

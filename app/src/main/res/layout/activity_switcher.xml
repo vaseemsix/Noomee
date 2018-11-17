@@ -1,86 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/colorPrimary"
-	tools:context=".switcher.SwitcherActivity">
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/colorPrimary"
+		tools:context=".switcher.SwitcherActivity">
 
-	<!--<TextView-->
-		<!--android:id="@+id/textView"-->
-		<!--android:layout_width="0dp"-->
-		<!--android:layout_height="wrap_content"-->
-		<!--android:layout_marginBottom="@dimen/spacing_huge"-->
-		<!--android:layout_marginEnd="@dimen/spacing_small"-->
-		<!--android:layout_marginStart="@dimen/spacing_small"-->
-		<!--android:textAlignment="center"-->
-		<!--android:textSize="24sp"-->
-		<!--app:layout_constraintBottom_toTopOf="@+id/activity_switcher__parent"-->
-		<!--app:layout_constraintEnd_toEndOf="parent"-->
-		<!--app:layout_constraintStart_toStartOf="parent"-->
-		<!--app:layout_constraintTop_toTopOf="parent"-->
-		<!--app:layout_constraintVertical_chainStyle="packed" />-->
 
-	<LinearLayout
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		android:orientation="vertical"
-		app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/switcher_area">
-
-		<com.unknown.numee.util.widget.ButtonView
+	<com.unknown.numee.util.widget.ButtonView
 			android:id="@+id/activity_switcher__parent"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="@dimen/spacing_normal"
 			android:onClick="useAsParent"
 			android:textColor="@color/colorPrimaryDark"
-
+			app:layout_constraintBottom_toTopOf="@id/activity_switcher__child"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
 			app:text="@string/parent" />
 
-		<com.unknown.numee.util.widget.ButtonView
+	<com.unknown.numee.util.widget.ButtonView
 			android:id="@+id/activity_switcher__child"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="@dimen/spacing_normal"
 			android:onClick="useAsChild"
 			android:textColor="@color/colorPrimaryDark"
+			app:layout_constraintBottom_toTopOf="@id/activity_switcher__guideline"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
 			app:text="@string/child" />
 
-	</LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/vector__noomee_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
+	<android.support.constraint.Guideline
+			android:id="@+id/activity_switcher__guideline"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.65"/>
 
 	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="32dp"
-		android:layout_marginEnd="8dp"
-		android:layout_marginBottom="8dp"
-		android:onClick="logOut"
-		android:text="@string/log_out"
-		android:textAlignment="center"
-		android:textColor="@color/colorSubTitle"
-		android:textSize="18sp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/switcher_area" />
+			android:id="@+id/activity_switcher__log_out"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginBottom="8dp"
+			android:onClick="logOut"
+			android:text="@string/log_out"
+			android:textAlignment="center"
+			android:textColor="@color/colorSubTitle"
+			android:textSize="18sp"
+			app:layout_constraintBottom_toTopOf="@id/activity_switcher__logo"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/activity_switcher__guideline" />
+
+	<ImageView
+			android:id="@+id/activity_switcher__logo"
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"
+			android:layout_marginTop="@dimen/spacing_big"
+			android:layout_marginBottom="@dimen/spacing_normal"
+			android:scaleType="centerInside"
+			android:adjustViewBounds="true"
+			android:src="@drawable/vector__noomee_logo"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			tools:ignore="ContentDescription" />
 
 </android.support.constraint.ConstraintLayout>

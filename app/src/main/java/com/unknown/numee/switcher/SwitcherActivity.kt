@@ -42,7 +42,8 @@ class SwitcherActivity : BaseActivity() {
 
     public fun logOut(view: View) {
         FirebaseAuth.getInstance().signOut()
-        finish()
-        LoginActivity.startActivity(this)
+	    Preferences.clear()
+	    finish()
+	    LoginActivity.startActivity(this)
     }
 }
