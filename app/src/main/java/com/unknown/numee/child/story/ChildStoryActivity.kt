@@ -13,7 +13,7 @@ import com.unknown.numee.child.subtasks.SubTasksActivity
 import com.unknown.numee.child.subtasks.SubTasksModel
 import com.unknown.numee.child.subtasks.SubTasksPresenter
 import com.unknown.numee.child.subtasks.ViewContract
-import com.unknown.numee.util.extensions.loadImageWithReference
+import com.unknown.numee.util.extensions.loadImage
 import com.unknown.numee.util.widget.NoomeeProgressView
 
 class ChildStoryActivity : BaseActivity(), ViewContract.View {
@@ -83,11 +83,11 @@ class ChildStoryActivity : BaseActivity(), ViewContract.View {
 	}
 
 	override fun setTitle(title: String) {
-		titleView.text = title
+		subTitleView.text = title
 	}
 
 	override fun setSubTitle(subTitle: String) {
-		subTitleView.text = subTitle
+		titleView.text = subTitle
 	}
 
 	override fun setSubTasksProgress(progress: Int) {
@@ -106,7 +106,7 @@ class ChildStoryActivity : BaseActivity(), ViewContract.View {
 		if (itemList.isNotEmpty()) {
 			item = itemList[0]
 			item?.let {
-				imageView.loadImageWithReference(it.imageUrl)
+				imageView.loadImage(it.imageUrl)
 			}
 		}
 	}
