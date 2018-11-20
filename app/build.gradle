@@ -10,11 +10,24 @@ android {
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0.3"
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "boolean", "DISABLE_CRASHLYTICS", "true"
+
+            versionNameSuffix "_DEBUG_0"
+
+            debuggable true
+            minifyEnabled false
+        }
         release {
+            buildConfigField "boolean", "DISABLE_CRASHLYTICS", "false"
+
+//            versionNameSuffix "_beta_0"
+
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -42,6 +55,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.firebase:firebase-database:16.0.5'
     implementation 'com.google.firebase:firebase-storage:16.0.5'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.6'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     kapt 'com.github.bumptech.glide:compiler:4.7.1'

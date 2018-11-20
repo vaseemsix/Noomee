@@ -5,6 +5,9 @@ import android.os.Handler
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.core.CrashlyticsCore
+import com.unknown.numee.BuildConfig
 import com.unknown.numee.R
 import com.unknown.numee.base.BaseActivity
 import com.unknown.numee.language.LanguageSelectionActivity
@@ -15,6 +18,7 @@ import com.unknown.numee.switcher.SwitcherActivity
 import com.unknown.numee.util.GlideApp
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.event.EventManager
+import io.fabric.sdk.android.Fabric
 import java.util.*
 
 class SplashScreenActivity : BaseActivity(), ViewContract.View {
@@ -28,6 +32,7 @@ class SplashScreenActivity : BaseActivity(), ViewContract.View {
         Preferences.initialize(this)
         EventManager.initialize(this)
 
+	    initCrashlytics()
         initPresenter()
         presenter.onCreate()
 
@@ -53,6 +58,12 @@ class SplashScreenActivity : BaseActivity(), ViewContract.View {
 
         presenter = splashScreenPresenter
     }
+
+	private fun initCrashlytics() {
+		val core = CrashlyticsCore.Builder().disabled(BuildConfig.DISABLE_CRASHLYTICS).build()
+		Fabric.with(this, Crashlytics.Builder().core(core).build())
+		Crashlytics.setUserIdentifier(Preferences.userID)
+	}
 
     override fun startMainActivity() {
         val handler = Handler()
