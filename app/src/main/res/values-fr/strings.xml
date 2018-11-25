@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="app_name">noomee</string>
     <string name="app_description">Guide d\'indépendance pour votre enfant</string>
     <string name="sign_in_with_email">Se connecter</string>
     <string name="sign_up_with_email">Enregistrement</string>
