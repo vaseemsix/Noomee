@@ -15,7 +15,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "boolean", "DISABLE_CRASHLYTICS", "true"
+            buildConfigField "boolean", "DISABLE_CRASHLYTICS", "false"
 
             versionNameSuffix "_DEBUG_0"
 

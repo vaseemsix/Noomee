@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.unknown.numee">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.unknown.numee">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".main.MainActivity" />
-        <activity
-            android:name=".splashscreen.SplashScreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/SplashScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<application
+		android:allowBackup="false"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme"
+		tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".registration.RegistrationActivity" />
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".child.subtasks.SubTasksActivity" />
-        <activity
-            android:name=".child.reward.RewardActivity"
-            android:theme="@style/RewardTheme" />
-	    <activity android:name=".child.story.ChildStoryActivity" />
-        <activity android:name=".switcher.SwitcherActivity" />
-        <activity android:name=".language.LanguageSelectionActivity" />
-        <activity android:name=".parent.template.TemplateActivity" />
+		<activity android:name=".main.MainActivity" />
+		<activity
+			android:name=".splashscreen.SplashScreenActivity"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:theme="@style/SplashScreenTheme">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
 
-        <activity
-            android:name=".parent.tasks.TasksListActivity"
-            android:theme="@style/ThemeTasksList" />
-        <activity android:name=".parent.subtasks.SubTasksActivity"
-            android:theme="@style/ThemeTasksList"/>
-    </application>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".login.LoginActivity" />
+		<activity android:name=".registration.RegistrationActivity" />
+		<activity android:name=".base.BaseActivity" />
+		<activity android:name=".child.subtasks.SubTasksActivity" />
+		<activity
+			android:name=".child.reward.RewardActivity"
+			android:theme="@style/RewardTheme" />
+		<activity android:name=".child.story.ChildStoryActivity" />
+		<activity android:name=".switcher.SwitcherActivity" />
+		<activity android:name=".language.LanguageSelectionActivity" />
+		<activity android:name=".parent.template.TemplateActivity" />
+
+		<activity
+			android:name=".parent.tasks.TasksListActivity"
+			android:theme="@style/ThemeTasksList" />
+		<activity
+			android:name=".parent.subtasks.SubTasksActivity"
+			android:theme="@style/ThemeTasksList" />
+	</application>
 
 </manifest>

@@ -22,7 +22,8 @@ class MainActivity : BaseActivity() {
 
         fun startActivity(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
+	        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+	        context.startActivity(intent)
         }
     }
 
