@@ -18,6 +18,6 @@ interface ModelContract {
     interface Listener {
         fun onError(e: Exception?)
         fun onReceivedGetTaskByIDSuccess(task: Task?)
-        fun onReceivedSaveTaskSuccess(scheduleId: String, scheduleName: String)
+        fun onReceivedSaveTaskSuccess()
     }
 }

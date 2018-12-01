@@ -7,7 +7,7 @@ import com.unknown.numee.business.beans.Task
 interface ViewContract {
     interface View {
         fun initViews()
-        fun startTasksListActivity(scheduleId: String, scheduleName: String)
+        fun startTasksListActivity()
         fun getTime(): String
         fun getDuration(): Int
         fun showMessage(message: String)

@@ -116,7 +116,7 @@ class TasksListActivity : BaseActivity(), ViewContract.View {
 
     override fun startSubTaskActivity(taskId: String, taskName: String) {
         finish()
-        SubTasksActivity.startActivity(this, scheduleId, scheduleName, taskId, taskName)
+        SubTasksActivity.startActivity(this, scheduleId, getScheduleName(), taskId, taskName)
     }
 
     override fun startMainActivity() {
@@ -125,6 +125,6 @@ class TasksListActivity : BaseActivity(), ViewContract.View {
     }
 
     override fun getScheduleName(): String {
-        return scheduleName
+        return title.text.toString()
     }
 }

@@ -34,7 +34,7 @@ class SubTasksListPresenter(
     }
 
     override fun cancelChanges(scheduleId: String, scheduleName: String) {
-        view.startTasksListActivity(scheduleId, scheduleName)
+        view.startTasksListActivity()
     }
 
     override fun saveChanges() {
@@ -66,8 +66,8 @@ class SubTasksListPresenter(
         }
     }
 
-    override fun onReceivedSaveTaskSuccess(scheduleId: String, scheduleName: String) {
-        view.startTasksListActivity(scheduleId, scheduleName)
+    override fun onReceivedSaveTaskSuccess() {
+        view.startTasksListActivity()
     }
 
     override fun onCameraIconClick(position: Int) {

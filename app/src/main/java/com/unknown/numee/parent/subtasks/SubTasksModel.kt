@@ -84,6 +84,6 @@ class SubTasksModel(context: Context) : GeneralModel(context), ModelContract.Mod
                 userID,
                 scheduleID,
                 task
-        ) { presenter.onReceivedSaveTaskSuccess(scheduleID, task.name) }
+        ) { presenter.onReceivedSaveTaskSuccess() }
     }
 }

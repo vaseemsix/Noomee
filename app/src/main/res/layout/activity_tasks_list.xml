@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".parent.tasks.TasksListActivity"
     android:background="@color/colorPrimary">
 
     <TextView
@@ -31,12 +30,15 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:minWidth="64dp"
+	    android:maxLength="25"
         android:visibility="gone"
         android:inputType="text"
+	    android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/edit_title_view" />
+        android:id="@+id/edit_title_view"
+	    tools:ignore="Autofill,LabelFor" />
 
     <ImageView
         android:id="@+id/edit_icon_view"

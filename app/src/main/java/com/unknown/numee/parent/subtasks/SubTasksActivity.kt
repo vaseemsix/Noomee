@@ -162,7 +162,7 @@ class SubTasksActivity : BaseActivity(), ViewContract.View {
         return duration
     }
 
-    override fun startTasksListActivity(scheduleId: String, scheduleName: String) {
+    override fun startTasksListActivity() {
         finish()
         TasksListActivity.startActivity(this, scheduleId, scheduleName)
     }
