@@ -8,6 +8,7 @@ import com.unknown.numee.business.command.GetUser
 import com.unknown.numee.business.command.SaveUser
 import com.unknown.numee.business.executor.BusinessCommandCallback
 import com.unknown.numee.util.Preferences
+import com.unknown.numee.util.UserPreferences
 import com.unknown.numee.util.mvp.GeneralModel
 
 
@@ -81,4 +82,12 @@ class RegistrationModel(context: Context) : GeneralModel(context), ModelContract
 
                         }))
     }
+
+	override fun saveLocalUser(ID: String, name: String, childName: String) {
+		UserPreferences(context).saveUser(UserPreferences.LocalUser(
+				id = ID,
+				name = name,
+				childName = childName
+		))
+	}
 }

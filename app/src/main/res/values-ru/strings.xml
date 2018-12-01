@@ -49,7 +49,7 @@
 	<string name="schedule_name_sample">Օրակարգի անունը</string>
 	<string name="set_days">Սահմանել օրեր</string>
 	<string name="day_schedule">Օրակարգ</string>
-	<string name="day_schedule_templates">Օրակարգ</string>
+	<string name="day_schedule_templates">График %sа</string>
 
 	<string name="new_template">Նոր շաբլոն +</string>
 	<string name="gender">Սեռը</string>

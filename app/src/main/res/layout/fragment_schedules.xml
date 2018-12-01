@@ -8,18 +8,18 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/schedulesTitle"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:text="@string/day_schedule_templates"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+	    tools:text="@string/day_schedule_templates" />
 
     <Button
         android:id="@+id/newTemplateImageView"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toTopOf="@+id/newTemplateImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/schedulesTitle" />
 
     <ImageView
         android:id="@+id/noomeeIconImageView"

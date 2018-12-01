@@ -20,6 +20,7 @@ interface ModelContract {
 
         fun getUser(ID: String)
         fun saveUser(user: User)
+	    fun saveLocalUser(ID: String, name: String, childName: String)
     }
 
     interface Listener : GeneralModelContract.GeneralListener {

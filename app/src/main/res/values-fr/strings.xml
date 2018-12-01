@@ -43,7 +43,7 @@
 	<string name="schedule_name_sample">Nom du calendrier</string>
 	<string name="set_days">Fixer les jours</string>
 	<string name="day_schedule">CALENDRIER DE JOUR</string>
-	<string name="day_schedule_templates">Modèles d\'horaire journalier</string>
+	<string name="day_schedule_templates">%s Modèles d\'horaire journalier</string>
 
 	<string name="new_template">Nouveau modèle +</string>
 	<string name="gender">Le genre</string>

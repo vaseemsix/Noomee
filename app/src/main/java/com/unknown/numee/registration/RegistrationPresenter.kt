@@ -61,9 +61,10 @@ class RegistrationPresenter(
     }
 
     override fun onSaveClicked() {
-        model.user?.let {
-            it.child = model.childInfo
-            model.saveUser(it)
+        model.user?.let { user ->
+	        user.child = model.childInfo
+            model.saveUser(user)
+	        model.saveLocalUser(user.id, user.name, user.child?.name ?: "")
         }
     }
 

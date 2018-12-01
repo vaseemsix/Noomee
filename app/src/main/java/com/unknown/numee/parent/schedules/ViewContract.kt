@@ -7,6 +7,7 @@ interface ViewContract {
         fun setupSchedulesListView()
         fun initViews()
         fun showMessage(message: String)
+	    fun setSchedulesTitle(childName: String)
         fun updateSchedules(schedule: List<Schedule>)
         fun openTasksActivity(scheduleId: String, scheduleName: String)
     }

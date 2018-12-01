@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.unknown.numee.R
 import com.unknown.numee.business.beans.Schedule
@@ -49,12 +50,14 @@ class SchedulesFragment : Fragment(), ViewContract.View {
         presenter = schedulesPresenter
     }
 
+	private lateinit var schedulesViewTxt: TextView
     private lateinit var schedulesListView: RecyclerView
     private lateinit var newTemplateButton: Button
 
     override fun initViews() {
         schedulesListView = view.findViewById(R.id.templatesListView)
         newTemplateButton = view.findViewById(R.id.newTemplateImageView)
+	    schedulesViewTxt = view.findViewById(R.id.schedulesTitle)
 
         newTemplateButton.setOnClickListener { openSchedulesListActivity() }
     }
@@ -80,6 +83,10 @@ class SchedulesFragment : Fragment(), ViewContract.View {
 		    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 	    }
     }
+
+	override fun setSchedulesTitle(childName: String) {
+		schedulesViewTxt.text = String.format(getString(R.string.day_schedule_templates), childName)
+	}
 
     override fun updateSchedules(schedule: List<Schedule>) {
         scheduleListAdapter.setItemList(schedule)

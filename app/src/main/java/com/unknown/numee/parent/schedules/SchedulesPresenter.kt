@@ -3,7 +3,6 @@ package com.unknown.numee.parent.schedules
 import com.unknown.numee.business.beans.Schedule
 import com.unknown.numee.util.Preferences
 import com.unknown.numee.util.mvp.Presenter
-import java.lang.Exception
 
 
 class SchedulesPresenter(
@@ -13,6 +12,7 @@ class SchedulesPresenter(
     override fun onCreate() {
         view.initViews()
         view.setupSchedulesListView()
+	    view.setSchedulesTitle(model.childName)
         model.requestSchedules(Preferences.userID)
     }
 
