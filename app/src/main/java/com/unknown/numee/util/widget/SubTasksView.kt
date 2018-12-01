@@ -37,7 +37,11 @@ class SubTasksView @JvmOverloads constructor(
         toDoView = findViewById(R.id.view_subtasks__to_do)
         toDoImgView = findViewById(R.id.view_subtasks__img_to_do)
 
-        currentView.setOnClickListener { onClickListener?.invoke(itemList[0]) }
+        currentView.setOnClickListener {
+	        if (itemList.isNotEmpty()) {
+		        onClickListener?.invoke(itemList[0])
+	        }
+        }
     }
 
 
